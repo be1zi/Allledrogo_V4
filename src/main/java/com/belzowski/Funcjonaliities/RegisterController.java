@@ -2,6 +2,7 @@ package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AccountModel;
 import com.belzowski.Model.UserModel;
+import com.belzowski.Network.UserNetworkManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,14 +33,12 @@ public class RegisterController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("userModel") @Valid UserModel userModel, @ModelAttribute("accountModel") @Valid AccountModel accountModel){
 
-        out.println(userModel.toString());
-        out.println(accountModel.toString());
+        UserModel uM = UserNetworkManager.setUserToNetwork(userModel,accountModel);
+        out.println(uM);
 
-        //UserModel uM = UserNetworkManager.getUserFromNetwork(userModel);
-
-        ///if (uM == null)
-        //    return "register";
-       // else
+        if (uM.getId() == null)
+            return "register";
+        else
             return "home";
 
     }

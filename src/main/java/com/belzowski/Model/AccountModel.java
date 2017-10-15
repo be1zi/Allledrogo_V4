@@ -176,4 +176,29 @@ public class AccountModel {
     public void setTransactionList(List<TransactionModel> transactionList) {
         this.transactionList = transactionList;
     }
+
+    @Override
+    public String toString() {
+        return "AccountModel{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", country='" + country + '\'' +
+                ", city='" + city + '\'' +
+                ", zipCode='" + zipCode + '\'' +
+                ", street='" + street + '\'' +
+                ", houseNumber=" + houseNumber +
+                ", placeNumber=" + placeNumber +
+                ", voivodeship='" + voivodeship + '\'' +
+                ", mark=" + mark +
+                ", phone='" + phone + '\'' +
+                ", description='" + description + '\'' +
+                ", watchUserList=" + watchUserList +
+                ", commentList=" + commentList +
+                ", activeAuctionList=" + activeAuctionList +
+                ", userAuctionList=" + userAuctionList +
+                ", transactionList=" + transactionList +
+                '}';
+    }
 }
