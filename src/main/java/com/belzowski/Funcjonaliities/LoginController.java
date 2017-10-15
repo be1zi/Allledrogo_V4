@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 import static java.lang.System.out;
 
 @Controller
@@ -25,7 +27,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/check", method = RequestMethod.POST)
-    public String check(@ModelAttribute("userModel") UserModel userModel){
+    public String check(@ModelAttribute("userModel") @Valid  UserModel userModel){
 
         out.print(userModel.toString());
         UserModel uM = UserNetworkManager.getUserFromNetwork(userModel);
