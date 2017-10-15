@@ -18,6 +18,7 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp"></jsp:include>
 
 <userForm:form  modelAttribute="userModel" action="save" method="post">
     <div class="form-row">

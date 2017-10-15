@@ -16,7 +16,7 @@
 </head>
 <body>
 
-    ALLLEDROGO
+    <jsp:include page="header.jsp"></jsp:include>
 
     <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
