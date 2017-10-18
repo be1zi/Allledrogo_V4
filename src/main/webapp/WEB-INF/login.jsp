@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../resources/CSS/header.css">
     <link rel="stylesheet" href="../resources/CSS/main.css">
+    <link rel="stylesheet" href="../resources/CSS/login.css">
+
 
     <title>ALLLEDROGO</title>
 </head>
@@ -23,21 +25,22 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
+<div class="container-fluid"></div>
+    <userForm:form  modelAttribute="userModel" action="check" method="post">
+        <div class="form-row">
+           <div class="form-group col-md-6">
+                <label for="login" class="col-form-label">Login</label>
+                <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
+             </div>
+             <div class="form-group col-md-6">
+                <label for="password" class="col-form-label">Password</label>
+                <userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
+            </div>
+            </div>
+        <button type="submit" class="btn btn-primary">Zaloguj</button>
+     </userForm:form>
 
-<userForm:form  modelAttribute="userModel" action="check" method="post">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="login" class="col-form-label">Login</label>
-            <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="password" class="col-form-label">Password</label>
-            <userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Zaloguj</button>
-</userForm:form>
-
+</div>
 
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
