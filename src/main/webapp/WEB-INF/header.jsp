@@ -1,4 +1,5 @@
- <div class="container-fluid">
+<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <div class="container-fluid">
             <div class="menu-logo">
                 <div class="navbar-brand">
                 <span class="navbar-logo">
@@ -24,4 +25,3 @@
             </ul>
         </div>
     </nav>
- 
