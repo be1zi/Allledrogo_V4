@@ -1,5 +1,12 @@
+/*.container-fluid{*/
+    /*background-color: #efefef;*/
+/*}*/
+
 .container-fluid{
-    background-color: #efefef;
+    padding-left: 75px;
+    padding-top: 20px;
+    padding-right: 75px;
+    padding-bottom: 20px;
 }
 
 .btn-primary{
