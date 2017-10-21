@@ -15,7 +15,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../resources/CSS/header.css">
     <link rel="stylesheet" href="../resources/CSS/main.css">
 
     <title>ALLLEDROGO</title>
@@ -46,6 +45,8 @@
     <button type="submit" class="btn btn-primary">Zarejestruj</button>
     </accForm:form>
 </userForm:form>
+
+<jsp:include page="footer.jsp"></jsp:include>
 
 
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
