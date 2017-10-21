@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="../resources/CSS/header.css">
 
-<div class="container-fluid" style="border: solid greenyellow">
-    <nav class="navbar" style="border: solid red">
-        <div class="navbar-brand" style="border: solid saddlebrown">
-                <span class="navbar-logo" style="border: solid violet">
+<div class="container-fluid">
+    <nav class="navbar">
+        <div class="navbar-brand">
+                <span class="navbar-logo">
                   <a href="/home"><img src="../resources/images/logo.png" alt="ALLLEDROGO" title="" media-simple="true" style="height: 4.2rem;"></a>
                  </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-secondary display-4" href="/home">

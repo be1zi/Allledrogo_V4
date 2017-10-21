@@ -1,4 +1,23 @@
-/*.container-fluid{*/
+.title{
+    text-align: center;
+    color: #ff007f;
+    font-size: 48px;
+    font-family: sans-serif;
+    font-weight: 300;
+    padding-top: 40px;
+    padding-bottom: 50px;
 
-    /*background-color: #efefef;*/
-/*}*/
+}
+
+.loginButton{
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+/*.loginForm{*/
+      /*width: 1000px;*/
+  /*}*/
+
+.col-md-6{
+    border: solid yellow;
+}

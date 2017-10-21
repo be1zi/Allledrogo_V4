@@ -25,21 +25,28 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<div class="container-fluid"></div>
-    <userForm:form  modelAttribute="userModel" action="check" method="post">
-        <div class="form-row">
-           <div class="form-group col-md-6">
-                <label for="login" class="col-form-label">Login</label>
-                <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
-             </div>
-             <div class="form-group col-md-6">
-                <label for="password" class="col-form-label">Password</label>
-                <userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
-            </div>
-            </div>
-        <button type="submit" class="btn btn-primary">Zaloguj</button>
-     </userForm:form>
+<div class="container-fluid">
+    <div class="loginFormTitle" style="border: solid greenyellow">
+        <h2 class="title" style="border: solid blue">Logowanie</h2>
+    </div>
 
+    <div class="loginForm" style="border: solid pink">
+        <userForm:form  modelAttribute="userModel" action="check" method="post">
+            <div class="form-row">
+                 <div class="form-group col-md-6">
+                     <label for="login" class="col-form-label">Login</label>
+                     <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
+                 </div>
+                <div class="form-group col-md-6">
+                    <label for="password" class="col-form-label">Password</label>
+                    <userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
+                </div>
+            </div>
+            <div class="loginButton">
+                <a href="/check"><button type="submit" class="btn btn-primary ">Zaloguj</button></a>
+            </div>
+        </userForm:form>
+    </div>
 </div>
 
 <jsp:include page="footer.jsp"></jsp:include>
