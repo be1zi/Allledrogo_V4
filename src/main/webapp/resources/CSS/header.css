@@ -1,7 +1,13 @@
-/*.container-fluid{*/
-    /*padding-left: 75px;*/
-    /*padding-top: 20px;*/
-    /*padding-right: 75px;*/
-    /*padding-bottom: 20px;*/
+/*.navbar-logo {*/
+    /*display: inline-block;*/
+    /*float: none;*/
+    /*vertical-align: top;*/
 /*}*/
 
+.navbar-right{
+    border: solid palevioletred;
+    padding-right: 50px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
