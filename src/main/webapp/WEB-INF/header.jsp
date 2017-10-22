@@ -4,9 +4,9 @@
     <nav class="navbar">
         <div class="navbar-brand">
                 <span class="navbar-logo">
-                  <a href="/home"><img src="../resources/images/logo.png" alt="ALLLEDROGO" title="" media-simple="true" style="height: 4.2rem;"></a>
+                  <a href="/"><img src="../resources/images/logo.png" alt="ALLLEDROGO" title="" media-simple="true" style="height: 4.2rem;"></a>
                  </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-secondary display-4" href="/home">
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-secondary display-4" href="/">
                     ALLLEDROGO</a>
                 </span>
         </div>
