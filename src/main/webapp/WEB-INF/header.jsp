@@ -1,40 +1,22 @@
-<link rel="stylesheet" href="../resources/CSS/header.css">
+<link rel="stylesheet" href="../resources/CSS/header2/css.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
-<div class="container-fluid">
-    <nav class="navbar">
-        <div class="navbar-brand">
-                <span class="navbar-logo">
-                  <a href="/"><img src="../resources/images/logo.png" alt="ALLLEDROGO" title="" media-simple="true" style="height: 4.2rem;"></a>
-                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-secondary display-4" href="/">
-                    ALLLEDROGO</a>
-                </span>
+<nav class="navbar navbar-expand-md bg-primary navbar-dark p-3">
+    <div class="container">
+        <a class="navbar-brand" href="/"><i class="fa fa-lg fa-cloud text-secondary d-inline"></i><b id="brand" class="text-secondary">&nbsp; ALLLEDROGO</b></a>
+        <button class="navbar-toggler navbar-toggler-right" href="/" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent"
+                aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse justify-content-center text-center" id="navbar2SupportedContent">
+            <div class="collapse navbar-collapse justify-content-end text center">
+                <form class="form-inline m-0">
+                    <input class="form-control mr-3" type="text" placeholder="Search">
+                    <button class="btn btn-warning text-white" type="submit" data-toggle=""><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Search</button>
+                </form>
+            </div>
+            <div class="collapse navbar-collapse justify-content-end text-center">
+                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/register" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zarejestruj</a>
+                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
+            </div>
         </div>
-
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Szukaj">
-                </div>
-                <button type="submit" class="btn btn-primary">Szukaj</button>
-            </form>
-
-
-            <ul class="nav navbar-nav navbar-right">
-                <%--<li><a href="/register"><span class="glyphicon glyphicon-user"></span>  Zarejestruj  </a></li>--%>
-                <%--<li><a href="/login"><span class="glyphicon glyphicon-log-in"></span>  Zaloguj  </a></li>--%>
-                <%--<li></li>--%>
-                <%--<li>--%>
-                        <%--<a class="btn btn-sm btn-primary display-4" href="/register"><span class="headerButton"></span>Zarejestruj</a>--%>
-                <%--</li>--%>
-                <%--<li> <div class="navbar-buttons mbr-section-btn">--%>
-                    <%--<a class="btn btn-sm btn-primary display-4" href="/login"><span class="headerButton"></span>--%>
-                    <%--Zaloguj</a>--%>
-                <%--</div>--%>
-                <%--</li>--%>
-
-                    <a href="/register"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-user"></span>Zarejestruj</button></a>
-                    <a href="/login"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-log-in"></span> Zaloguj </button></a>
-            </ul>
-
-    </nav>
-</div>
+    </div>
+</nav>
