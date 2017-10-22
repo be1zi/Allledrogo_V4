@@ -41,8 +41,11 @@ public class LoginController {
 
         if (uM == null)
             return "login";
-        else
+        else {
+            session.setAttribute("user",uM);
             return "home";
+        }
+
 
     }
 }
