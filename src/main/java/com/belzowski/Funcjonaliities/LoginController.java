@@ -42,10 +42,9 @@ public class LoginController {
         if (uM == null)
             return "login";
         else {
+            session.setAttribute("menuStatus", MenuStatus.isLogin);
             session.setAttribute("user",uM);
             return "home";
         }
-
-
     }
 }
