@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ${USER}
-  Date: ${DATE}
-  Time: ${TIME}
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="userForm" uri="http://www.springframework.org/tags/form" %>
 
@@ -15,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/CSS/main.css">
-    <link rel="stylesheet" href="../resources/CSS/login.css">
+    <%--<link rel="stylesheet" href="../resources/CSS/login.css">--%>
+    <link rel="stylesheet" href="../resources/CSS/login/login.css">
 
 
     <title>ALLLEDROGO</title>
@@ -25,27 +18,61 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<div class="container-fluid">
-    <div class="loginFormTitle" style="border: solid greenyellow">
-        <h2 class="title" style="border: solid blue">Logowanie</h2>
-    </div>
+<%--<div class="container-fluid">--%>
+    <%--<div class="loginFormTitle" style="border: solid greenyellow">--%>
+        <%--<h2 class="title" style="border: solid blue">Logowanie</h2>--%>
+    <%--</div>--%>
 
-    <div class="loginForm" style="border: solid pink">
-        <userForm:form  modelAttribute="userModel" action="check" method="post">
-            <div class="form-row">
-                 <div class="form-group col-md-6">
-                     <label for="login" class="col-form-label">Login</label>
-                     <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
-                 </div>
-                <div class="form-group col-md-6">
-                    <label for="password" class="col-form-label">Password</label>
-                    <userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
+    <%--<div class="loginForm" style="border: solid pink">--%>
+        <%--<userForm:form  modelAttribute="userModel" action="check" method="post">--%>
+            <%--<div class="form-row">--%>
+                 <%--<div class="form-group col-md-6">--%>
+                     <%--<label for="login" class="col-form-label">Login</label>--%>
+                     <%--<userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>--%>
+                 <%--</div>--%>
+                <%--<div class="form-group col-md-6">--%>
+                    <%--<label for="password" class="col-form-label">Password</label>--%>
+                    <%--<userForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+            <%--<div class="loginButton">--%>
+                <%--<a href="/check"><button type="submit" class="btn btn-primary ">Zaloguj</button></a>--%>
+            <%--</div>--%>
+        <%--</userForm:form>--%>
+    <%--</div>--%>
+<%--</div>--%>
+
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row bg-primary">
+            <div class="col-md-3"> </div>
+            <div class="col-md-6">
+                <div class="card text-white p-5 bg-primary border border-success">
+                    <div class="card-body">
+                        <h1 class="mb-4 text-center text-secondary" style="padding-bottom: 20px">Zaloguj</h1>
+                        <div class="alert alert-error alert-danger" role="alert" id="loginAlert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                            <h4 class="alert-heading">Nie udało się zalogować</h4>
+                            <p class="mb-0">Niestety konto o podanym <b>loginie</b> nie istnieje. Prosimy wybrać inny i spróbować ponownie. </p>
+                        </div>
+                        <userForm:form modelAttribute="userModel" action="check" method="post">
+                            <div class="form-group"> <label class="text-secondary">Login</label>
+                                <userForm:input path="login" type="text" class="form-control" placeholder="Login" required=""/> </div>
+                            <div class="form-group">
+                                <div class="alert alert-danger" role="alert" id="emailAlert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                                    <h4 class="alert-heading">Nie udało się zalogować</h4>
+                                    <p class="mb-0">Niestety podane<b> hasło</b> nie pasuje do loginu. Prosimy wybrać inne lub użyć opcji przypominania haseł.&nbsp;</p>
+                                </div> <label class="text-secondary">Haslo</label>
+                                <userForm:input path="password" type="password" class="form-control" placeholder="Hasło" required=""/> </div>
+                            <div class="loginButton text-center" style="margin-top: 40px;">
+                                <button type="submit" class="btn btn-block btn-lg text-center btn-warning text-white">Zaloguj</button>
+                            </div>
+                        </userForm:form>
+                    </div>
                 </div>
             </div>
-            <div class="loginButton">
-                <a href="/check"><button type="submit" class="btn btn-primary ">Zaloguj</button></a>
-            </div>
-        </userForm:form>
+        </div>
     </div>
 </div>
 
