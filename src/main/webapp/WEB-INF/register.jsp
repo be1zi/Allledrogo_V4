@@ -23,28 +23,123 @@
 
 <jsp:include page="header.jsp"></jsp:include>
 
-<userForm:form  modelAttribute="userModel" action="save" method="post">
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="login" class="col-form-label">Login</label>
-            <userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>
-        </div>
-        <div class="form-group col-md-6">
-            <label for="password" class="col-form-label">Password</label>
-            <accForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>
-        </div>
-    </div>
+<%--<userForm:form  modelAttribute="userModel" action="save" method="post">--%>
+    <%--<div class="form-row">--%>
+        <%--<div class="form-group col-md-6">--%>
+            <%--<label for="login" class="col-form-label">Login</label>--%>
+            <%--<userForm:input path="login" type="text" class="form-control" id="login" placeholder="Login" required =""/>--%>
+        <%--</div>--%>
+        <%--<div class="form-group col-md-6">--%>
+            <%--<label for="password" class="col-form-label">Password</label>--%>
+            <%--<accForm:input path="password" type="password" class="form-control" id="password" placeholder="Password"/>--%>
+        <%--</div>--%>
+    <%--</div>--%>
 
-    <accForm:form modelAttribute="accountModel" action="save" method="post">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="firstName" class="col-form-label">Imie</label>
-                <userForm:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Imie" required =""/>
+    <%--<accForm:form modelAttribute="accountModel" action="save" method="post">--%>
+        <%--<div class="form-row">--%>
+            <%--<div class="form-group col-md-6">--%>
+                <%--<label for="firstName" class="col-form-label">Imie</label>--%>
+                <%--<userForm:input path="firstName" type="text" class="form-control" id="firstName" placeholder="Imie" required =""/>--%>
+            <%--</div>--%>
+        <%--</div>--%>
+    <%--<button type="submit" class="btn btn-primary">Zarejestruj</button>--%>
+    <%--</accForm:form>--%>
+<%--</userForm:form>--%>
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"> </div>
+            <div class="col-md-8">
+                <div class="card text-white p-6 bg-primary">
+                    <div class="card-body border border-success p-5">
+                        <h1 class="mb-4 text-center text-secondary" style="padding-bottom: 20px">Zarejestruj</h1>
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="alert alert-error alert-danger" role="alert" id="loginAlert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                                    <h4 class="alert-heading">Nie udało się zarejestrować</h4>
+                                    <p class="mb-0">Niestety konto o podanym <b>loginie</b> już istnieje. Prosimy wybrać inny i spróbować ponownie. </p>
+                                </div> <label class="text-secondary">Login</label>
+                                <input type="text" class="form-control" placeholder="Login" required=""> </div>
+                            <div class="form-group">
+                                <div class="alert alert-error alert-danger" role="alert" id="emailAlert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                                    <h4 class="alert-heading">Nie udało się zarejestrować</h4>
+                                    <p class="mb-0">Podany adres <b>email </b>jest już wykorzystywany. Prosimy wybrać inny i spróbować ponownie. </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Email</label>
+                                        <input type="email" class="form-control" placeholder="Email" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Powtórz Email</label>
+                                        <input type="email" class="form-control" placeholder="Email" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="alert alert-error alert-danger" role="alert" id="passwordAlert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                                    <h4 class="alert-heading">Nie udało się zarejestrować</h4>
+                                    <p class="mb-0">Podane <b>hasła </b>nie są identyczne.&nbsp;</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Hasło</label>
+                                        <input type="password" class="form-control" placeholder="Hasło" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Powtórz hasło</label>
+                                        <input type="password" class="form-control" placeholder="Hasło" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Imię</label>
+                                        <input type="text" class="form-control" placeholder="Imię" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Nazwisko</label>
+                                        <input type="text" class="form-control" placeholder="Nazwisko" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Miasto</label>
+                                        <input type="text" class="form-control" placeholder="Miasto" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Państwo</label>
+                                        <input type="text" class="form-control" placeholder="Państwo" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Ulica</label>
+                                        <input type="text" class="form-control" placeholder="Ulica"> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Kod Pocztowy</label>
+                                        <input type="text" class="form-control" placeholder="Kod Pocztowy" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Numer Domu</label>
+                                        <input type="number" class="form-control" placeholder="Numer Domu" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Numer Lokalu</label>
+                                        <input type="number" class="form-control" placeholder="Numer Lokalu"> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"> <label class="text-secondary">Województwo</label>
+                                        <input type="text" class="form-control" placeholder="Województwo" required=""> </div>
+                                    <div class="col-md-6"> <label class="text-secondary">Numer Telefonu</label>
+                                        <input type="tel" class="form-control" placeholder="Numer Telefonu" required=""> </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="description"> <label class="text-secondary">Opis</label> <textarea class="form-control" rows="5" id="description" placeholder="Opis"></textarea> </div>
+                            </div>
+                            <div class="registerButton text-center" style="margin-top: 40px;">
+                                <button type="submit" class="btn btn-warning text-white btn-lg btn-block">Zarejestruj</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-    <button type="submit" class="btn btn-primary">Zarejestruj</button>
-    </accForm:form>
-</userForm:form>
+    </div>
+</div>
 
 <jsp:include page="footer.jsp"></jsp:include>
 
