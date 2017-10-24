@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/CSS/main.css">
+    <link rel="stylesheet" href="../resources/CSS/register/register.css">
 
     <title>ALLLEDROGO</title>
 </head>
