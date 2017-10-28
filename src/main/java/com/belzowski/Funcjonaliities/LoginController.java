@@ -2,6 +2,7 @@ package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.UserNetworkManager;
+import com.belzowski.Support.Enum.Alert;
 import com.belzowski.Support.Enum.MenuStatus;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class LoginController{
 
         HttpSession session = request.getSession(true);
         request.getSession().setAttribute("menuStatus", MenuStatus.login);
+        session.setAttribute("alert", Alert.OK);
 
         ModelAndView modelAndView = new ModelAndView("login");
 

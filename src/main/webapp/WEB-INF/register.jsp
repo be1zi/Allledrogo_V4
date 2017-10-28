@@ -1,3 +1,4 @@
+<%@ page import="com.belzowski.Support.Enum.Alert" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="accForm" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="userForm" uri="http://www.springframework.org/tags/form" %>
@@ -26,11 +27,15 @@
                         <h1 class="mb-4 text-center text-secondary" style="padding-bottom: 20px">Zarejestruj</h1>
                         <userForm:form modelAttribute="userModel" action="save" method="post">
                             <div class="form-group">
+
+                                <% if (session.getAttribute("alert") == Alert.FOUND){%>
                                 <div class="alert alert-error alert-danger" role="alert" id="loginAlert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
                                     <h4 class="alert-heading">Nie udało się zarejestrować</h4>
                                     <p class="mb-0">Niestety konto o podanym <b>loginie</b> już istnieje. Prosimy wybrać inny i spróbować ponownie. </p>
                                 </div>
+                                <% } %>
+
                                 <label class="text-secondary">Login</label>
                                 <userForm:input path="login" type="text" class="form-control" placeholder="Login" required=""/>
                             </div>
