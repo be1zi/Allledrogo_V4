@@ -29,7 +29,7 @@
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="#" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zakupy</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="#" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Sprzedaz</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="#" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Moje Konto</a>
-                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="#" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Wyloguj</a>
+                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/logout" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Wyloguj</a>
                 <% } %>
             </div>
         </div>

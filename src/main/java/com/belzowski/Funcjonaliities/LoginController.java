@@ -3,6 +3,7 @@ package com.belzowski.Funcjonaliities;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.UserNetworkManager;
 import com.belzowski.Support.Enum.MenuStatus;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,13 +18,12 @@ import javax.validation.Valid;
 import static java.lang.System.out;
 
 @Controller
-public class LoginController {
+public class LoginController{
 
     @RequestMapping("/login")
     public ModelAndView login(HttpServletRequest request){
 
         HttpSession session = request.getSession(true);
-
         request.getSession().setAttribute("menuStatus", MenuStatus.login);
 
         ModelAndView modelAndView = new ModelAndView("login");
@@ -37,7 +37,9 @@ public class LoginController {
     @RequestMapping(value = "/check", method = RequestMethod.POST)
     public String check(@ModelAttribute("userModel") @Valid  UserModel userModel, HttpSession session){
 
-        UserModel uM = UserNetworkManager.getUserFromNetwork(userModel);
+        UserModel uM = UserNetworkManager.getUserFromNetwork(userModel, session);
+
+        out.println(session.getAttribute("alert"));
 
         if (uM == null)
             return "login";

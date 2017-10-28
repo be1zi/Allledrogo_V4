@@ -14,14 +14,15 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String emptyHomeMapping(HttpSession session){
-        out.println(session.getAttribute("menuStatus"));
-        out.println(session.getAttribute("user"));
 
-        if(session.getAttribute("user") == null){
+        if(session.getAttribute("user") == null || session.getAttribute("menuStatus")==null){
             session.setAttribute("menuStatus", MenuStatus.isLogout);
         }else{
             session.setAttribute("menuStatus", MenuStatus.isLogin);
         }
+
+//        out.println("Session menuStatus: " + session.getAttribute("menuStatus"));
+//        out.println("Session user: " + session.getAttribute("user"));
 
         return "home";
     }

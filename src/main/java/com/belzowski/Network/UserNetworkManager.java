@@ -2,22 +2,39 @@ package com.belzowski.Network;
 
 import com.belzowski.Model.AccountModel;
 import com.belzowski.Model.UserModel;
+import com.belzowski.Support.Enum.Alert;
 import com.belzowski.Support.Static.Constant;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import javax.servlet.http.HttpSession;
 
 import static java.lang.System.out;
 
 public class UserNetworkManager {
 
-    public static UserModel getUserFromNetwork(UserModel userModel){
+    public static UserModel getUserFromNetwork(UserModel userModel, HttpSession session){
 
         RestTemplate restTemplate = new RestTemplate();
-        UserModel response = restTemplate.postForObject(Constant.getUserURL, userModel, UserModel.class);
 
-        if (response == null)
-            return null;
-        else
-            return response;
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.getUserURL, userModel, UserModel.class);
+
+        out.println(responseEntity.getStatusCode());
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()){
+            session.setAttribute("alert", Alert.OK);
+            UserModel userModel1 = responseEntity.getBody();
+            return userModel1;
+        }else if (responseEntity.getStatusCodeValue() == 302) {
+            out.println("Znaleziono");
+            session.setAttribute("alert", Alert.FOUND);
+        }else if (responseEntity.getStatusCodeValue() == 301) {
+            out.println("Nie Znaleziono");
+            session.setAttribute("alert", Alert.NOT_FOUND);
+        }
+
+        return null;
     }
 
     public static UserModel setUserToNetwork(UserModel userModel, AccountModel accountModel){
