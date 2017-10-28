@@ -35,15 +35,14 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(@ModelAttribute("userModel") @Valid UserModel userModel, @ModelAttribute("accountModel") @Valid AccountModel accountModel){
+    public String save(@ModelAttribute("userModel") @Valid UserModel userModel, @ModelAttribute("accountModel") @Valid AccountModel accountModel, HttpSession session){
 
-        UserModel uM = UserNetworkManager.setUserToNetwork(userModel,accountModel);
-        out.println(uM);
+        UserModel uM = UserNetworkManager.setUserToNetwork(userModel,accountModel,session);
 
-        if (uM.getId() == null)
+        if (uM == null)
             return "register";
         else
             return "home";
-
+        
     }
 }

@@ -33,17 +33,25 @@ public class UserNetworkManager {
         return null;
     }
 
-    public static UserModel setUserToNetwork(UserModel userModel, AccountModel accountModel){
+    public static UserModel setUserToNetwork(UserModel userModel, AccountModel accountModel, HttpSession session){
 
         userModel.setId(Long.valueOf(1));
         userModel.setAccountType("User");
         userModel.setAccountModel(accountModel);
+        userModel.getAccountModel().setMark(0.0);
 
         RestTemplate restTemplate = new RestTemplate();
-        UserModel result = restTemplate.postForObject(Constant.addUserURL, userModel, UserModel.class);
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.addUserURL, userModel, UserModel.class);
 
-        out.println(result.toString());
-        return result;
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            session.setAttribute("alert", Alert.OK);
+            UserModel userModel1 = responseEntity.getBody();
+            return userModel1;
+        }else if (responseEntity.getStatusCodeValue() == 302){
+            session.setAttribute("alert", Alert.FOUND);
+        }
+
+        return null;
     }
 
 }
