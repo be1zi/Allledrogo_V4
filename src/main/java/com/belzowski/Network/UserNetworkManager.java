@@ -20,17 +20,13 @@ public class UserNetworkManager {
 
         ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.getUserURL, userModel, UserModel.class);
 
-        out.println(responseEntity.getStatusCode());
-
         if (responseEntity.getStatusCode().is2xxSuccessful()){
             session.setAttribute("alert", Alert.OK);
             UserModel userModel1 = responseEntity.getBody();
             return userModel1;
         }else if (responseEntity.getStatusCodeValue() == 302) {
-            out.println("Znaleziono");
             session.setAttribute("alert", Alert.FOUND);
         }else if (responseEntity.getStatusCodeValue() == 301) {
-            out.println("Nie Znaleziono");
             session.setAttribute("alert", Alert.NOT_FOUND);
         }
 

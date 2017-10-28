@@ -38,9 +38,7 @@ public class LoginController{
     public String check(@ModelAttribute("userModel") @Valid  UserModel userModel, HttpSession session){
 
         UserModel uM = UserNetworkManager.getUserFromNetwork(userModel, session);
-
-        out.println(session.getAttribute("alert"));
-
+        
         if (uM == null)
             return "login";
         else {

@@ -15,6 +15,7 @@
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
+
 <div class="py-5 bg-primary">
     <div class="container">
         <div class="row">
@@ -23,7 +24,7 @@
                 <div class="card text-white p-6 bg-primary">
                     <div class="card-body border border-success p-5">
                         <h1 class="mb-4 text-center text-secondary" style="padding-bottom: 20px">Zarejestruj</h1>
-                        <form action="#">
+                        <form action="#" id="">
                             <div class="form-group">
                                 <div class="alert alert-error alert-danger" role="alert" id="loginAlert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
