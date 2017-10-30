@@ -104,10 +104,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="text-secondary">Numer Domu</label>
-                                        <accForm:input path="houseNumber" type="number" class="form-control" placeholder="Numer Domu" required=""/> </div>
+                                        <accForm:input path="houseNumber" type="number" class="form-control" placeholder="Numer Domu" required="" min = "0" /> </div>
                                     <div class="col-md-6">
                                         <label class="text-secondary">Numer Lokalu</label>
-                                        <accForm:input path="placeNumber" type="number" class="form-control" placeholder="Numer Lokalu"/> </div>
+                                        <accForm:input path="placeNumber" type="number" class="form-control" placeholder="Numer Lokalu" min = "0" /> </div>
                                 </div>
                             </div>
                             <div class="form-group">

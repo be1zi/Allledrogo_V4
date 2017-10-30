@@ -43,8 +43,11 @@ public class RegisterController {
 
         if (uM == null)
             return "register";
-        else
-            return "home";
+        else {
+            session.setAttribute("user", uM);
+            session.setAttribute("menuStatus", MenuStatus.isLogin);
+            return "redirect:/";
+        }
 
     }
 }

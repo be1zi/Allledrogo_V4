@@ -13,6 +13,6 @@ public class LogoutController {
 
         //session.setAttribute("menuStatus", MenuStatus.isLogout);
         session.invalidate();
-        return "home";
+        return "redirect:/";
     }
 }

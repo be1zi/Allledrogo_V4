@@ -43,14 +43,14 @@
                                                 <h5 class="auctionItem text-secondary text-left p-2">Status zaplaty: zaplacono</h5>
                                             </div>
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zaplać</button>
+                                                <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zaplac</button>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="auctionDetails">
                                         <div class="row">
                                             <div class="col-md-8">
-                                                <h5 class="auctionItem text-secondary text-left p-2">Szczegóły</h5>
+                                                <h5 class="auctionItem text-secondary text-left p-2">Szczegoly</h5>
                                             </div>
                                             <dic class="col-md-4">
                                                 <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Wyswietl</button>
