@@ -19,14 +19,80 @@
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item bg-warning text-white"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;&nbsp;Moje Konto </li>
-                    <li class="list-group-item list-group-item-action text-secondary">Dane Logowania</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Dane Konta</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Komentarze</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Historia Konta</li>
+                    <a class="list-group-item bg-warning text-white"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Moje Konto </a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/">Dane Logowania</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/">Dane Konta</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/">Komentarze</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/">Historia Konta</a>
                 </ul>
             </div>
-            <div class="col-md-7"></div>
+            <div class="col-md-7 border border-success bg-primary " style="padding-top: 25px">
+                <div class="loginTitle text-center text-secondary p-4">
+                    <h2> LOGIN </h2>
+                </div>
+                <div class="row" style="padding-bottom: 75px">
+                    <div class="col-md-6">
+                        <div class="input">
+                            <input type="text" class="form-control" placeholder="Login"> </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="editButton px-4">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="editButton px-4">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="passwordTitle text-center text-secondary p-4">
+                    <h2>HASLO</h2>
+                </div>
+                <div class="row" style="padding-bottom: 75px">
+                    <div class="col-md-6">
+                        <div class="input " style="padding-bottom: 25px">
+                            <input type="text" class="form-control" placeholder="Obecne Haslo"> </div>
+                        <div class="input" style="padding-bottom: 25px">
+                            <input type="text" class="form-control" placeholder="Nowe Haslo"> </div>
+                        <div class="input" style="padding-bottom: 25px">
+                            <input type="text" class="form-control" placeholder="Powtorz Nowe Haslo"> </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="editButton p-4">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
+                        </div>
+                        <div class="saveButton p-4">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="emailTitle text-center text-secondary p-4">
+                    <h2>EMAIL</h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input" style="padding-bottom: 25px">
+                            <input type="text" class="form-control" placeholder="Email"> </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="saveButton px-4" style="padding-bottom: 25px">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 75px">
+                    <div class="col-md-6">
+                        <div class="input" style="padding-bottom: 25px">
+                            <input type="text" class="form-control" placeholder="Potwierdz Email"> </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="saveButton px-4" style="padding-bottom: 25px">
+                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-1"></div>
         </div>
     </div>

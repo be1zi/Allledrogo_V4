@@ -48,9 +48,11 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="text-secondary">Hasło</label>
-                                        <userForm:input path="password" type="password" class="form-control" placeholder="Hasło" required="" id="password"/> </div>
+                                        <userForm:input path="password" type="password" class="form-control" placeholder="Hasło" required="" id="password"/>
+                                    </div>
                                     <div class="col-md-6"> <label class="text-secondary">Powtórz hasło</label>
-                                        <input type="password" class="form-control" placeholder="Hasło" required="" id="confirmPassword"> </div>
+                                        <input type="password" class="form-control" placeholder="Hasło" required="" id="confirmPassword">
+                                    </div>
                                 </div>
                             </div>
                             <accForm:form modelAttribute="accountModel" action="save">
