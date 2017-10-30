@@ -13,8 +13,8 @@
             <div class="col-md-7 text-center">
                 <form class="form-inline m-0">
                     <div class="search navbar-collapse justify-content-end">
-                        <input class="form-control mr-4 text-left w-50" type="text" placeholder="Search">
-                        <button class="btn btn-warning text-white text-center" type="submit" data-toggle=""><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Search</button>
+                        <input class="form-control mr-4 text-left w-50" type="text" placeholder="Szukaj">
+                        <button class="btn btn-warning text-white text-center" type="submit" data-toggle=""><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Szukaj</button>
                     </div>
                 </form>
             </div>
@@ -29,8 +29,8 @@
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/register" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zarejestruj</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
                 <% }else {%>
-                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/shopping/" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zakupy</a>
-                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/sale/" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Sprzedaz</a>
+                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/shopping/" id="registerButton"><i class="fa fa-fw fa-shopping-basket"></i>&nbsp; Zakupy</a>
+                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/sale/" id="registerButton"><i class="fa fa-money"></i>&nbsp; Sprzedaz</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/myaccount/" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Moje Konto</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/logout" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Wyloguj</a>
                 <% } %>

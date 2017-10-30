@@ -19,7 +19,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item bg-warning text-white"><i class="fa fa-fw fa-shopping-basket"></i>&nbsp;&nbsp;Zakupy </li>
+                    <li class="list-group-item bg-warning text-white"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp;&nbsp;Moje Konto </li>
                     <li class="list-group-item list-group-item-action text-secondary">Dane Logowania</li>
                     <li class="list-group-item list-group-item-action text-secondary">Dane Konta</li>
                     <li class="list-group-item list-group-item-action text-secondary">Komentarze</li>

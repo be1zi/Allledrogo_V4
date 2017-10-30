@@ -19,7 +19,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item bg-warning text-white"><i class="fa fa-fw fa-shopping-basket"></i>&nbsp;&nbsp;Zakupy </li>
+                    <li class="list-group-item bg-warning text-white"><i class="fa fa-money"></i>&nbsp;&nbsp;Sprzedaz </li>
                     <li class="list-group-item list-group-item-action text-secondary">Wystaw</li>
                     <li class="list-group-item list-group-item-action text-secondary">Sprzedaje</li>
                     <li class="list-group-item list-group-item-action text-secondary">Sprzedane</li>
