@@ -40,33 +40,33 @@
                                 <userForm:input path="login" type="text" class="form-control" placeholder="Login" required=""/>
                             </div>
                             <div class="form-group">
-                                <div class="alert alert-error alert-danger" role="alert" id="passwordAlert">
+                                <div class="alert alert-error alert-danger collapse" role="alert" id="passwordAlert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-                                    <h4 class="alert-heading">Nie udało się zarejestrować</h4>
+                                    <h4 class="alert-heading">Błąd</h4>
                                     <p class="mb-0">Podane <b>hasła </b>nie są identyczne.&nbsp;</p>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="text-secondary">Hasło</label>
-                                        <userForm:input path="password" type="password" class="form-control" placeholder="Hasło" required=""/> </div>
+                                        <userForm:input path="password" type="password" class="form-control" placeholder="Hasło" required="" id="password"/> </div>
                                     <div class="col-md-6"> <label class="text-secondary">Powtórz hasło</label>
-                                        <input type="password" class="form-control" placeholder="Hasło" required=""> </div>
+                                        <input type="password" class="form-control" placeholder="Hasło" required="" id="confirmPassword"> </div>
                                 </div>
                             </div>
                             <accForm:form modelAttribute="accountModel" action="save">
                             <div class="form-group">
-                                <div class="alert alert-error alert-danger" role="alert" id="emailAlert">
+                                <div class="alert alert-error alert-danger collapse" role="alert" id="emailAlert">
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-                                    <h4 class="alert-heading">Nie udało się zarejestrować</h4>
+                                    <h4 class="alert-heading">Błąd</h4>
                                     <p class="mb-0">Podany adres <b>email </b>jest już wykorzystywany. Prosimy wybrać inny i spróbować ponownie. </p>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label class="text-secondary">Email</label>
-                                        <accForm:input path="email" type="email" class="form-control" placeholder="Email" required=""/>
+                                        <accForm:input path="email" type="email" class="form-control" placeholder="Email" required="" id="email"/>
                                     </div>
                                     <div class="col-md-6"> <label class="text-secondary">Powtórz Email</label>
-                                        <input type="email" class="form-control" placeholder="Email" required="">
+                                        <input type="email" class="form-control" placeholder="Email" required="" id="confirmEmail">
                                     </div>
                                 </div>
                             </div>
@@ -142,5 +142,6 @@
 
 <script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="../resources/Script/register.js"></script>
 </body>
 </html>
