@@ -39,3 +39,131 @@
         </div>
     </div>
 </nav>
+
+<div class = "row">
+        <div class="container-fluid">
+            <div class="row border border-success">
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-desktop fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6>Elektronika</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-car fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6>Motoryzajca</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-tags fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6>Moda</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-book fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Kultura</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-home fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Dom</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-envira fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Ogrod</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-futbol-o fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Dziecko</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-bicycle fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Sport</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-plane fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Wypoczynek</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-cutlery fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Jedzenie</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-paint-brush fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Sztuka</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 border border-success">
+                    <div class="row justify-content-center">
+                        <div class="icon p-3"> <i class="fa fa-at fa-3x"></i> </div>
+                    </div>
+                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                        <div class="name">
+                            <h6 class="text-center">Usługi</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</div>
