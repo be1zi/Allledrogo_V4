@@ -36,7 +36,8 @@
                        <%} %>
 
                         <userForm:form modelAttribute="userModel" action="check" method="post">
-                            <div class="form-group"> <label class="text-secondary">Login</label>
+                            <div class="form-group">
+                                <label class="text-secondary">Login</label>
                                 <userForm:input path="login" type="text" class="form-control" placeholder="Login" required=""/> </div>
                             <div class="form-group">
 

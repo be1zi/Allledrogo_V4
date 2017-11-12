@@ -1,3 +1,6 @@
+<%@ page import="com.belzowski.Support.Enum.Content" %>
+<%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -20,78 +23,29 @@
             <div class="col-md-3">
                 <ul class="list-group">
                     <a class="list-group-item bg-warning text-white"><i class="fa fa-user-o"></i>&nbsp;&nbsp;Moje Konto </a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/">Dane Logowania</a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/">Dane Konta</a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/">Komentarze</a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/">Historia Konta</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/accountdetails">Dane Konta</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/logindetails">Dane Logowania</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/addressdetails">Dane Adresowe</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/commentlist">Ocena i Komentarze</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/messageslist">Wiadomosci</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/history">Historia Konta</a>
                 </ul>
             </div>
             <div class="col-md-7 border border-success bg-primary " style="padding-top: 25px">
-                <div class="loginTitle text-center text-secondary p-4">
-                    <h2> LOGIN </h2>
-                </div>
-                <div class="row" style="padding-bottom: 75px">
-                    <div class="col-md-6">
-                        <div class="input">
-                            <input type="text" class="form-control" placeholder="Login"> </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="editButton px-4">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="editButton px-4">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="passwordTitle text-center text-secondary p-4">
-                    <h2>HASLO</h2>
-                </div>
-                <div class="row" style="padding-bottom: 75px">
-                    <div class="col-md-6">
-                        <div class="input " style="padding-bottom: 25px">
-                            <input type="text" class="form-control" placeholder="Obecne Haslo"> </div>
-                        <div class="input" style="padding-bottom: 25px">
-                            <input type="text" class="form-control" placeholder="Nowe Haslo"> </div>
-                        <div class="input" style="padding-bottom: 25px">
-                            <input type="text" class="form-control" placeholder="Powtorz Nowe Haslo"> </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="editButton p-4">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
-                        </div>
-                        <div class="saveButton p-4">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="emailTitle text-center text-secondary p-4">
-                    <h2>EMAIL</h2>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input" style="padding-bottom: 25px">
-                            <input type="text" class="form-control" placeholder="Email"> </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="saveButton px-4" style="padding-bottom: 25px">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="row" style="padding-bottom: 75px">
-                    <div class="col-md-6">
-                        <div class="input" style="padding-bottom: 25px">
-                            <input type="text" class="form-control" placeholder="Potwierdz Email"> </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="saveButton px-4" style="padding-bottom: 25px">
-                            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
-                        </div>
-                    </div>
-                </div>
+
+                <% if(session.getAttribute("content") == Content.Login) {%>
+                    <jsp:include page="MyAccount/loginDetails.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Comments){ %>
+                    <jsp:include page="MyAccount/commentList.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.History){ %>
+                    <jsp:include page="MyAccount/historyList.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Account) {%>
+                    <jsp:include page="MyAccount/accountDetails.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Account) {%>
+                    <jsp:include page="MyAccount/addressDetails.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Message){ %>
+                    <jsp:include page="MyAccount/messageList.jsp"></jsp:include>
+                <% } %>
             </div>
             <div class="col-md-1"></div>
         </div>

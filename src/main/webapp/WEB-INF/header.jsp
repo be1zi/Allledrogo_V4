@@ -159,7 +159,7 @@
                     </div>
                     <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
                         <div class="name">
-                            <h6 class="text-center">Usługi</h6>
+                            <h6 class="text-center">Uslugi</h6>
                         </div>
                     </div>
                 </div>
