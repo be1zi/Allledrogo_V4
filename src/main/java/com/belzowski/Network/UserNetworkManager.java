@@ -54,4 +54,19 @@ public class UserNetworkManager {
         return null;
     }
 
+    public static UserModel editUserNetwork(UserModel userModel, HttpSession session){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.editUserURL, userModel, UserModel.class);
+
+        if (responseEntity.getStatusCode().is2xxSuccessful()) {
+            session.setAttribute("alert", Alert.OK);
+            UserModel userModel1 = responseEntity.getBody();
+            return userModel1;
+        }else if (responseEntity.getStatusCodeValue() == 302){
+            session.setAttribute("alert", Alert.FOUND);
+        }
+
+        return null;
+    }
 }

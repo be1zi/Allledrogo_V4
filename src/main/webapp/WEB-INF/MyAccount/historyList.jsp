@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+
 <div class="historyItemLeft" style="border: solid red; border-radius: 30px; border: 5px solid; margin-bottom:20px">
     <div class="row p-3">
         <div class="col-md-3">
