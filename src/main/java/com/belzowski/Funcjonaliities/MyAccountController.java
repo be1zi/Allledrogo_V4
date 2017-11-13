@@ -52,20 +52,34 @@ public class MyAccountController {
     @RequestMapping("/save")
     public String edit(HttpSession session, @ModelAttribute("user") @Valid UserModel userModel){
 
+        out.println(userModel.toString());
         UserModel user = (UserModel) session.getAttribute("user");
-        String tmp = user.getLogin();
 
-        user.setLogin(userModel.getLogin());
-        UserModel uM = UserNetworkManager.editUserNetwork(user, session);
+        if(userModel.getLogin() != null) {
+            String tmp = user.getLogin();
 
-        if (uM == null) {
-            session.setAttribute("alert", Alert.FOUND);
-            user.setLogin(tmp);
+            user.setLogin(userModel.getLogin());
+            UserModel uM = UserNetworkManager.editUserNetwork(user, session);
+
+            if (uM == null) {
+                session.setAttribute("alert", Alert.FOUND);
+                user.setLogin(tmp);
+                return "redirect:/myaccount/";
+            } else {
+                session.setAttribute("menuStatus", MenuStatus.isLogin);
+                session.setAttribute("user", uM);
+                session.setAttribute("alert", Alert.EDIT_LOGIN);
+                return "redirect:/myaccount/";
+            }
+        }else if(userModel.getPassword() != null){
+            String tmp = user.getPassword();
+            user.setPassword(userModel.getPassword());
+            UserModel uM = UserNetworkManager.editUserNetwork(user, session);
+            session.setAttribute("alert", Alert.EDIT_PASSWORD);
+            session.setAttribute("user", uM);
+
             return "redirect:/myaccount/";
-        }else {
-            session.setAttribute("menuStatus", MenuStatus.isLogin);
-            session.setAttribute("user",uM);
-            session.setAttribute("alert", Alert.EDIT);
+        }else{
             return "redirect:/myaccount/";
         }
     }

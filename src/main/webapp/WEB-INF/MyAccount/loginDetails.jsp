@@ -15,7 +15,7 @@
     </div>
 <%} %>
 
-<% if(session.getAttribute("alert") == Alert.EDIT){%>
+<% if(session.getAttribute("alert") == Alert.EDIT_LOGIN){%>
 <div class="alert alert-error alert-success" role="alert" id="loginAlert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
     <h4 class="alert-heading">Zmieniono login</h4>
@@ -47,27 +47,41 @@
 <div class="passwordTitle text-center text-secondary p-4">
     <h2>HASLO</h2>
 </div>
-<div class="row" style="padding-bottom: 75px">
+
+<% if(session.getAttribute("alert") == Alert.EDIT_PASSWORD){%>
+<div class="alert alert-error alert-success" role="alert" id="loginAlert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+    <h4 class="alert-heading">Zmieniono login</h4>
+    <p class="mb-0">Twój login został zmieniony. </p>
+</div>
+<%} %>
+
+<userForm:form id="userForm" modelAttribute="user" action="save" method="get">
+<div class="row">
     <div class="col-md-6">
-        <userForm:form id="userForm" modelAttribute="user" action="#" method="get">
-        <div class="input " style="padding-bottom: 25px">
-                <userForm:input path="password" type="text" class="form-control" placeholder="Obecne Haslo" required="" disabled="true"/>
-            </userForm:form>
+        <div class="input" style="padding-bottom: 25px">
+                <userForm:input id="editPasswordInput" path="password" type="text" class="form-control" placeholder="Password" required="" disabled="true"/>
         </div>
-        <div class="input" style="padding-bottom: 25px">
-            <input type="text" class="form-control" placeholder="Nowe Haslo" disabled="true"> </div>
-        <div class="input" style="padding-bottom: 25px">
-            <input type="text" class="form-control" placeholder="Powtorz Nowe Haslo" disabled="true"> </div>
     </div>
     <div class="col-md-6">
-        <div class="editButton p-4">
-            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
-        </div>
-        <div class="saveButton p-4">
-            <button type="button" class="btn btn-warning btn-block text-center p-2 text-white">Zapisz</button>
+        <div class="saveButton px-4" style="padding-bottom: 25px">
+            <button id="passwordEditButton" type="button" class="btn btn-warning btn-block text-center p-2 text-white">Edytuj</button>
         </div>
     </div>
 </div>
+<div class="row" style="padding-bottom: 75px">
+    <div class="col-md-6">
+        <div class="input" style="padding-bottom: 25px">
+            <input id="editPasswordRepeatInput" type="text" class="form-control" placeholder="Potwierdz Email" disabled="true"> </div>
+    </div>
+    <div class="col-md-6">
+        <div class="saveButton px-4" style="padding-bottom: 25px">
+            <button id="savePasswordButton" type="submit" class="btn btn-warning btn-block text-center p-2 text-white" disabled="false">Zapisz</button>
+        </div>
+    </div>
+</div>
+</userForm:form>
+
 <div class="emailTitle text-center text-secondary p-4">
     <h2>EMAIL</h2>
 </div>
