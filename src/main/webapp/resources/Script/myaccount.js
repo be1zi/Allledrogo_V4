@@ -34,3 +34,22 @@ $('#editEmailInput, #editEmailConfirmInput').on('keyup', function () {
         $('#saveEmailButton').attr('disabled', true)
     }
 })
+
+$('#addressEditButton').click(function () {
+    $('#firstNameLabel').prop('disabled', false);
+    $('#lastNameLabel').prop('disabled', false);
+    $('#countryLabel').prop('disabled', false);
+    $('#cityLabel').prop('disabled', false);
+    $('#streetLabel').prop('disabled', false);
+    $('#zipCodeLabel').prop('disabled', false);
+    $('#houseNumberLabel').prop('disabled', false);
+    $('#placeNumberLabel').prop('disabled', false);
+    $('#voivodeshipLabel').prop('disabled', false);
+    $('#phoneLabel').prop('disabled', false);
+    $('#desscriptionLabel').prop('disabled', false);
+
+})
+
+$('#saveAccountButton').click(function () {
+    console.log("click");
+})

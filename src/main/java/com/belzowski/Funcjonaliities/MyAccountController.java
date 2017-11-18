@@ -30,6 +30,8 @@ public class MyAccountController {
         //session.setAttribute("alert",Alert.OK);
         if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.Login)){
             return "redirect:/myaccount/logindetails";
+        }else if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.Adress)){
+            return "redirect:/myaccount/addressdetails";
         }
 
         return "myAccount";
@@ -85,27 +87,67 @@ public class MyAccountController {
     }
 
     @RequestMapping("/saveAccount")
-    public String editAccount(HttpSession session, @ModelAttribute("account") @Valid AccountModel accountModel){
+    public String editEmail(HttpSession session, @ModelAttribute("account") @Valid AccountModel accountModel){
+
+        out.println(accountModel.toString());
 
         UserModel userModel = (UserModel)session.getAttribute("user");
         AccountModel accountModelSession = userModel.getAccountModel();
 
-
-        if(accountModel.getEmail() != accountModelSession.getEmail()){
+        if(accountModel.getEmail() != null && (accountModel.getEmail() != accountModelSession.getEmail())){
             accountModelSession.setEmail(accountModel.getEmail());
-        }
+            userModel.setAccountModel(accountModelSession);
+            UserModel uM = UserNetworkManager.editEmailNetwork(userModel, session);
+            if(uM != null){
+                session.setAttribute("alert", Alert.EDIT_EMAIL);
+                session.setAttribute("user", uM);
+            }
+        }else {
 
-        userModel.setAccountModel(accountModelSession);
-        UserModel uM = UserNetworkManager.editAccountNetwork(userModel, session);
+            if(accountModel.getFirstName() != null && (accountModel.getFirstName() != accountModelSession.getFirstName())){
+                accountModelSession.setFirstName(accountModel.getFirstName());
+            }
+            if(accountModel.getLastName() != null && (accountModel.getLastName() != accountModelSession.getLastName())){
+                accountModelSession.setLastName(accountModel.getLastName());
+            }
+            if(accountModel.getCountry() != null && (accountModel.getCountry() != accountModelSession.getCountry())){
+                accountModelSession.setCountry(accountModel.getCountry());
+            }
+            if(accountModel.getCity() != null && (accountModel.getCity() != accountModelSession.getCity())){
+                accountModelSession.setCity(accountModel.getCity());
+            }
+            if(accountModel.getHouseNumber() !=0 && (accountModel.getHouseNumber() != accountModelSession.getHouseNumber())){
+                accountModelSession.setHouseNumber(accountModel.getHouseNumber());
+            }
+            if(accountModel.getPlaceNumber() != accountModelSession.getPlaceNumber()){
+                accountModelSession.setPlaceNumber(accountModel.getPlaceNumber());
+            }
+            if(accountModel.getStreet() != null && (accountModel.getStreet() != accountModelSession.getStreet())){
+                accountModelSession.setStreet(accountModel.getStreet());
+            }
+            if(accountModel.getZipCode() != null && (accountModel.getZipCode() != accountModelSession.getZipCode())){
+                accountModelSession.setZipCode(accountModel.getZipCode());
+            }
+            if(accountModel.getVoivodeship() != null && (accountModel.getVoivodeship() != accountModelSession.getVoivodeship())){
+                accountModelSession.setVoivodeship(accountModel.getVoivodeship());
+            }
+            if(accountModel.getPhone() != null && (accountModel.getPhone() != accountModelSession.getPhone())){
+                accountModelSession.setPhone(accountModel.getPhone());
+            }
+            if(accountModel.getDescription() != null) {
+                accountModelSession.setDescription(accountModel.getDescription());
+            }
 
-        out.println(uM);
-        if(uM != null){
-            session.setAttribute("alert", Alert.EDIT_EMAIL);
-            session.setAttribute("user", uM);
+            UserModel uM = UserNetworkManager.editAccountNetwork(userModel,session);
+            if(uM != null){
+                session.setAttribute("alert", Alert.EDIT_ACCOUNT);
+                session.setAttribute("user", uM);
+            }
         }
 
         return "redirect:/myaccount/";
     }
+
 
     @RequestMapping("/commentlist")
     public String commentList(HttpSession session){
@@ -130,10 +172,17 @@ public class MyAccountController {
     }
 
     @RequestMapping("/addressdetails")
-    public String addressDetails(HttpSession session){
-        session.setAttribute("content", Content.Adress);
+    public ModelAndView addressDetails(HttpSession session){
 
-        return "redirect:/myaccount/";
+        session.setAttribute("content", Content.Adress);
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        AccountModel accountModel = userModel.getAccountModel();
+
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+        modelAndView.addObject("user",userModel);
+        modelAndView.addObject("account",accountModel);
+
+        return modelAndView;
     }
 
     @RequestMapping("/messageslist")

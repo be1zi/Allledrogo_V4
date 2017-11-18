@@ -56,13 +56,19 @@ public class UserNetworkManager {
 
     }
 
+    public static UserModel editEmailNetwork(UserModel userModel, HttpSession session){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.editEmailURL, userModel, UserModel.class);
+
+        return responseStatus(responseEntity,session);
+    }
+
     public static UserModel editAccountNetwork(UserModel userModel, HttpSession session){
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.editAccountURL, userModel, UserModel.class);
 
         return responseStatus(responseEntity,session);
     }
-
     private static UserModel responseStatus(ResponseEntity<UserModel> responseEntity, HttpSession session){
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {

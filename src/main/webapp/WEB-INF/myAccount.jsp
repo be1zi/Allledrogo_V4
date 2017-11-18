@@ -42,7 +42,7 @@
                     <jsp:include page="MyAccount/historyList.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Account) {%>
                     <jsp:include page="MyAccount/accountDetails.jsp"></jsp:include>
-                <% }else if(session.getAttribute("content") == Content.Account) {%>
+                <% }else if(session.getAttribute("content") == Content.Adress) {%>
                     <jsp:include page="MyAccount/addressDetails.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Message){ %>
                     <jsp:include page="MyAccount/messageList.jsp"></jsp:include>
