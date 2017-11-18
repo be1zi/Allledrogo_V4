@@ -8,6 +8,11 @@ $('#passwordEditButton').click(function () {
     $('#editPasswordRepeatInput').prop('disabled', false);
 })
 
+$('#emailEditButton').click(function () {
+    $('#editEmailInput').prop('disabled', false);
+    $('#editEmailConfirmInput').prop('disabled', false);
+})
+
 $('#editPasswordInput, #editPasswordRepeatInput').on('keyup', function () {
     if(($('#editPasswordInput').val() == $('#editPasswordRepeatInput').val()) && ($('#editPasswordRepeatInput').val() != null && $('#editPasswordRepeatInput').val() != '' )) {
         $('#editPasswordInput, #editPasswordRepeatInput').css('border-color', 'green');
@@ -18,3 +23,14 @@ $('#editPasswordInput, #editPasswordRepeatInput').on('keyup', function () {
         $('#savePasswordButton').attr('disabled', true)
     }
 });
+
+$('#editEmailInput, #editEmailConfirmInput').on('keyup', function () {
+    if(($('#editEmailInput').val() == $('#editEmailConfirmInput').val()) && ($('#editEmailConfirmInput').val() != null && $('#editEmailConfirmInput').val() != '' )) {
+        $('#editEmailInput, #editEmailConfirmInput').css('border-color', 'green');
+        $('#saveEmailButton').attr('disabled', false)
+
+    } else {
+        $('#editEmailInput, #editEmailConfirmInput').css('border-color', 'red');
+        $('#saveEmailButton').attr('disabled', true)
+    }
+})

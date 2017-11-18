@@ -84,6 +84,29 @@ public class MyAccountController {
         }
     }
 
+    @RequestMapping("/saveAccount")
+    public String editAccount(HttpSession session, @ModelAttribute("account") @Valid AccountModel accountModel){
+
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        AccountModel accountModelSession = userModel.getAccountModel();
+
+
+        if(accountModel.getEmail() != accountModelSession.getEmail()){
+            accountModelSession.setEmail(accountModel.getEmail());
+        }
+
+        userModel.setAccountModel(accountModelSession);
+        UserModel uM = UserNetworkManager.editAccountNetwork(userModel, session);
+
+        out.println(uM);
+        if(uM != null){
+            session.setAttribute("alert", Alert.EDIT_EMAIL);
+            session.setAttribute("user", uM);
+        }
+
+        return "redirect:/myaccount/";
+    }
+
     @RequestMapping("/commentlist")
     public String commentList(HttpSession session){
         session.setAttribute("content", Content.Comments);

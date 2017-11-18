@@ -43,15 +43,8 @@ public class UserNetworkManager {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.addUserURL, userModel, UserModel.class);
 
-        if(responseEntity.getStatusCode().is2xxSuccessful()){
-            session.setAttribute("alert", Alert.OK);
-            UserModel userModel1 = responseEntity.getBody();
-            return userModel1;
-        }else if (responseEntity.getStatusCodeValue() == 302){
-            session.setAttribute("alert", Alert.FOUND);
-        }
+        return responseStatus(responseEntity,session);
 
-        return null;
     }
 
     public static UserModel editUserNetwork(UserModel userModel, HttpSession session){
@@ -59,12 +52,27 @@ public class UserNetworkManager {
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.editUserURL, userModel, UserModel.class);
 
+        return responseStatus(responseEntity,session);
+
+    }
+
+    public static UserModel editAccountNetwork(UserModel userModel, HttpSession session){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.editAccountURL, userModel, UserModel.class);
+
+        return responseStatus(responseEntity,session);
+    }
+
+    private static UserModel responseStatus(ResponseEntity<UserModel> responseEntity, HttpSession session){
+
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
             session.setAttribute("alert", Alert.OK);
             UserModel userModel1 = responseEntity.getBody();
             return userModel1;
         }else if (responseEntity.getStatusCodeValue() == 302){
             session.setAttribute("alert", Alert.FOUND);
+        }else if (responseEntity.getStatusCode() == HttpStatus.valueOf(301)){
+            session.setAttribute("alert", Alert.NOT_FOUND);
         }
 
         return null;
