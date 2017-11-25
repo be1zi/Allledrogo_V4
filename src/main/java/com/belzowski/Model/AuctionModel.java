@@ -6,7 +6,7 @@ import java.util.List;
 public class AuctionModel {
 
     private Long id;
-    private String desctiption;
+    private String description;
     private Double buyNowPrice;
     private Double biddingPrice;
     private int itemNumber;
@@ -25,12 +25,12 @@ public class AuctionModel {
         this.id = id;
     }
 
-    public String getDesctiption() {
-        return desctiption;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesctiption(String desctiption) {
-        this.desctiption = desctiption;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getBuyNowPrice() {

@@ -21,9 +21,6 @@ public class HomeController {
             session.setAttribute("menuStatus", MenuStatus.isLogin);
         }
 
-//        out.println("Session menuStatus: " + session.getAttribute("menuStatus"));
-//        out.println("Session user: " + session.getAttribute("user"));
-
         return "home";
     }
 }
