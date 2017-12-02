@@ -1,18 +1,32 @@
 package com.belzowski.Model;
 
-import java.sql.Date;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Date;
 import java.util.List;
 
 public class AuctionModel {
 
     private Long id;
-    private String description;
     private Double buyNowPrice;
     private Double biddingPrice;
     private int itemNumber;
     private Date startDate;
     private Date endDate;
     private int viewNumber;
+    private boolean isAuctionType;
+    private boolean isBuyNowType;
+
+    private String category;
+    private String title;
+    private String description;
+    private String state;
+    private String color;
+    private String damaged;
+    private String productionDate;
+    private String warranty;
+
+    private MultipartFile file;
 
     private List<BiddingModel> biddingList;
     private List<UserModel> usersList;
@@ -95,5 +109,111 @@ public class AuctionModel {
 
     public void setUsersList(List<UserModel> usersList) {
         this.usersList = usersList;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getDamaged() {
+        return damaged;
+    }
+
+    public void setDamaged(String damaged) {
+        this.damaged = damaged;
+    }
+
+    public String getProductionDate() {
+        return productionDate;
+    }
+
+    public void setProductionDate(String productionDate) {
+        this.productionDate = productionDate;
+    }
+
+    public boolean isAuctionType() {
+        return isAuctionType;
+    }
+
+    public void setAuctionType(boolean auctionType) {
+        isAuctionType = auctionType;
+    }
+
+    public boolean isBuyNowType() {
+        return isBuyNowType;
+    }
+
+    public void setBuyNowType(boolean buyNowType) {
+        isBuyNowType = buyNowType;
+    }
+
+    public String getWarranty() {
+        return warranty;
+    }
+
+    public void setWarranty(String warranty) {
+        this.warranty = warranty;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+
+    @Override
+    public String toString() {
+        return "AuctionModel{" +
+                "id=" + id +
+                ", buyNowPrice=" + buyNowPrice +
+                ", biddingPrice=" + biddingPrice +
+                ", itemNumber=" + itemNumber +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", viewNumber=" + viewNumber +
+                ", isAuctionType=" + isAuctionType +
+                ", isBuyNowType=" + isBuyNowType +
+                ", category='" + category + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", state='" + state + '\'' +
+                ", color='" + color + '\'' +
+                ", damaged='" + damaged + '\'' +
+                ", productionDate='" + productionDate + '\'' +
+                ", warranty='" + warranty + '\'' +
+               // ", file=" + file.getSize() +
+                ", biddingList=" + biddingList +
+                ", usersList=" + usersList +
+                '}';
     }
 }

@@ -31,7 +31,7 @@
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
                 <% }else {%>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/shopping/"><i class="fa fa-fw fa-shopping-basket"></i>&nbsp; Zakupy</a>
-                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/sale/"><i class="fa fa-money"></i>&nbsp; Sprzedaz</a>
+                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/sale/"><i class="fa fa-money"></i>&nbsp; Sprzedaż</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/myaccount/"><i class="fa fa-user-o"></i>&nbsp; Moje Konto</a>
                     <a class="btn navbar-btn ml-2 text-white btn-warning" href="/logout" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Wyloguj</a>
                 <% } %>
@@ -100,7 +100,7 @@
                     </div>
                     <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
                         <div class="name">
-                            <h6 class="text-center">Ogrod</h6>
+                            <h6 class="text-center">Ogród</h6>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@
                     </div>
                     <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
                         <div class="name">
-                            <h6 class="text-center">Uslugi</h6>
+                            <h6 class="text-center">Usługi</h6>
                         </div>
                     </div>
                 </div>
