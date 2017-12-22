@@ -1,15 +1,21 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Model.UserModel;
 import com.belzowski.Support.Enum.Content;
+import com.belzowski.Support.Formatter.DateFormatter;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -32,6 +38,9 @@ public class SaleController {
 
         session.setAttribute("content", Content.MakeAuction);
 
+        List<MultipartFile> multipartFiles = new ArrayList<>();
+        session.setAttribute("image", multipartFiles);
+
         ModelAndView modelAndView = new ModelAndView("sale");
         AuctionModel auctionModel = new AuctionModel();
         modelAndView.addObject("auctionModel", auctionModel);
@@ -40,9 +49,13 @@ public class SaleController {
     }
 
     @RequestMapping("/save")
-    public String  saveAuction(@ModelAttribute("auctionModel") @Valid AuctionModel auctionModel, HttpSession session){
+    public String  saveAuction(@ModelAttribute("auctionModel")  AuctionModel auctionModel, HttpSession session){
 
         if(auctionModel != null){
+
+            UserModel userModel = (UserModel)session.getAttribute("user");
+
+            auctionModel.setUserId(userModel.getId());
 
             if(auctionModel.getBiddingPrice() != null) {
                 auctionModel.setAuctionType(true);
@@ -56,13 +69,38 @@ public class SaleController {
                 auctionModel.setBuyNowType(false);
             }
 
-            Date date = new Date();
-            auctionModel.setStartDate(date);
-        }
+            DateFormatter dateFormatter = new DateFormatter(auctionModel.getTmpDate(), "yyyy-MM-dd HH:mm");
+            auctionModel.setEndDate(dateFormatter.stringToCalendar());
+            auctionModel.setStartDate(dateFormatter.dateToCalendar());
 
-        out.println(auctionModel.toString());
+            ArrayList<byte[]> images = (ArrayList<byte[]>)session.getAttribute("image");
+
+            if(images != null)
+                auctionModel.setFile(images);
+
+        }
+        
 
         return "redirect:/sale/makeauction";
+    }
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<?> uploadFile(@RequestParam("uploadfile") MultipartFile uploadfile, HttpSession session) {
+
+        try {
+               ArrayList<byte[]> images = (ArrayList<byte[]>)session.getAttribute("image");
+
+               byte[] image = uploadfile.getBytes();
+               images.add(image);
+               session.setAttribute("image",images);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @RequestMapping("/mysales")

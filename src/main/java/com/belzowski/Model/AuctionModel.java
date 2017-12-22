@@ -1,18 +1,18 @@
 package com.belzowski.Model;
 
-import org.springframework.web.multipart.MultipartFile;
-
+import java.beans.Transient;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-
 public class AuctionModel {
 
     private Long id;
+    private Long userId;
     private Double buyNowPrice;
     private Double biddingPrice;
     private int itemNumber;
-    private Date startDate;
-    private Date endDate;
+    private Calendar startDate;
+    private Calendar endDate;
     private int viewNumber;
     private boolean isAuctionType;
     private boolean isBuyNowType;
@@ -26,10 +26,12 @@ public class AuctionModel {
     private String productionDate;
     private String warranty;
 
-    private MultipartFile file;
+    private List<byte[]> file;
 
     private List<BiddingModel> biddingList;
     private List<UserModel> usersList;
+
+    private String tmpDate;
 
     public Long getId() {
         return id;
@@ -37,6 +39,14 @@ public class AuctionModel {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public String getDescription() {
@@ -71,19 +81,15 @@ public class AuctionModel {
         this.itemNumber = itemNumber;
     }
 
-    public Date getStartDate() {
+    public Calendar getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(Calendar startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(Date endDate) {
+    public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
 
@@ -183,18 +189,28 @@ public class AuctionModel {
         this.warranty = warranty;
     }
 
-    public MultipartFile getFile() {
+    public List<byte[]> getFile() {
         return file;
     }
 
-    public void setFile(MultipartFile file) {
+    public void setFile(List<byte[]> file) {
         this.file = file;
+    }
+
+    @Transient
+    public String getTmpDate() {
+        return tmpDate;
+    }
+    @Transient
+    public void setTmpDate(String tmpDate) {
+        this.tmpDate = tmpDate;
     }
 
     @Override
     public String toString() {
         return "AuctionModel{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", buyNowPrice=" + buyNowPrice +
                 ", biddingPrice=" + biddingPrice +
                 ", itemNumber=" + itemNumber +
@@ -211,9 +227,10 @@ public class AuctionModel {
                 ", damaged='" + damaged + '\'' +
                 ", productionDate='" + productionDate + '\'' +
                 ", warranty='" + warranty + '\'' +
-               // ", file=" + file.getSize() +
+                ", file=" + file +
                 ", biddingList=" + biddingList +
                 ", usersList=" + usersList +
+                ", tmpDate='" + tmpDate + '\'' +
                 '}';
     }
 }

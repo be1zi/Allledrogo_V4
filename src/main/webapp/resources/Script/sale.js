@@ -1,5 +1,9 @@
 // $(function () {
-//     $('#datetimepicker4').datetimepicker();
+//     $('[name=datetimepicker]').datetimepicker({
+//         locale: 'pl',
+//         format: 'YYYY-MM-DD HH:mm'
+//     });
+//
 // });
 
 $('#auctionTypeCheckbox').click(function () {
@@ -71,12 +75,116 @@ $('#buyNowTypeCheckbox').click(function () {
         document.getElementById('imageRow').appendChild(div);
     }
 
-$("#imgInp1").change(function(){
-    console.log("impInp1 change");
-    readURL(this);
+$('#upload-file-form').change(function () {
+    console.log("Change");
+
+    $.ajax({
+        url: "/sale/uploadFile",
+        type: "POST",
+        data: new FormData($("#upload-file-form")[0]),
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function () {
+            console.log("Success");
+        },
+        error: function () {
+            console.log("Error");
+
+        }
+    });
 });
 
-$("#imgInp2").change(function(){
-    console.log("impInp2 change");
-    readURL(this);
+$('#upload-file-form2').change(function () {
+    console.log("Change");
+
+    $.ajax({
+        url: "/sale/uploadFile",
+        type: "POST",
+        data: new FormData($("#upload-file-form2")[0]),
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function () {
+            console.log("Success");
+        },
+        error: function () {
+            console.log("Error");
+
+        }
+    });
+});
+
+$('#upload-file-form3').change(function () {
+    console.log("Change");
+
+    $.ajax({
+        url: "/sale/uploadFile",
+        type: "POST",
+        data: new FormData($("#upload-file-form3")[0]),
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function () {
+            console.log("Success");
+        },
+        error: function () {
+            console.log("Error");
+
+        }
+    });
+});
+
+$('#upload-file-form4').change(function () {
+    console.log("Change");
+
+    $.ajax({
+        url: "/sale/uploadFile",
+        type: "POST",
+        data: new FormData($("#upload-file-form4")[0]),
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function () {
+            console.log("Success");
+        },
+        error: function () {
+            console.log("Error");
+
+        }
+    });
+});
+
+$('#upload-file-form5').change(function () {
+    console.log("Change");
+
+    $.ajax({
+        url: "/sale/uploadFile",
+        type: "POST",
+        data: new FormData($("#upload-file-form5")[0]),
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function () {
+            console.log("Success");
+        },
+        error: function () {
+            console.log("Error");
+
+        }
+    });
+});
+
+$('#datetimepicker12').on('click', function () {
+    $('#datetimepicker12').datetimepicker({
+        inline: true,
+        sideBySide: true,
+        locale: 'pl',
+        format: 'YYYY-MM-DD HH:mm'
+    });
 });
