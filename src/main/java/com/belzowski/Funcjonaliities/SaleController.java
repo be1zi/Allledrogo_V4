@@ -1,7 +1,9 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Model.PhotoModel;
 import com.belzowski.Model.UserModel;
+import com.belzowski.Network.AuctionNetworkManager;
 import com.belzowski.Support.Enum.Content;
 import com.belzowski.Support.Formatter.DateFormatter;
 import org.springframework.http.HttpStatus;
@@ -38,8 +40,8 @@ public class SaleController {
 
         session.setAttribute("content", Content.MakeAuction);
 
-        List<MultipartFile> multipartFiles = new ArrayList<>();
-        session.setAttribute("image", multipartFiles);
+        List<PhotoModel> photoModels = new ArrayList<>();
+        session.setAttribute("image", photoModels);
 
         ModelAndView modelAndView = new ModelAndView("sale");
         AuctionModel auctionModel = new AuctionModel();
@@ -73,15 +75,21 @@ public class SaleController {
             auctionModel.setEndDate(dateFormatter.stringToCalendar());
             auctionModel.setStartDate(dateFormatter.dateToCalendar());
 
-            ArrayList<byte[]> images = (ArrayList<byte[]>)session.getAttribute("image");
+            ArrayList<PhotoModel> images = (ArrayList<PhotoModel>)session.getAttribute("image");
 
             if(images != null)
-                auctionModel.setFile(images);
+                auctionModel.setFiles(images);
 
         }
         
+        AuctionModel aM = AuctionNetworkManager.addAuction(auctionModel, session);
 
-        return "redirect:/sale/makeauction";
+        if(aM == null){
+            return "redirect:/sale/makeauction";
+        }
+
+        return "redirect:/sale/mysales";
+
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
@@ -89,10 +97,11 @@ public class SaleController {
     public ResponseEntity<?> uploadFile(@RequestParam("uploadfile") MultipartFile uploadfile, HttpSession session) {
 
         try {
-               ArrayList<byte[]> images = (ArrayList<byte[]>)session.getAttribute("image");
+               ArrayList<PhotoModel> images = (ArrayList<PhotoModel>)session.getAttribute("image");
 
-               byte[] image = uploadfile.getBytes();
-               images.add(image);
+               PhotoModel pM = new PhotoModel();
+               pM.setImage(uploadfile.getBytes());
+               images.add(pM);
                session.setAttribute("image",images);
         }
         catch (Exception e) {

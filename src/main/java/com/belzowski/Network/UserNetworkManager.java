@@ -10,8 +10,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpSession;
 
-import static java.lang.System.out;
-
 public class UserNetworkManager {
 
     public static UserModel getUserFromNetwork(UserModel userModel, HttpSession session){

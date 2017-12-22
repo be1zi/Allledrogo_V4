@@ -2,8 +2,8 @@ package com.belzowski.Model;
 
 import java.beans.Transient;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+
 public class AuctionModel {
 
     private Long id;
@@ -26,7 +26,7 @@ public class AuctionModel {
     private String productionDate;
     private String warranty;
 
-    private List<byte[]> file;
+    private List<PhotoModel> files;
 
     private List<BiddingModel> biddingList;
     private List<UserModel> usersList;
@@ -189,12 +189,16 @@ public class AuctionModel {
         this.warranty = warranty;
     }
 
-    public List<byte[]> getFile() {
-        return file;
+    public Calendar getEndDate() {
+        return endDate;
     }
 
-    public void setFile(List<byte[]> file) {
-        this.file = file;
+    public List<PhotoModel> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<PhotoModel> files) {
+        this.files = files;
     }
 
     @Transient
@@ -205,6 +209,7 @@ public class AuctionModel {
     public void setTmpDate(String tmpDate) {
         this.tmpDate = tmpDate;
     }
+
 
     @Override
     public String toString() {
@@ -227,7 +232,7 @@ public class AuctionModel {
                 ", damaged='" + damaged + '\'' +
                 ", productionDate='" + productionDate + '\'' +
                 ", warranty='" + warranty + '\'' +
-                ", file=" + file +
+                ", files=" + files +
                 ", biddingList=" + biddingList +
                 ", usersList=" + usersList +
                 ", tmpDate='" + tmpDate + '\'' +
