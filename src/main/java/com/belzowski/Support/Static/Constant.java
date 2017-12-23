@@ -11,8 +11,8 @@ public class Constant {
     public static String editAccountURL = restURL + "/account/editaccount";
 
     //Auction
-    public static  String addAuction = restURL + "/sale/add";
-
+    public static String addAuction = restURL + "/sale/add";
+    public static String getMyAuction = restURL + "/sale/getMyAuction";
 
     public static String testObjectURL = restURL + "/test/21";
     public static String addTestURL = restURL + "/test/addtest";

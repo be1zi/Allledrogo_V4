@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import static java.lang.System.out;
+
 
 @Controller
 @RequestMapping("/sale")
@@ -27,6 +25,10 @@ public class SaleController {
 
     @RequestMapping("/")
     public String saleHome(HttpSession session){
+
+        if(session.getAttribute("content") == null){
+            return "redirect:/sale/mysales";
+        }
 
         if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.MakeAuction)){
             return "redirect:/sale/makeauction";
@@ -81,7 +83,7 @@ public class SaleController {
                 auctionModel.setFiles(images);
 
         }
-        
+
         AuctionModel aM = AuctionNetworkManager.addAuction(auctionModel, session);
 
         if(aM == null){
@@ -105,7 +107,7 @@ public class SaleController {
                session.setAttribute("image",images);
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
+            out.println(e.getMessage());
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -113,12 +115,29 @@ public class SaleController {
     }
 
     @RequestMapping("/mysales")
-    public String mySales(HttpSession session){
+    public ModelAndView mySales(HttpSession session){
 
         session.setAttribute("content", Content.MySales);
-
-        return "redirect:/sale/";
+        ModelAndView modelAndView = new ModelAndView("sale");
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel, session);
+        modelAndView.addObject("list", auctionModelList);
+        return modelAndView;
     }
+
+
+//
+//    @RequestMapping("editAccount/{userId}")
+//    public String editUserAccount(@PathVariable Long userId, Model model, HttpSession session){
+//
+//        ServiceResult<UserModel> result = userService.getUserById(userId);
+//        UserModel userModel = result.getData();
+//        model.addAttribute("userProfileAdmin", userModel);
+//        session.setAttribute("userToEdit", userModel);
+//
+//        return "userProfileForAdmin";
+//    }
+
 
     @RequestMapping("/sold")
     public String sold(HttpSession session){
