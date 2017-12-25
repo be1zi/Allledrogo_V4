@@ -51,25 +51,13 @@ public class AuctionNetworkManager {
         return null;
     }
 
-//    public static UserModel getUserFromNetwork(UserModel userModel, HttpSession session){
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//
-//        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.getUserURL, userModel, UserModel.class);
-//
-//        if (responseEntity.getStatusCode().is2xxSuccessful()){
-//            session.setAttribute("alert", Alert.OK);
-//            UserModel userModel1 = responseEntity.getBody();
-//            return userModel1;
-//        }else if (responseEntity.getStatusCodeValue() == 302) {
-//            session.setAttribute("alert", Alert.FOUND);
-//        }else if (responseEntity.getStatusCodeValue() == 301) {
-//            session.setAttribute("alert", Alert.NOT_FOUND);
-//        }
-//
-//        return null;
-//    }
+    public static AuctionModel getAuction(Long id, HttpSession session){
+        RestTemplate restTemplate = new RestTemplate();
 
+        ResponseEntity<AuctionModel> responseEntity = restTemplate.postForEntity(Constant.getAuction, id, AuctionModel.class);
+
+        return responseStatus(responseEntity, session);
+    }
 
     private static AuctionModel responseStatus(ResponseEntity<AuctionModel> responseEntity, HttpSession session){
 

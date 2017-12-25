@@ -1,12 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ${USER}
-  Date: ${DATE}
-  Time: ${TIME}
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <html>
 <head>
@@ -27,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1 class="mb-4 text-secondary">Tytuł Aukcji</h1>
+                <h1 class="mb-4 text-secondary">${auction.title}</h1>
             </div>
         </div>
         <div class="row">
@@ -54,14 +48,34 @@
 <div class="">
     <div class="container">
         <div class="row">
-            <div class="col-md-6"> Test test test </div>
+            <div class="col-md-6">
+
+                <div class="buyNow">
+                    <div class="row p-3">
+                        <div class="col-md-4 text-left"> <label class="text-secondary">Data zakończenia:</label> </div>
+                        <div class="col-md-8 text-left"> <label class="text-secondary">${auction.tmpDate}</label> </div>
+                    </div>
+                </div>
+                <div class="buyNow">
+                    <div class="row p-3">
+                        <div class="col-md-4 text-left"> <label class="text-secondary">Dostępne sztuki:</label> </div>
+                        <div class="col-md-8 text-left"> <label class="text-secondary">${auction.itemNumber}</label> </div>
+                    </div>
+                </div>
+                <div class="buyNow">
+                    <div class="row p-3">
+                        <div class="col-md-4 text-left"> <label class="text-secondary">Sprzedający:</label> </div>
+                        <div class="col-md-8 text-left"> <label class="text-secondary">TestowySprzedający</label> </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-6">
                 <div class="buyNow">
                     <div class="row p-3">
-                        <div class="col-md-4 text-center"> <label class="text-secondary">1099.99</label> </div>
-                        <div class="col-md-3 text-center">
-                            <input type="number" class="form-control" placeholder="Ilość cztuk" required="" min="1"> </div>
-                        <div class="col-md-3 text-center">
+                        <div class="col-md-4 text-center"> <label class="text-secondary">${auction.buyNowPrice} zł </label> </div>
+                        <div class="col-md-4 text-center">
+                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}"> </div>
+                        <div class="col-md-4 text-center">
                             <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Kup Teraz</button>
                         </div>
                     </div>
@@ -69,10 +83,10 @@
                 <div class="payInfo">
                     <div class="row p-3">
                         <div class="col-md-4">
-                            <input type="number" class="form-control" placeholder="Cena" required="" min="1000"> </div>
-                        <div class="col-md-3 text-center">
-                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1"> </div>
-                        <div class="col-md-3 text-center">
+                            <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}"> </div>
+                        <div class="col-md-4 text-center">
+                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" > </div>
+                        <div class="col-md-4 text-center">
                             <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Licytuj</button>
                         </div>
                     </div>

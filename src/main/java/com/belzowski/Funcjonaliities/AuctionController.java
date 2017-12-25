@@ -1,31 +1,34 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Network.AuctionNetworkManager;
+import com.belzowski.Support.Formatter.DateFormatter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
+
+import static java.lang.System.out;
 
 @Controller
 @RequestMapping("/auction")
 public class AuctionController {
 
     @RequestMapping("/{id}")
-    public ModelAndView showAuction(@PathVariable Long id, @ModelAttribute("list") ArrayList<AuctionModel> auctionModelList){
+    public ModelAndView showAuction(@PathVariable Long id, HttpSession session){
 
         ModelAndView modelAndView = new ModelAndView("auction");
 
-        for(int i=0; i<auctionModelList.size();i++){
+        out.println(id);
+        AuctionModel auctionModel = AuctionNetworkManager.getAuction(id, session);
 
-            if(auctionModelList.get(i).getId() != id){
-                continue;
-            }
+        DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(), "yyyy-MM-dd HH:mm");
+        auctionModel.setTmpDate(dateFormatter.calendarToString());
 
-            modelAndView.addObject(auctionModelList.get(i));
-        }
+        if(auctionModel != null)
+            modelAndView.addObject("auction",auctionModel);
 
         return  modelAndView;
     }

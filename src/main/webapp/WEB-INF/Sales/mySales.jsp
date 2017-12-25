@@ -35,8 +35,8 @@
                         <div class="align-self-center p-5 col-md-6">
                             <h5 class="auctionItem text-left text-secondary p-2">Data zakończenia: <c:out value="${item.tmpDate}"/></h5>
                             <h5 class="auctionItem text-left text-secondary p-2">Ilosc sztuk: <c:out value="${item.itemNumber}"/></h5>
-                            <h5 class="auctionItem text-left text-secondary p-2">Cena licytacji: <c:out value="${item.biddingPrice}"/></h5>
-                            <h5 class="auctionItem text-left text-secondary p-2">Cena Kup Teraz: <c:out value="${item.buyNowPrice}"/></h5>
+                            <h5 class="auctionItem text-left text-secondary p-2">Cena licytacji: <c:out value="${item.biddingPrice}"/> zł</h5>
+                            <h5 class="auctionItem text-left text-secondary p-2">Cena Kup Teraz: <c:out value="${item.buyNowPrice}"/> zł</h5>
                             <h5 class="auctionItem text-left text-secondary p-2">Liczba licytujących: <c:out value="${item.biddingList}"/></h5>
                             <h5 class="auctionItem text-left text-secondary p-2">Liczba obserwujących: <c:out value="${item.usersList}"/></h5>
                             <h5 class="auctionItem text-left text-secondary p-2">Liczba wyświetleń: <c:out value="${item.viewNumber}"/></h5>
@@ -47,9 +47,7 @@
                                         <h5 class="auctionItem text-secondary text-left p-2">Szczególy</h5>
                                     </div>
                                     <dic class="col-md-4">
-                                        <%--<button type="button" class="btn btn-warning btn-block text-center p-2 text-white" href="/auction/${item}" >Wyswietl</button>--%>
                                         <a href="/auction/${item.id}" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl </a>
-
                                     </dic>
                                 </div>
                             </div>

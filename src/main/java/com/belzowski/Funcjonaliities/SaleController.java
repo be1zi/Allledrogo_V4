@@ -126,19 +126,6 @@ public class SaleController {
     }
 
 
-//
-//    @RequestMapping("editAccount/{userId}")
-//    public String editUserAccount(@PathVariable Long userId, Model model, HttpSession session){
-//
-//        ServiceResult<UserModel> result = userService.getUserById(userId);
-//        UserModel userModel = result.getData();
-//        model.addAttribute("userProfileAdmin", userModel);
-//        session.setAttribute("userToEdit", userModel);
-//
-//        return "userProfileForAdmin";
-//    }
-
-
     @RequestMapping("/sold")
     public String sold(HttpSession session){
 
