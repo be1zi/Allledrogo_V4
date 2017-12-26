@@ -1,20 +1,22 @@
 package com.belzowski.Network;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Model.PhotoModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+import javax.el.PropertyNotFoundException;
 import javax.servlet.http.HttpSession;
 import com.belzowski.Support.Enum.Alert;
 import org.springframework.http.HttpStatus;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
+
+import static java.lang.System.out;
 
 
 public class AuctionNetworkManager {
@@ -46,9 +48,30 @@ public class AuctionNetworkManager {
             List<AuctionModel> myAuctionList = new ArrayList<>();
 
             for(int i=0; i<result.length; i++){
-                DateFormatter dateFormatter = new DateFormatter(result[i].getEndDate(),"yyyy-MM-dd HH:mm");
-                result[i].setTmpDate(dateFormatter.calendarToString());
-                myAuctionList.add(result[i]);
+                AuctionModel auctionModel = result[i];
+
+                DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(),"yyyy-MM-dd HH:mm");
+                auctionModel.setTmpDate(dateFormatter.calendarToString());
+
+
+                PhotoModel mainImage = null;
+
+                if(auctionModel.getFiles() == null){
+                    auctionModel.setMainImage("photoPlaceholder");
+                    continue;
+                }
+
+                mainImage = auctionModel.getFiles().get(0);
+                byte[] image = Base64.getEncoder().encode(mainImage.getImage());
+                String imageEncoded = null;
+                try {
+                    imageEncoded = new String(image, "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+                auctionModel.setMainImage(imageEncoded);
+
+                myAuctionList.add(auctionModel);
             }
 
             return myAuctionList;

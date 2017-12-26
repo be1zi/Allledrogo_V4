@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import static java.lang.System.out;
@@ -25,6 +27,10 @@ public class SaleController {
 
     @RequestMapping("/")
     public String saleHome(HttpSession session){
+
+        if(session.getAttribute("list") == null){
+            return "redirect:/sale/mysales";
+        }
 
         if(session.getAttribute("content") == null){
             return "redirect:/sale/mysales";
@@ -84,8 +90,7 @@ public class SaleController {
 
             auctionModel.setSold(false);
             auctionModel.setEnded(false);
-            auctionModel.setBiddingNumber(0);
-            auctionModel.setUsersNumber(0);
+            auctionModel.setEndPrice(0.0);
         }
 
         AuctionModel aM = AuctionNetworkManager.addAuction(auctionModel, session);
@@ -119,30 +124,38 @@ public class SaleController {
     }
 
     @RequestMapping("/mysales")
-    public ModelAndView mySales(HttpSession session){
+    public ModelAndView mySales(HttpSession session) {
 
         session.setAttribute("content", Content.MySales);
         ModelAndView modelAndView = new ModelAndView("sale");
         UserModel userModel = (UserModel)session.getAttribute("user");
         List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel,false, false, session);
         modelAndView.addObject("list", auctionModelList);
+
         return modelAndView;
     }
 
-
     @RequestMapping("/sold")
-    public String sold(HttpSession session){
+    public ModelAndView sold(HttpSession session){
 
         session.setAttribute("content", Content.Sold);
+        ModelAndView modelAndView = new ModelAndView("sale");
+        UserModel userModel = (UserModel) session.getAttribute("user");
+        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel, true, true, session);
+        modelAndView.addObject("list", auctionModelList);
 
-        return "redirect:/sale/";
+        return modelAndView;
     }
 
     @RequestMapping("/notsold")
-    public String notSold(HttpSession session){
+    public ModelAndView notSold(HttpSession session){
 
         session.setAttribute("content", Content.NotSold);
+        ModelAndView modelAndView = new ModelAndView("sale");
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel, false, true, session);
+        modelAndView.addObject("list", auctionModelList);
 
-        return "redirect:/sale/";
+        return modelAndView;
     }
 }

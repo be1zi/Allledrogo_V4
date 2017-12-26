@@ -18,6 +18,7 @@ public class AuctionModel {
     private boolean isBuyNowType;
     private boolean isSold;
     private boolean isEnded;
+    private Double endPrice;
 
     private String category;
     private String title;
@@ -31,13 +32,12 @@ public class AuctionModel {
     private List<PhotoModel> files;
 
     private List<BiddingModel> biddingList;
-    private int biddingNumber;
 
     private List<UserModel> usersList;
-    private int usersNumber;
 
 
     private String tmpDate;
+    private String mainImage;
 
     public Long getId() {
         return id;
@@ -223,31 +223,32 @@ public class AuctionModel {
         isEnded = ended;
     }
 
-    public int getBiddingNumber() {
-        return biddingNumber;
+    public Double getEndPrice() {
+        return endPrice;
     }
 
-    public void setBiddingNumber(int biddingNumber) {
-        this.biddingNumber = biddingNumber;
-    }
-
-    public int getUsersNumber() {
-        return usersNumber;
-    }
-
-    public void setUsersNumber(int usersNumber) {
-        this.usersNumber = usersNumber;
+    public void setEndPrice(Double endPrice) {
+        this.endPrice = endPrice;
     }
 
     @Transient
     public String getTmpDate() {
         return tmpDate;
     }
+
     @Transient
     public void setTmpDate(String tmpDate) {
         this.tmpDate = tmpDate;
     }
 
+    @Transient
+    public String getMainImage() {
+        return mainImage;
+    }
+    @Transient
+    public void setMainImage(String mainImage) {
+        this.mainImage = mainImage;
+    }
 
     @Override
     public String toString() {
@@ -264,6 +265,7 @@ public class AuctionModel {
                 ", isBuyNowType=" + isBuyNowType +
                 ", isSold=" + isSold +
                 ", isEnded=" + isEnded +
+                ", endPrice=" + endPrice +
                 ", category='" + category + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
@@ -274,10 +276,9 @@ public class AuctionModel {
                 ", warranty='" + warranty + '\'' +
                 ", files=" + files +
                 ", biddingList=" + biddingList +
-                ", biddingNumber=" + biddingNumber +
                 ", usersList=" + usersList +
-                ", usersNumber=" + usersNumber +
                 ", tmpDate='" + tmpDate + '\'' +
                 '}';
     }
+
 }
