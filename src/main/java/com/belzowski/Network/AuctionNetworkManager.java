@@ -44,7 +44,6 @@ public class AuctionNetworkManager {
         if(responseEntity.getStatusCode().is2xxSuccessful()){
             session.setAttribute("alert", Alert.OK);
             AuctionModel[] result = responseEntity.getBody();
-
             List<AuctionModel> myAuctionList = new ArrayList<>();
 
             for(int i=0; i<result.length; i++){
@@ -58,22 +57,32 @@ public class AuctionNetworkManager {
 
                 if(auctionModel.getFiles() == null){
                     auctionModel.setMainImage("photoPlaceholder");
+                    myAuctionList.add(auctionModel);
                     continue;
                 }
 
-                mainImage = auctionModel.getFiles().get(0);
-                byte[] image = Base64.getEncoder().encode(mainImage.getImage());
-                String imageEncoded = null;
                 try {
-                    imageEncoded = new String(image, "UTF-8");
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
+                    mainImage = auctionModel.getFiles().get(0);
+                    byte[] image = Base64.getEncoder().encode(mainImage.getImage());
+                    String imageEncoded = null;
+                    try {
+                        imageEncoded = new String(image, "UTF-8");
+                    } catch (UnsupportedEncodingException e) {
+                        auctionModel.setMainImage("photoPlaceholder");
+                        myAuctionList.add(auctionModel);
+                        continue;
+                    }
+                    auctionModel.setMainImage(imageEncoded);
+
+                }catch (IndexOutOfBoundsException ee){
+                    auctionModel.setMainImage("photoPlaceholder");
+                    myAuctionList.add(auctionModel);
+
+                    continue;
                 }
-                auctionModel.setMainImage(imageEncoded);
 
                 myAuctionList.add(auctionModel);
             }
-
             return myAuctionList;
         }else{
             session.setAttribute("alert", Alert.FOUND);

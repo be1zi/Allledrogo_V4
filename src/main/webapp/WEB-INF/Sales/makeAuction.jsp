@@ -32,34 +32,6 @@
         <input id="upload-file-input5" type="file" name="uploadfile" accept="image/png, image/jpeg" />
     </form>
 
-
-
-
-<%--<div class="row" id="imageRow">--%>
-        <%--<div class="col-md-3">--%>
-            <%--<div class="form-group">--%>
-                <%--<div class="input-group">--%>
-                    <%--<span class="input-group-btn">--%>
-                         <%--<span class="btn btn-warning text-white btn-file">--%>
-                        <%--Wybierz...--%>
-                        <%--&lt;%&ndash;<form id="upload-file-form">&ndash;%&gt;--%>
-                            <%--&lt;%&ndash;<input type="file" name="itemImage" accept="image/png, image/jpeg, image/gif" id="imgInp1">&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;</form>&ndash;%&gt;--%>
-
-
-
-                         <%--</span>--%>
-                     <%--</span>--%>
-                    <%--<input id='urlname' type="text" class="form-control" readonly>--%>
-                <%--</div>--%>
-                <%--<div id="auctionImages">--%>
-                    <%--<img id='img-upload' name="imageSingleAuction"/>--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-
-    <%--</div>--%>
-
 </div>
 
 
@@ -159,7 +131,7 @@
         <div class="row" style="padding-left:30px; padding-right:30px; padding-bottom:20px">
             <div class="col-md-6"><label class="text-secondary">Gwarancja:</label></div>
             <div class="col-md-6">
-                <auctionForm:select path="warranty" class="form-control" id="sel1" required="true">
+                <auctionForm:select path="warranty" class="form-control" id="warranty" required="true">
                     <auctionForm:option value="Wybierz"></auctionForm:option>
                     <auctionForm:option value="Tak"></auctionForm:option>
                     <auctionForm:option value="Nie"></auctionForm:option>

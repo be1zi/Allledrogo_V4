@@ -81,7 +81,9 @@ public class SaleController {
 
             DateFormatter dateFormatter = new DateFormatter(auctionModel.getTmpDate(), "yyyy-MM-dd HH:mm");
             auctionModel.setEndDate(dateFormatter.stringToCalendar());
-            auctionModel.setStartDate(dateFormatter.dateToCalendar());
+
+            DateFormatter dateFormatter2 = new DateFormatter("yyyy-MM-dd HH:mm");
+            auctionModel.setStartDate(dateFormatter2.dateToCalendar());
 
             ArrayList<PhotoModel> images = (ArrayList<PhotoModel>)session.getAttribute("image");
 

@@ -28,13 +28,22 @@
         <div class="row">
             <div class="col-12">
 
-                <div id="carouselArchitecture" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                                <img  src="data:image/jpeg;base64,${mainImages}" />
-                        </div>
+                <%--<div id="carouselArchitecture" class="carousel slide" data-ride="carousel">--%>
+                    <%--<div class="carousel-inner" role="listbox">--%>
+                        <%--<div class="carousel-item active">--%>
+                    <div class="mainPhoto">
+                        <c:choose>
+                            <c:when test="${mainImages eq 'photoPlaceholder'}">
+                                <img  src="../resources/images/photoPlaceholder.jpg" class="d-block img-fluid w-100"/>
+                            </c:when>
+                            <c:otherwise>
+                                <img  src="data:image/jpeg;base64,${mainImages}" class="d-block img-fluid w-100"/>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
-                </div>
+                        <%--</div>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </div>
         </div>
     </div>
@@ -140,6 +149,16 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="style-seven"/>
+
+        <div class="row " style="padding-bottom: 20px">
+            <div class="description">
+                <div class="col-md-12">
+                    <label class="text-secondary">${auction.description}</label>
                 </div>
             </div>
         </div>

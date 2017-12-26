@@ -36,8 +36,14 @@
                         <div id="carousel1" class="carousel slide" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
                                 <div class="carousel-item active">
-                                    <img class="d-block img-fluid w-100" src="data:image/jpeg;base64,${item.mainImage}" atl="first slide">
-                                    <div class="carousel-caption">
+                                    <c:choose>
+                                        <c:when test="${item.mainImage eq 'photoPlaceholder'}">
+                                            <img class="d-block img-fluid w-100" src="../resources/images/photoPlaceholder.jpg" atl="first slide">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <img class="d-block img-fluid w-100" src="data:image/jpeg;base64,${item.mainImage}" atl="first slide">
+                                        </c:otherwise>
+                                    </c:choose>                                    <div class="carousel-caption">
                                         <h3 class="text-secondary bg-primary p-2"><c:out value="${item.title}"/></h3>
                                     </div>
                                 </div>

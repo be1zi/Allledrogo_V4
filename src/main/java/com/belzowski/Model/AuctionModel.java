@@ -199,6 +199,7 @@ public class AuctionModel {
         return endDate;
     }
 
+
     public List<PhotoModel> getFiles() {
         return files;
     }

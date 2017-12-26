@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import static java.lang.System.out;
+
 public class DateFormatter {
 
     private String date;
@@ -22,14 +24,21 @@ public class DateFormatter {
         this.pattern = pattern;
     }
 
+    public DateFormatter(String pattern){
+        this.pattern = pattern;
+        calendar = Calendar.getInstance();
+    }
+
     public Calendar stringToCalendar(){
 
         SimpleDateFormat format = new SimpleDateFormat(pattern);
+
         try {
             calendar.setTime(format.parse(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
 
         return calendar;
     }
@@ -40,8 +49,14 @@ public class DateFormatter {
         Date date = new Date();
         String tmp = format.format(date);
 
-        this.date = tmp;
-        return this.stringToCalendar();
+        try {
+            calendar.setTime(format.parse(tmp));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return calendar;
+
     }
 
     public String calendarToString(){

@@ -19,7 +19,7 @@ import java.util.List;
 public class AuctionController {
 
     @RequestMapping("/{id}")
-    public ModelAndView showAuction(@PathVariable Long id, HttpSession session) throws UnsupportedEncodingException {
+    public ModelAndView showAuction(@PathVariable Long id, HttpSession session){
 
         ModelAndView modelAndView = new ModelAndView("auction");
         AuctionModel auctionModel = AuctionNetworkManager.getAuction(id, session);
@@ -27,10 +27,20 @@ public class AuctionController {
         DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(), "yyyy-MM-dd HH:mm");
         auctionModel.setTmpDate(dateFormatter.calendarToString());
 
-        List<PhotoModel> imagesList = auctionModel.getFiles();
-        byte[] image = Base64.getEncoder().encode(imagesList.get(0).getImage());
-        String imageEncoded = new String(image, "UTF-8");
-        modelAndView.addObject("mainImages", imageEncoded);
+        String imageEncoded = null;
+
+        try {
+            List<PhotoModel> imagesList = auctionModel.getFiles();
+            byte[] image = Base64.getEncoder().encode(imagesList.get(0).getImage());
+            imageEncoded = new String(image, "UTF-8");
+            modelAndView.addObject("mainImages", imageEncoded);
+
+        }catch(IndexOutOfBoundsException e){
+            modelAndView.addObject("mainImages", "photoPlaceholder");
+
+        }catch(UnsupportedEncodingException e){
+            modelAndView.addObject("mainImages", "photoPlaceholder");
+        }
 
         if(auctionModel != null)
             modelAndView.addObject("auction",auctionModel);
