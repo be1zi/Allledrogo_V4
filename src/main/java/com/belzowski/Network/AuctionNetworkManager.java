@@ -12,7 +12,9 @@ import com.belzowski.Support.Enum.Alert;
 import org.springframework.http.HttpStatus;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class AuctionNetworkManager {
@@ -26,11 +28,16 @@ public class AuctionNetworkManager {
         return responseStatus(responseEntity, session);
     }
 
-    public static List<AuctionModel> getMyAuction(UserModel userModel, HttpSession session){
+    public static List<AuctionModel> getMyAuction(UserModel userModel,boolean isSold, boolean isEnded, HttpSession session){
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getMyAuction, userModel, AuctionModel[].class);
+        Map<Object, Object> map = new HashMap<>();
+        map.put("userId", userModel.getId());
+        map.put("isSold", isSold);
+        map.put("isEnded", isEnded);
+
+        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getMyAuction, map, AuctionModel[].class);
 
         if(responseEntity.getStatusCode().is2xxSuccessful()){
             session.setAttribute("alert", Alert.OK);

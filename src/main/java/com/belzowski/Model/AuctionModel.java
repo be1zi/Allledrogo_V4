@@ -16,6 +16,8 @@ public class AuctionModel {
     private int viewNumber;
     private boolean isAuctionType;
     private boolean isBuyNowType;
+    private boolean isSold;
+    private boolean isEnded;
 
     private String category;
     private String title;
@@ -29,7 +31,11 @@ public class AuctionModel {
     private List<PhotoModel> files;
 
     private List<BiddingModel> biddingList;
+    private int biddingNumber;
+
     private List<UserModel> usersList;
+    private int usersNumber;
+
 
     private String tmpDate;
 
@@ -201,6 +207,38 @@ public class AuctionModel {
         this.files = files;
     }
 
+    public boolean isSold() {
+        return isSold;
+    }
+
+    public void setSold(boolean sold) {
+        isSold = sold;
+    }
+
+    public boolean isEnded() {
+        return isEnded;
+    }
+
+    public void setEnded(boolean ended) {
+        isEnded = ended;
+    }
+
+    public int getBiddingNumber() {
+        return biddingNumber;
+    }
+
+    public void setBiddingNumber(int biddingNumber) {
+        this.biddingNumber = biddingNumber;
+    }
+
+    public int getUsersNumber() {
+        return usersNumber;
+    }
+
+    public void setUsersNumber(int usersNumber) {
+        this.usersNumber = usersNumber;
+    }
+
     @Transient
     public String getTmpDate() {
         return tmpDate;
@@ -224,6 +262,8 @@ public class AuctionModel {
                 ", viewNumber=" + viewNumber +
                 ", isAuctionType=" + isAuctionType +
                 ", isBuyNowType=" + isBuyNowType +
+                ", isSold=" + isSold +
+                ", isEnded=" + isEnded +
                 ", category='" + category + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
@@ -234,7 +274,9 @@ public class AuctionModel {
                 ", warranty='" + warranty + '\'' +
                 ", files=" + files +
                 ", biddingList=" + biddingList +
+                ", biddingNumber=" + biddingNumber +
                 ", usersList=" + usersList +
+                ", usersNumber=" + usersNumber +
                 ", tmpDate='" + tmpDate + '\'' +
                 '}';
     }

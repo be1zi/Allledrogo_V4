@@ -82,6 +82,10 @@ public class SaleController {
             if(images != null)
                 auctionModel.setFiles(images);
 
+            auctionModel.setSold(false);
+            auctionModel.setEnded(false);
+            auctionModel.setBiddingNumber(0);
+            auctionModel.setUsersNumber(0);
         }
 
         AuctionModel aM = AuctionNetworkManager.addAuction(auctionModel, session);
@@ -120,7 +124,7 @@ public class SaleController {
         session.setAttribute("content", Content.MySales);
         ModelAndView modelAndView = new ModelAndView("sale");
         UserModel userModel = (UserModel)session.getAttribute("user");
-        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel, session);
+        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel,false, false, session);
         modelAndView.addObject("list", auctionModelList);
         return modelAndView;
     }
