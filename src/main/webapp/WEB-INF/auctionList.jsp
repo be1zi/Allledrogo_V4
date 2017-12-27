@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../resources/CSS/main.css">
     <link rel="stylesheet" href="../resources/CSS/home.css">
     <link rel="stylesheet" href="../resources/CSS/footer.css">
-
     <title>ALLLEDROGO</title>
 </head>
 <body>

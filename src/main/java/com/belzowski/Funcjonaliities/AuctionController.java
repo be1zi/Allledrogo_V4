@@ -67,4 +67,12 @@ public class AuctionController {
 
         return  modelAndView;
     }
+
+    @RequestMapping("/list/{category}")
+    public ModelAndView auctionList(@PathVariable String category){
+
+        ModelAndView modelAndView = new ModelAndView("auctionList");
+
+        return modelAndView;
+    }
 }

@@ -6,29 +6,6 @@
     <div class="text-white bg-primary py-2">
         <div class="container">
 
-
-            <%--<jsp:useBean id="list" scope="request" type="java.util.List"/>--%>
-            <%--<c:forEach items="${list}" var="item">--%>
-            <%--<div class="col-md-12 "  style="padding-bottom: 20px">--%>
-            <%--<div class="box-two proerty-item">--%>
-
-            <%--<div class="item-entry overflow">--%>
-            <%--<h5><a href="property-1.html" style="padding-left: 15px">--%>
-            <%--<c:out value="${item.firstname} ${item.lastname}"/>--%>
-            <%--</a></h5>--%>
-            <%--<div class="dot-hr"></div>--%>
-            <%--<span class="pull-left" style="padding-left: 15px; padding-bottom: 8px">--%>
-            <%--<c:out value="${item.email}"/>--%>
-            <%--</span>--%>
-            <%--<div class="dealer-action pull-right">--%>
-            <%--<a href="/editAccount/${item.userId}" class="button">Edytuj </a>--%>
-            <%--<a href="/deleteAccount/${item.userId}/${item.role}" class="button delete_user_car">Usuń</a>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</div>--%>
-            <%--</c:forEach>--%>
-
             <div class="row">
                 <div class="align-self-center p-5 col-md-6">
                     <h3 class="auctionItem text-left text-secondary p-2">Sprzedajacy: Testowy </h3>

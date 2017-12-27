@@ -2,7 +2,6 @@
 <%@ taglib prefix='c' uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link rel="stylesheet" href="../resources/CSS/header/css.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
 
 <nav class="navbar sticky-top navbar-expand-md bg-primary navbar-dark p-3">
@@ -41,19 +40,22 @@
     </div>
 </nav>
 
-<div class = "row">
+<div class="row">
         <div class="container-fluid">
             <div class="row border border-success">
                 <div class="col-md-1 border border-success">
-                    <div class="row justify-content-center">
-                        <div class="icon p-3"> <i class="fa fa-desktop fa-3x"></i> </div>
-                    </div>
-                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
-                        <div class="name">
-                            <h6>Elektronika</h6>
-                        </div>
-                    </div>
+                        <a href="/auction/list/Elektronika">
+                            <div class="row justify-content-center">
+                                <div class="icon p-3"> <i class="fa fa-desktop fa-3x"></i> </div>
+                            </div>
+                            <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                                <div class="name">
+                                    <h6>Elektronika</h6>
+                                </div>
+                            </div>
+                        </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-car fa-3x"></i> </div>
