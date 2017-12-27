@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -29,18 +30,34 @@ public class AuctionController {
 
         String imageEncoded = null;
 
+        // miniaturka
         try {
             List<PhotoModel> imagesList = auctionModel.getFiles();
             byte[] image = Base64.getEncoder().encode(imagesList.get(0).getImage());
             imageEncoded = new String(image, "UTF-8");
             modelAndView.addObject("mainImages", imageEncoded);
-
         }catch(IndexOutOfBoundsException e){
             modelAndView.addObject("mainImages", "photoPlaceholder");
 
         }catch(UnsupportedEncodingException e){
             modelAndView.addObject("mainImages", "photoPlaceholder");
         }
+
+        // reszta zdjęć
+        if(auctionModel.getFiles() != null){
+            List<String> images = new ArrayList<>();
+            for(int i=1; i<auctionModel.getFiles().size();i++){
+                byte[] image = Base64.getEncoder().encode(auctionModel.getFiles().get(i).getImage());
+                try {
+                    images.add(new String(image, "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                    images.add(new String("photoPlaceholder"));
+                }
+            }
+            modelAndView.addObject("images", images);
+        }
+
 
         if(auctionModel != null)
             modelAndView.addObject("auction",auctionModel);

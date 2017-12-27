@@ -27,10 +27,6 @@
         </div>
         <div class="row">
             <div class="col-12">
-
-                <%--<div id="carouselArchitecture" class="carousel slide" data-ride="carousel">--%>
-                    <%--<div class="carousel-inner" role="listbox">--%>
-                        <%--<div class="carousel-item active">--%>
                     <div class="mainPhoto">
                         <c:choose>
                             <c:when test="${mainImages eq 'photoPlaceholder'}">
@@ -41,9 +37,6 @@
                             </c:otherwise>
                         </c:choose>
                     </div>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
             </div>
         </div>
     </div>
@@ -152,6 +145,28 @@
                 </div>
             </div>
         </div>
+
+        <c:choose>
+            <c:when test="${not empty images}">
+                <hr class="style-seven"/>
+                <c:forEach items="${images}" var="item">
+                    <div class="row" style="padding-bottom: 20px">
+                        <div class="col-12">
+                            <div class="mainPhoto">
+                                <c:choose>
+                                    <c:when test="${item eq 'photoPlaceholder'}">
+                                        <img  src="../resources/images/photoPlaceholder.jpg" class="d-block img-fluid w-100"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img  src="data:image/jpeg;base64,${item}" class="d-block img-fluid w-100"/>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:when>
+        </c:choose>
 
         <hr class="style-seven"/>
 
