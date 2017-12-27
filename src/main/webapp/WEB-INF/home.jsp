@@ -1,12 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ${USER}
-  Date: ${DATE}
-  Time: ${TIME}
-  To change this template use File | Settings | File Templates.
---%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -22,81 +15,27 @@
 
     <jsp:include page="header.jsp"></jsp:include>
 
+
     <div class="">
         <div class="container-fluid bg-primary p-3">
             <div class="row">
-                <div class="p-3 col-md-4 col-6">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_dogs.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
+                    <c:forEach items="${list}" var="item">
+                        <div class="col-md-4 col-6 p-3">
+                            <c:choose>
+                                <c:when test="${item.mainImage eq 'photoPlaceholder'}">
+                                    <a href="/auction/${item.id}"> <img class="img-fluid" src="../resources/images/photoPlaceholder.jpg"></a>
+                                </c:when>
+                                <c:otherwise>
+                                    <a href="/auction/${item.id}"> <img class="d-block img-fluid w-100" src="data:image/jpeg;base64,${item.mainImage}" atl="first slide" href="#"> </a>
+                                </c:otherwise>
+                            </c:choose>
+                            <div class="auctionTitle">
+                                <div class="auctionTitleText">
+                                    <p class="bg-primary p-2 font-weight-bold">${item.title}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_bird.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_farm.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_girl.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_nose.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_feet.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-3 col-md-4 col-6">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_dogs.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_bird.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-6 p-3">
-                    <img src="https://pingendo.github.io/templates/sections/assets/gallery_farm.jpg" class="img-fluid">
-                    <div class="auctionTitle">
-                        <div class="auctionTitleText">
-                            <p class="bg-primary p-2">Lorem ipsum dolor sit ametsadas</p>
-                        </div>
-                    </div>
-                </div>
+                    </c:forEach>
             </div>
         </div>
     </div>

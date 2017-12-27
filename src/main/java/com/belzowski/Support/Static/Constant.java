@@ -16,6 +16,9 @@ public class Constant {
     public static String getAuction = restURL + "/auction/get";
     public static String editAuction = restURL + "/auction/edit";
 
+    //Home - Dashboard
+    public static String getHomeAuction = restURL + "/home/get";
+
     //test
     public static String testObjectURL = restURL + "/test/21";
     public static String addTestURL = restURL + "/test/addtest";

@@ -3,6 +3,15 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <jsp:useBean id="list" scope="request" type="java.util.List"/>
+
+<c:choose>
+    <c:when test="${empty list}">
+        <div class="container">
+            <img class="d-block img-fluid w-100" src="../resources/images/emptyListPlaceholder.jpg" atl="first slide">
+        </div>
+    </c:when>
+</c:choose>
+
 <c:forEach items="${list}" var="item">
 
 <div class="singleAuction" style="border: solid red; border-radius: 30px; border: 5px solid;">

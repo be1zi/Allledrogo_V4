@@ -46,7 +46,7 @@ public class LoginController{
         else {
             session.setAttribute("menuStatus", MenuStatus.isLogin);
             session.setAttribute("user",uM);
-            return "home";
+            return "redirect:/";
         }
     }
 }
