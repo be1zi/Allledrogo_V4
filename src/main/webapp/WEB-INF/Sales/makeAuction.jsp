@@ -11,27 +11,43 @@
         <div class="form-group w-100"></div>
     </div>
 
-
-    <form id="upload-file-form" action="/sale/updateFiles" >
-        <input id="upload-file-input" type="file" name="uploadfile" accept="image/png, image/jpeg" />
-    </form>
-
-    <form id="upload-file-form2" action="/sale/updateFiles" >
-        <input id="upload-file-input2" type="file" name="uploadfile" accept="image/png, image/jpeg" />
-    </form>
-
-    <form id="upload-file-form3" action="/sale/updateFiles" >
-        <input id="upload-file-input3" type="file" name="uploadfile" accept="image/png, image/jpeg" />
-    </form>
-
-    <form id="upload-file-form4" action="/sale/updateFiles" >
-        <input id="upload-file-input4" type="file" name="uploadfile" accept="image/png, image/jpeg" />
-    </form>
-
-    <form id="upload-file-form5" action="/sale/updateFiles" >
-        <input id="upload-file-input5" type="file" name="uploadfile" accept="image/png, image/jpeg" />
-    </form>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="upload-file-form" action="/sale/updateFiles" >
+                    <input id="upload-file-input" type="file" name="uploadfile" accept="image/png, image/jpeg" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="upload-file-form2" action="/sale/updateFiles" >
+                    <input id="upload-file-input2" type="file" name="uploadfile" accept="image/png, image/jpeg" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="upload-file-form3" action="/sale/updateFiles" >
+                    <input id="upload-file-input3" type="file" name="uploadfile" accept="image/png, image/jpeg" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="upload-file-form4" action="/sale/updateFiles" >
+                    <input id="upload-file-input4" type="file" name="uploadfile" accept="image/png, image/jpeg" />
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form id="upload-file-form5" action="/sale/updateFiles" >
+                    <input id="upload-file-input5" type="file" name="uploadfile" accept="image/png, image/jpeg" />
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 
@@ -49,8 +65,7 @@
     <div class="category">
         <div class="row" style="padding-left:30px; padding-right:30px; padding-bottom:20px">
             <div class="col-md-12" style="padding:0">
-                    <%--<button type="button" class="btn btn-block btn-warning text-white">Wybierz kategorię</button>--%>
-                <auctionForm:select path="category" class="form-control" id="sel1" required="true">
+                <auctionForm:select path="category" class="form-control" id="category" required="true">
                     <auctionForm:option value="Wybierz"></auctionForm:option>
                     <auctionForm:option value="Elektronika"></auctionForm:option>
                     <auctionForm:option value="Motoryzacja"></auctionForm:option>
@@ -79,7 +94,7 @@
         <div class="row" style="padding-left:30px; padding-right:30px; padding-bottom:20px">
             <div class="col-md-6"><label class="text-secondary">Stan:</label></div>
             <div class="col-md-6">
-                <auctionForm:select path="state" class="form-control" id="sel1" required="true">
+                <auctionForm:select path="state" class="form-control" id="state" required="true">
                     <auctionForm:option value="Wybierz"></auctionForm:option>
                     <auctionForm:option value="Nowy"></auctionForm:option>
                     <auctionForm:option value="Używany"></auctionForm:option>
@@ -98,7 +113,7 @@
         <div class="row" style="padding-left:30px; padding-right:30px; padding-bottom:20px">
             <div class="col-md-6"><label class="text-secondary">Kolor:</label></div>
             <div class="col-md-6">
-                <auctionForm:select path="color" class="form-control" id="sel1" required="true">
+                <auctionForm:select path="color" class="form-control" id="color" required="true">
                     <auctionForm:option value="Wybierz"></auctionForm:option>
                     <auctionForm:option value="Biały"></auctionForm:option>
                     <auctionForm:option value="Szary"></auctionForm:option>
@@ -120,7 +135,7 @@
         <div class="row" style="padding-left:30px; padding-right:30px; padding-bottom:20px">
             <div class="col-md-6"><label class="text-secondary">Uszkodzony:</label></div>
             <div class="col-md-6">
-                <auctionForm:select path="damaged" class="form-control" id="sel1" required="true">
+                <auctionForm:select path="damaged" class="form-control" id="damaged" required="true">
                     <auctionForm:option value="Wybierz"></auctionForm:option>
                     <auctionForm:option value="Tak"></auctionForm:option>
                     <auctionForm:option value="Nie"></auctionForm:option>

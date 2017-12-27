@@ -189,3 +189,20 @@ $('#datetimepicker12').on('click', function () {
     });
 });
 
+$(document).ready(function () {
+    if($('#category').val() != 'Wybierz'){
+        $('#makeAuctionButton').attr('disabled',false);
+    }else{
+        $('#makeAuctionButton').attr('disabled',true);
+    }
+});
+
+$(document).on('click', function () {
+    console.log("click");
+    if(($('#category').val() != 'Wybierz') && ($('#state').val() != 'Wybierz')&& ($('#color').val() != 'Wybierz')&& ($('#damaged').val() != 'Wybierz')&& ($('#warranty').val() != 'Wybierz')){
+        $('#makeAuctionButton').attr('disabled',false);
+    }else{
+        $('#makeAuctionButton').attr('disabled',true);
+    }
+});
+

@@ -74,7 +74,15 @@
                             <div class="row p-3">
                                 <div class="col-md-4 text-center"> <label class="text-secondary">${auction.buyNowPrice} zł </label> </div>
                                 <div class="col-md-4 text-center">
-                                    <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}"> </div>
+                                    <c:choose>
+                                        <c:when test="${auction.itemNumber == 1}">
+                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                                 <div class="col-md-4 text-center">
                                     <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Kup Teraz</button>
                                 </div>
@@ -87,9 +95,17 @@
                         <div class="payInfo">
                             <div class="row p-3">
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01"> </div>
+                                    <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01" value="${auction.biddingPrice}"> </div>
                                 <div class="col-md-4 text-center">
-                                    <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" > </div>
+                                    <c:choose>
+                                        <c:when test="${auction.itemNumber == 1}">
+                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
+                                        </c:when>
+                                        <c:otherwise>
+                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
                                 <div class="col-md-4 text-center">
                                     <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Licytuj</button>
                                 </div>
@@ -238,9 +254,7 @@
 
 <jsp:include page="footer.jsp"></jsp:include>
 
-<%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>--%>
-<%--<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>--%>
+<script src="../resources/Script/auction.js"></script>
 
 </body>
 </html>

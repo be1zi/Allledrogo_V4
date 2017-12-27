@@ -39,7 +39,8 @@ public class AuctionModel {
     private String tmpDate;
     private String mainImage;
 
-    public Long getId() {
+
+        public Long getId() {
         return id;
     }
 
@@ -53,6 +54,14 @@ public class AuctionModel {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Double getBuyNowPrice() {
@@ -87,10 +96,6 @@ public class AuctionModel {
         this.startDate = startDate;
     }
 
-    public Calendar getEndDate() {
-        return endDate;
-    }
-
     public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
     }
@@ -103,44 +108,20 @@ public class AuctionModel {
         this.viewNumber = viewNumber;
     }
 
-    public boolean isAuctionType() {
-        return isAuctionType;
+    public List<BiddingModel> getBiddingList() {
+        return biddingList;
     }
 
-    public void setAuctionType(boolean auctionType) {
-        isAuctionType = auctionType;
+    public void setBiddingList(List<BiddingModel> biddingList) {
+        this.biddingList = biddingList;
     }
 
-    public boolean isBuyNowType() {
-        return isBuyNowType;
+    public List<UserModel> getUsersList() {
+        return usersList;
     }
 
-    public void setBuyNowType(boolean buyNowType) {
-        isBuyNowType = buyNowType;
-    }
-
-    public boolean isSold() {
-        return isSold;
-    }
-
-    public void setSold(boolean sold) {
-        isSold = sold;
-    }
-
-    public boolean isEnded() {
-        return isEnded;
-    }
-
-    public void setEnded(boolean ended) {
-        isEnded = ended;
-    }
-
-    public Double getEndPrice() {
-        return endPrice;
-    }
-
-    public void setEndPrice(Double endPrice) {
-        this.endPrice = endPrice;
+    public void setUsersList(List<UserModel> usersList) {
+        this.usersList = usersList;
     }
 
     public String getCategory() {
@@ -157,14 +138,6 @@ public class AuctionModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getState() {
@@ -199,6 +172,22 @@ public class AuctionModel {
         this.productionDate = productionDate;
     }
 
+    public boolean isAuctionType() {
+        return isAuctionType;
+    }
+
+    public void setAuctionType(boolean auctionType) {
+        isAuctionType = auctionType;
+    }
+
+    public boolean isBuyNowType() {
+        return isBuyNowType;
+    }
+
+    public void setBuyNowType(boolean buyNowType) {
+        isBuyNowType = buyNowType;
+    }
+
     public String getWarranty() {
         return warranty;
     }
@@ -206,6 +195,11 @@ public class AuctionModel {
     public void setWarranty(String warranty) {
         this.warranty = warranty;
     }
+
+    public Calendar getEndDate() {
+        return endDate;
+    }
+
 
     public List<PhotoModel> getFiles() {
         return files;
@@ -215,214 +209,29 @@ public class AuctionModel {
         this.files = files;
     }
 
-    public List<BiddingModel> getBiddingList() {
-        return biddingList;
+    public boolean isSold() {
+        return isSold;
     }
 
-    public void setBiddingList(List<BiddingModel> biddingList) {
-        this.biddingList = biddingList;
+    public void setSold(boolean sold) {
+        isSold = sold;
     }
 
-    public List<UserModel> getUsersList() {
-        return usersList;
+    public boolean isEnded() {
+        return isEnded;
     }
 
-    public void setUsersList(List<UserModel> usersList) {
-        this.usersList = usersList;
+    public void setEnded(boolean ended) {
+        isEnded = ended;
     }
 
-    //    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Long getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(Long userId) {
-//        this.userId = userId;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-//
-//    public void setDescription(String description) {
-//        this.description = description;
-//    }
-//
-//    public Double getBuyNowPrice() {
-//        return buyNowPrice;
-//    }
-//
-//    public void setBuyNowPrice(Double buyNowPrice) {
-//        this.buyNowPrice = buyNowPrice;
-//    }
-//
-//    public Double getBiddingPrice() {
-//        return biddingPrice;
-//    }
-//
-//    public void setBiddingPrice(Double biddingPrice) {
-//        this.biddingPrice = biddingPrice;
-//    }
-//
-//    public int getItemNumber() {
-//        return itemNumber;
-//    }
-//
-//    public void setItemNumber(int itemNumber) {
-//        this.itemNumber = itemNumber;
-//    }
-//
-//    public Calendar getStartDate() {
-//        return startDate;
-//    }
-//
-//    public void setStartDate(Calendar startDate) {
-//        this.startDate = startDate;
-//    }
-//
-//    public void setEndDate(Calendar endDate) {
-//        this.endDate = endDate;
-//    }
-//
-//    public int getViewNumber() {
-//        return viewNumber;
-//    }
-//
-//    public void setViewNumber(int viewNumber) {
-//        this.viewNumber = viewNumber;
-//    }
-//
-//    public List<BiddingModel> getBiddingList() {
-//        return biddingList;
-//    }
-//
-//    public void setBiddingList(List<BiddingModel> biddingList) {
-//        this.biddingList = biddingList;
-//    }
-//
-//    public List<UserModel> getUsersList() {
-//        return usersList;
-//    }
-//
-//    public void setUsersList(List<UserModel> usersList) {
-//        this.usersList = usersList;
-//    }
-//
-//    public String getCategory() {
-//        return category;
-//    }
-//
-//    public void setCategory(String category) {
-//        this.category = category;
-//    }
-//
-//    public String getTitle() {
-//        return title;
-//    }
-//
-//    public void setTitle(String title) {
-//        this.title = title;
-//    }
-//
-//    public String getState() {
-//        return state;
-//    }
-//
-//    public void setState(String state) {
-//        this.state = state;
-//    }
-//
-//    public String getColor() {
-//        return color;
-//    }
-//
-//    public void setColor(String color) {
-//        this.color = color;
-//    }
-//
-//    public String getDamaged() {
-//        return damaged;
-//    }
-//
-//    public void setDamaged(String damaged) {
-//        this.damaged = damaged;
-//    }
-//
-//    public String getProductionDate() {
-//        return productionDate;
-//    }
-//
-//    public void setProductionDate(String productionDate) {
-//        this.productionDate = productionDate;
-//    }
-//
-//    public boolean isAuctionType() {
-//        return isAuctionType;
-//    }
-//
-//    public void setAuctionType(boolean auctionType) {
-//        isAuctionType = auctionType;
-//    }
-//
-//    public boolean isBuyNowType() {
-//        return isBuyNowType;
-//    }
-//
-//    public void setBuyNowType(boolean buyNowType) {
-//        isBuyNowType = buyNowType;
-//    }
-//
-//    public String getWarranty() {
-//        return warranty;
-//    }
-//
-//    public void setWarranty(String warranty) {
-//        this.warranty = warranty;
-//    }
-//
-//    public Calendar getEndDate() {
-//        return endDate;
-//    }
-//
-//
-//    public List<PhotoModel> getFiles() {
-//        return files;
-//    }
-//
-//    public void setFiles(List<PhotoModel> files) {
-//        this.files = files;
-//    }
-//
-//    public boolean isSold() {
-//        return isSold;
-//    }
-//
-//    public void setSold(boolean sold) {
-//        isSold = sold;
-//    }
-//
-//    public boolean isEnded() {
-//        return isEnded;
-//    }
-//
-//    public void setEnded(boolean ended) {
-//        isEnded = ended;
-//    }
-//
-//    public Double getEndPrice() {
-//        return endPrice;
-//    }
-//
-//    public void setEndPrice(Double endPrice) {
-//        this.endPrice = endPrice;
-//    }
+    public Double getEndPrice() {
+        return endPrice;
+    }
+
+    public void setEndPrice(Double endPrice) {
+        this.endPrice = endPrice;
+    }
 
     @Transient
     public String getTmpDate() {
