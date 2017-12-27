@@ -167,7 +167,7 @@
                 </div>
                 <div class="col-md-6">
                     <auctionForm:input path="biddingPrice" type="number" class="form-control" id="priceAuction"
-                                       placeholder="Kwota" disabled="true" min="1" required=""/>
+                                       placeholder="Kwota" disabled="true" min="1" required="" step="0.01"/>
                 </div>
             </div>
         </div>
@@ -181,7 +181,7 @@
             </div>
             <div class="col-md-6">
                 <auctionForm:input path="buyNowPrice" type="number" class="form-control" id="priceBuyNow"
-                                   placeholder="Kwota" disabled="true" min="1" required=""/>
+                                   placeholder="Kwota" disabled="true" min="1" required="" step="0.01"/>
             </div>
         </div>
     </div>

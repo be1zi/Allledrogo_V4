@@ -68,27 +68,35 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="buyNow">
-                    <div class="row p-3">
-                        <div class="col-md-4 text-center"> <label class="text-secondary">${auction.buyNowPrice} zł </label> </div>
-                        <div class="col-md-4 text-center">
-                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}"> </div>
-                        <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Kup Teraz</button>
+                <c:choose>
+                    <c:when test="${not empty auction.buyNowPrice}">
+                        <div class="buyNow">
+                            <div class="row p-3">
+                                <div class="col-md-4 text-center"> <label class="text-secondary">${auction.buyNowPrice} zł </label> </div>
+                                <div class="col-md-4 text-center">
+                                    <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}"> </div>
+                                <div class="col-md-4 text-center">
+                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Kup Teraz</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="payInfo">
-                    <div class="row p-3">
-                        <div class="col-md-4">
-                            <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}"> </div>
-                        <div class="col-md-4 text-center">
-                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" > </div>
-                        <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Licytuj</button>
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty auction.biddingPrice}">
+                        <div class="payInfo">
+                            <div class="row p-3">
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01"> </div>
+                                <div class="col-md-4 text-center">
+                                    <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" > </div>
+                                <div class="col-md-4 text-center">
+                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Licytuj</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    </c:when>
+                </c:choose>
             </div>
         </div>
 

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import static java.lang.System.out;
+
 @Controller
 @RequestMapping("/auction")
 public class AuctionController {
@@ -61,6 +63,10 @@ public class AuctionController {
 
         if(auctionModel != null)
             modelAndView.addObject("auction",auctionModel);
+
+        out.println(auctionModel.toString());
+        out.println(auctionModel.isAuctionType());
+        out.println(auctionModel.isBuyNowType());
 
         return  modelAndView;
     }
