@@ -98,6 +98,19 @@ public class AuctionNetworkManager {
         return responseStatus(responseEntity, session);
     }
 
+    public static AuctionModel editAuction(Long id, Long userId, int viewNumber, HttpSession session){
+
+        Map<Object,Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("userId", userId);
+        map.put("viewNumber", viewNumber);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<AuctionModel> responseEntity = restTemplate.postForEntity(Constant.editAuction, map, AuctionModel.class);
+
+        return  responseStatus(responseEntity, session);
+    }
+
     private static AuctionModel responseStatus(ResponseEntity<AuctionModel> responseEntity, HttpSession session){
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {

@@ -29,7 +29,7 @@ public class AuctionController {
 
         DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(), "yyyy-MM-dd HH:mm");
         auctionModel.setTmpDate(dateFormatter.calendarToString());
-
+        auctionModel.setViewNumber(auctionModel.getViewNumber() + 1);
         String imageEncoded = null;
 
         // miniaturka
@@ -60,13 +60,10 @@ public class AuctionController {
             modelAndView.addObject("images", images);
         }
 
-
-        if(auctionModel != null)
-            modelAndView.addObject("auction",auctionModel);
-
-        out.println(auctionModel.toString());
-        out.println(auctionModel.isAuctionType());
-        out.println(auctionModel.isBuyNowType());
+        if(auctionModel != null) {
+            modelAndView.addObject("auction", auctionModel);
+            AuctionNetworkManager.editAuction(auctionModel.getId(), auctionModel.getUserId(), auctionModel.getViewNumber(),session);
+        }
 
         return  modelAndView;
     }
