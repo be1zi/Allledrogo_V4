@@ -1,9 +1,6 @@
 package com.belzowski.Funcjonaliities;
 
-import com.belzowski.Model.AuctionModel;
-import com.belzowski.Model.BiddingModel;
-import com.belzowski.Model.PhotoModel;
-import com.belzowski.Model.UserModel;
+import com.belzowski.Model.*;
 import com.belzowski.Network.AuctionNetworkManager;
 import com.belzowski.Network.ShoppingNetworkManager;
 import com.belzowski.Support.Enum.Shopping;
@@ -35,6 +32,9 @@ public class AuctionController {
         DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(), "yyyy-MM-dd HH:mm");
         auctionModel.setTmpDate(dateFormatter.calendarToString());
         auctionModel.setViewNumber(auctionModel.getViewNumber() + 1);
+
+        session.setAttribute("biddingList", null);
+
         String imageEncoded = null;
 
         // miniaturka
@@ -65,6 +65,7 @@ public class AuctionController {
             modelAndView.addObject("images", images);
         }
 
+        // lista licytujących
         if(auctionModel.getBiddingList() != null) {
 
             List<BiddingModel> biddingModelList = auctionModel.getBiddingList();
@@ -83,6 +84,12 @@ public class AuctionController {
                 bM.setTmpDate(dF.calendarToString());
             }
         }
+
+        //lista kupionych
+        List<TransactionModel> transactionModels = AuctionNetworkManager.getTransactions(auctionModel);
+
+        if(transactionModels != null )
+            session.setAttribute("transactions", transactionModels);
 
         if(auctionModel != null) {
             modelAndView.addObject("auction", auctionModel);
@@ -112,8 +119,9 @@ public class AuctionController {
     public String bidding(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, @PathVariable double price, HttpSession session){
 
         UserModel userModel = (UserModel)session.getAttribute("user");
-
         int isBuy = ShoppingNetworkManager.buy(auctionId, userId, userModel.getId(), itemNumber, price);
+
+        out.println(isBuy);
 
         if(isBuy == 0)
             session.setAttribute("shopping", Shopping.FAILURE);

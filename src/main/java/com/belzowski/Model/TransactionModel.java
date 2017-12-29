@@ -1,5 +1,6 @@
 package com.belzowski.Model;
 
+import java.beans.Transient;
 import java.util.Calendar;
 
 public class TransactionModel {
@@ -13,6 +14,9 @@ public class TransactionModel {
     private int itemNumber;
     private double price;
     private Calendar date;
+
+    private String tmpDate;
+
 
     public Long getId() {
         return id;
@@ -84,5 +88,15 @@ public class TransactionModel {
 
     public void setDate(Calendar date) {
         this.date = date;
+    }
+
+    @Transient
+    public String getTmpDate() {
+        return tmpDate;
+    }
+
+    @Transient
+    public void setTmpDate(String tmpDate) {
+        this.tmpDate = tmpDate;
     }
 }

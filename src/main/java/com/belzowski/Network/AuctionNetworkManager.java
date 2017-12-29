@@ -2,6 +2,7 @@ package com.belzowski.Network;
 
 import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.PhotoModel;
+import com.belzowski.Model.TransactionModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
@@ -109,6 +110,29 @@ public class AuctionNetworkManager {
         ResponseEntity<AuctionModel> responseEntity = restTemplate.postForEntity(Constant.editAuction, map, AuctionModel.class);
 
         return  responseStatus(responseEntity, session);
+    }
+
+    public static List<TransactionModel> getTransactions(AuctionModel auctionModel){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<TransactionModel[]> responseEntity = restTemplate.postForEntity(Constant.getTransactions, auctionModel, TransactionModel[].class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            TransactionModel[] transactionModels = responseEntity.getBody();
+            if(transactionModels.length == 0)
+                return new ArrayList<>();
+            else {
+                ArrayList<TransactionModel> result = new ArrayList<>();
+                for (TransactionModel tM: transactionModels) {
+                    DateFormatter dateFormatter = new DateFormatter(tM.getDate(),"yyyy-MM-dd HH:mm" );
+                    tM.setTmpDate(dateFormatter.calendarToString());
+                    result.add(tM);
+                }
+                return result;
+            }
+        }
+
+        return new ArrayList<>();
     }
 
     private static AuctionModel responseStatus(ResponseEntity<AuctionModel> responseEntity, HttpSession session){

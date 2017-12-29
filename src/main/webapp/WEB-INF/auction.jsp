@@ -2,6 +2,7 @@
 <%@ page import="com.belzowski.Model.BiddingModel" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="com.belzowski.Model.TransactionModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -154,7 +155,7 @@
                         <div class="payInfo">
                             <div class="row p-3">
                                 <div class="col-md-4">
-                                    <input type="number" id="biddingPriceInput" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01" value="${auction.biddingPrice}"> </div>
+                                    <input type="number" id="biddingPriceInput" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice} + 1" step="0.01" value="${auction.biddingPrice}"> </div>
                                 <div class="col-md-4 text-center">
                                     <c:choose>
                                         <c:when test="${auction.itemNumber == 1}">
@@ -317,7 +318,7 @@
                     </div>
                     <div class="form-group w-100"></div>
                 </div>
-                <div class="row">
+                <div class="row" style="padding-bottom: 30px">
                     <div class="col-md-12">
                         <table class="table">
                             <thead class="bg-warning text-white">
@@ -346,12 +347,52 @@
                         </table>
                     </div>
                 </div>
+                <hr class="style-seven"/>
             </div>
         </div>
     </c:when>
 
 </c:choose>
 
+<% List<TransactionModel> transactionModels =(ArrayList<TransactionModel>)session.getAttribute("transactions");
+    if(transactionModels != null && transactionModels.size()>0){
+        %>
+            <div class="py-5">
+                <div class="container bg-primary">
+                    <div class="row" style="padding-left:30px;padding-right:30px;">
+                        <div class="form-group w-100">
+                            <h3 style="padding-bottom:10px" class="text-secondary text-center">Kupione:</h3>
+                        </div>
+                        <div class="form-group w-100"></div>
+                    </div>
+                    <div class="row" style="padding-bottom: 30px">
+                        <div class="col-md-12">
+                            <table class="table">
+                                <thead class="bg-warning text-white">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Login</th>
+                                    <th>Ilość</th>
+                                    <th>Data</th>
+                                </tr>
+                                </thead>
+                                <tbody class="bg-primary text-secondary">
+                                    <%for(int i=0; i<transactionModels.size(); i++){%>
+                                        <tr>
+                                            <td><% out.println(i+1);%></td>
+                                            <td><% out.println(transactionModels.get(i).getUserModel().getLogin());%></td>
+                                            <td><% out.println(transactionModels.get(i).getItemNumber());%></td>
+                                            <td><% out.println(transactionModels.get(i).getTmpDate());%></td>
+                                        </tr>
+                                    <%}%>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <hr class="style-seven"/>
+                </div>
+            </div>
+<%}%>
 
 <jsp:include page="footer.jsp"></jsp:include>
 
