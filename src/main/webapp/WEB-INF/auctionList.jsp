@@ -1,18 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-
 <html>
-<head>
+<header>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="../resources/CSS/main.css">
     <link rel="stylesheet" href="../resources/CSS/home.css">
-    <link rel="stylesheet" href="../resources/CSS/footer.css">
+    <link rel="stylesheet" href="footer.css">
     <title>ALLLEDROGO</title>
-</head>
-<body>
 
+</header>
+<body>
 <jsp:include page="header.jsp"></jsp:include>
 
 <div class="py-5 bg-primary">
@@ -41,4 +38,5 @@
 <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
 </body>
+
 </html>

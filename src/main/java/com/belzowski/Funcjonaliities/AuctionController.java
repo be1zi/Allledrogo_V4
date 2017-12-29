@@ -2,11 +2,17 @@ package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.PhotoModel;
+import com.belzowski.Model.UserModel;
 import com.belzowski.Network.AuctionNetworkManager;
+import com.belzowski.Network.ShoppingNetworkManager;
+import com.belzowski.Support.Enum.Shopping;
 import com.belzowski.Support.Formatter.DateFormatter;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -68,11 +74,42 @@ public class AuctionController {
         return  modelAndView;
     }
 
-    @RequestMapping("/list/{category}")
-    public ModelAndView auctionList(@PathVariable String category){
+    @RequestMapping("/list")
+    public ModelAndView auctionList(){
 
         ModelAndView modelAndView = new ModelAndView("auctionList");
 
         return modelAndView;
+    }
+
+    @RequestMapping("/list/{category}")
+    public ModelAndView auctionsList(@PathVariable String category){
+
+        ModelAndView modelAndView = new ModelAndView("auctionList");
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/buyNow/{auctionId}/{userId}/{itemNumber}")
+    public String bought(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, HttpSession session){
+
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        int isBuy = ShoppingNetworkManager.buyNow(auctionId, userId,userModel.getId(), itemNumber);
+
+        if(isBuy == 0)
+            session.setAttribute("shopping", Shopping.FAILURE);
+        else if (isBuy == 1)
+            session.setAttribute("shopping", Shopping.SUCCESS);
+        else
+            session.setAttribute("shopping", Shopping.OWNAUCTION);
+
+        return "redirect:/";
+    }
+
+    @RequestMapping("/bidding/{auctionId}/{userId}/{itemNumber}/{price}")
+    public String bidding(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, @PathVariable double price, HttpSession session){
+
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        return "redirect:/";
     }
 }

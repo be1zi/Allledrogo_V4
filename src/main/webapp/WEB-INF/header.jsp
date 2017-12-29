@@ -44,7 +44,7 @@
         <div class="container-fluid">
             <div class="row border border-success">
                 <div class="col-md-1 border border-success">
-                        <a href="/auction/list/Elektronika">
+                        <a href="/auction/list">
                             <div class="row justify-content-center">
                                 <div class="icon p-3"> <i class="fa fa-desktop fa-3x"></i> </div>
                             </div>
@@ -57,14 +57,16 @@
                 </div>
 
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/Motoryzacja">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-car fa-3x"></i> </div>
                     </div>
                     <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
                         <div class="name">
-                            <h6>Motoryzajca</h6>
+                            <h6>Motoryzacja</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-1 border border-success">
                     <div class="row justify-content-center">

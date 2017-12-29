@@ -1,3 +1,5 @@
+<%@ page import="com.belzowski.Model.UserModel" %>
+<%@ page import="com.belzowski.Support.Enum.Shopping" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -7,6 +9,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" href="../resources/CSS/main.css">
     <link rel="stylesheet" href="../resources/CSS/home.css">
     <link rel="stylesheet" href="../resources/CSS/footer.css">
@@ -76,16 +83,65 @@
                                 <div class="col-md-4 text-center">
                                     <c:choose>
                                         <c:when test="${auction.itemNumber == 1}">
-                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
+                                            <input type="number" id="itemNumberInput" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
                                         </c:when>
                                         <c:otherwise>
-                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
+                                            <input type="number" id="itemNumberInput" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Kup Teraz</button>
+                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block" data-toggle="modal" data-target="#buyNowModal">Kup Teraz</button>
                                 </div>
+
+                                <div class="modal fade" id="buyNowModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <%
+                                            UserModel userModel = (UserModel)session.getAttribute("user");
+                                            if(userModel != null){
+                                        %>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Kup Teraz</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Czy jesteś pewny, że chcesz kupić ten przedmiot?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="buyNowButton" class="btn btn-warning text-white" data-dismiss="modal">Potwierdzam</button>
+                                                    <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Anuluj</button>
+                                            </div>
+                                        </div>
+                                        <%}else{ %>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Błąd</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Najpierw musisz się <b>zalogować </b>. Jeżeli jeszcze nie masz konta <b>zarejestruj się</b>.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
+                                                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/register" id="registerButton"><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zarejestruj</a>
+                                                <button type="button" class="btn btn-warning text-white" data-dismiss="modal" href="/auction/buyNow">Anuluj</button>
+                                            </div>
+                                        </div>
+                                        <%}%>
+
+                                    </div>
+                                </div>
+
+                                    <%--<% if(session.getAttribute("shopping") != null && session.getAttribute("shopping") != Shopping.DEFAULT) { %>--%>
+                                        <%--<% if(session.getAttribute("shopping") == Shopping.SUCCESS) { %>--%>
+                                             <%--<div id="snackbar">Kupiono przedmiot. Po szczegóły zajrzyj do zakładki <b>Kupione</b></div>--%>
+                                        <%--<%}else if(session.getAttribute("shopping") == Shopping.FAILURE){ %>--%>
+                                            <%--<div id="snackbar">Coś poszło nie tak. Spróbuj ponownie za chwilę.</div>--%>
+                                        <%--<%}else if(session.getAttribute("shoppiing").equals(Shopping.OWNAUCTION)){%>--%>
+                                            <%--<div id="snackbar">Nie możesz kupić własnego przedmiotu.</div>--%>
+                                        <%--<%}%>--%>
+                                 <%--<% } %>--%>
                             </div>
                         </div>
                     </c:when>
@@ -95,20 +151,60 @@
                         <div class="payInfo">
                             <div class="row p-3">
                                 <div class="col-md-4">
-                                    <input type="number" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01" value="${auction.biddingPrice}"> </div>
+                                    <input type="number" id="biddingPriceInput" class="form-control" placeholder="Cena" required="" min="${auction.biddingPrice}" step="0.01" value="${auction.biddingPrice}"> </div>
                                 <div class="col-md-4 text-center">
                                     <c:choose>
                                         <c:when test="${auction.itemNumber == 1}">
-                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
+                                            <input type="number" id="itemNumberInputBidding" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1" disabled="true">
                                         </c:when>
                                         <c:otherwise>
-                                            <input type="number" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
+                                            <input type="number" id="itemNumberInputBidding" class="form-control" placeholder="Ilość sztuk" required="" min="1" max="${auction.itemNumber}" value="1">
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
                                 <div class="col-md-4 text-center">
-                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Licytuj</button>
+                                    <button type="button" class="btn btn-warning p-2 text-white text-center btn-block" data-toggle="modal" data-target="#biddingModal">Licytuj</button>
                                 </div>
+
+                                <div class="modal fade" id="biddingModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <%
+                                            UserModel userModel = (UserModel)session.getAttribute("user");
+                                            if(userModel != null){
+                                        %>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Licytuj</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Czy jesteś pewny, że chcesz zalicytować ten przedmiot?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="biddingButton" class="btn btn-warning text-white" data-dismiss="modal">Potwierdzam</button>
+                                                <button type="button" class="btn btn-warning text-white" data-dismiss="modal">Anuluj</button>
+                                            </div>
+                                        </div>
+                                        <%}else{ %>
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Błąd</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Najpierw musisz się <b>zalogować </b>. Jeżeli jeszcze nie masz konta <b>zarejestruj się</b>.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
+                                                <a class="btn navbar-btn ml-2 text-white btn-warning" href="/register" ><i class="fa d-inline fa-lg fa-user-circle-o"></i>&nbsp; Zarejestruj</a>
+                                                <button type="button" class="btn btn-warning text-white" data-dismiss="modal" href="/auction/buyNow">Anuluj</button>
+                                            </div>
+                                        </div>
+                                        <%}%>
+
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </c:when>
@@ -254,7 +350,28 @@
 
 <jsp:include page="footer.jsp"></jsp:include>
 
-<script src="../resources/Script/auction.js"></script>
+<script>
+    $('#buyNowButton').on('click', function () {
+
+        $.ajax({
+            url: "/auction/buyNow/${auction.id}/${auction.userId}/" + $('#itemNumberInput').val(),
+            type: "POST"
+            });
+        window.location = "/auction/${auction.id}";
+
+    });
+
+    $('#biddingButton').on('click', function () {
+
+        $.ajax({
+            url: "/auction/bidding/${auction.id}/${auction.userId}/" + $('#itemNumberInputBidding').val() + "/" + $('#biddingPriceInput').val(),
+            type: "POST"
+        });
+        location.reload(true);
+        window.location = "/";
+
+    });
+</script>
 
 </body>
 </html>

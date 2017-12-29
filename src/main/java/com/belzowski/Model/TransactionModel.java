@@ -8,6 +8,8 @@ public class TransactionModel {
     private boolean isCommentSet;
     private UserModel userModel;
     private AuctionModel auctionModel;
+    private int itemNumber;
+    private double price;
 
     public Long getId() {
         return id;
@@ -55,5 +57,21 @@ public class TransactionModel {
 
     public void setAuctionModel(AuctionModel auctionModel) {
         this.auctionModel = auctionModel;
+    }
+
+    public int getItemNumber() {
+        return itemNumber;
+    }
+
+    public void setItemNumber(int itemNumber) {
+        this.itemNumber = itemNumber;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }
