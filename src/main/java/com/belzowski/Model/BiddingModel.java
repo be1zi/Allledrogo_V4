@@ -1,14 +1,18 @@
 package com.belzowski.Model;
 
-import java.sql.Date;
+import java.beans.Transient;
+import java.util.Calendar;
 
 public class BiddingModel {
 
     private Long id;
     private Double price;
     private int itemNumber;
-    private Date date;
+    private Calendar date;
     private UserModel userModel;
+    private String userLogin;
+
+    private String tmpDate;
 
     public Long getId() {
         return id;
@@ -34,11 +38,11 @@ public class BiddingModel {
         this.itemNumber = itemNumber;
     }
 
-    public Date getDate() {
+    public Calendar getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Calendar date) {
         this.date = date;
     }
 
@@ -48,5 +52,23 @@ public class BiddingModel {
 
     public void setUserModel(UserModel userModel) {
         this.userModel = userModel;
+    }
+
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
+
+    @Transient
+    public String getTmpDate() {
+        return tmpDate;
+    }
+
+    @Transient
+    public void setTmpDate(String tmpDate) {
+        this.tmpDate = tmpDate;
     }
 }

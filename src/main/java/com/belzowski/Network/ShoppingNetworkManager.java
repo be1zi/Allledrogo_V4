@@ -11,16 +11,17 @@ import static java.lang.System.out;
 
 public class ShoppingNetworkManager {
 
-    public static int buyNow(Long auctionId, Long ownerId, Long userId, int itemNumber){
+    public static int buy(Long auctionId, Long ownerId, Long userId, int itemNumber, double price){
 
         Map<Object, Object> map = new HashMap<>();
         map.put("auctionId",auctionId);
         map.put("ownerId", ownerId);
         map.put("userId", userId);
         map.put("itemNumber", itemNumber);
+        map.put("price", price);
 
         RestTemplate restTemplate = new RestTemplate();
-        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(Constant.buyNow, map ,Integer.class );
+        ResponseEntity<Integer> responseEntity = restTemplate.postForEntity(Constant.buyURL, map ,Integer.class );
 
         if(responseEntity.getStatusCode().is2xxSuccessful())
             return responseEntity.getBody().intValue();

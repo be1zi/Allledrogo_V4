@@ -1,6 +1,7 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Model.BiddingModel;
 import com.belzowski.Model.PhotoModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.AuctionNetworkManager;
@@ -17,9 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.System.out;
 
@@ -66,6 +65,25 @@ public class AuctionController {
             modelAndView.addObject("images", images);
         }
 
+        if(auctionModel.getBiddingList() != null) {
+
+            List<BiddingModel> biddingModelList = auctionModel.getBiddingList();
+
+            Collections.sort(biddingModelList, new Comparator<BiddingModel>() {
+                @Override
+                public int compare(BiddingModel o1, BiddingModel o2) {
+                    return o2.getPrice().compareTo(o1.getPrice());
+                }
+            });
+
+            session.setAttribute("biddingList", auctionModel.getBiddingList());
+
+            for (BiddingModel bM: biddingModelList) {
+                DateFormatter dF = new DateFormatter(bM.getDate(),"yyyy-MM-dd HH:mm");
+                bM.setTmpDate(dF.calendarToString());
+            }
+        }
+
         if(auctionModel != null) {
             modelAndView.addObject("auction", auctionModel);
             AuctionNetworkManager.editAuction(auctionModel.getId(), auctionModel.getUserId(), auctionModel.getViewNumber(),session);
@@ -90,11 +108,12 @@ public class AuctionController {
         return modelAndView;
     }
 
-    @RequestMapping("/buyNow/{auctionId}/{userId}/{itemNumber}")
-    public String bought(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, HttpSession session){
+    @RequestMapping("/buy/{auctionId}/{userId}/{itemNumber}/{price}")
+    public String bidding(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, @PathVariable double price, HttpSession session){
 
         UserModel userModel = (UserModel)session.getAttribute("user");
-        int isBuy = ShoppingNetworkManager.buyNow(auctionId, userId,userModel.getId(), itemNumber);
+
+        int isBuy = ShoppingNetworkManager.buy(auctionId, userId, userModel.getId(), itemNumber, price);
 
         if(isBuy == 0)
             session.setAttribute("shopping", Shopping.FAILURE);
@@ -103,13 +122,6 @@ public class AuctionController {
         else
             session.setAttribute("shopping", Shopping.OWNAUCTION);
 
-        return "redirect:/";
-    }
-
-    @RequestMapping("/bidding/{auctionId}/{userId}/{itemNumber}/{price}")
-    public String bidding(@PathVariable Long auctionId, @PathVariable Long userId, @PathVariable int itemNumber, @PathVariable double price, HttpSession session){
-
-        UserModel userModel = (UserModel)session.getAttribute("user");
         return "redirect:/";
     }
 }

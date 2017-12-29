@@ -15,8 +15,11 @@ public class Constant {
     public static String getMyAuction = restURL + "/sale/getMyAuction";
     public static String getAuction = restURL + "/auction/get";
     public static String editAuction = restURL + "/auction/edit";
-    public static String buyNow = restURL + "/shopping/buy";
 
+    //shopping
+//    public static String buyNow = restURL + "/shopping/buy";
+//    public static String bidding = restURL + "/shopping/bidding";
+    public static String buyURL = restURL + "/shopping/buy";
 
     //Home - Dashboard
     public static String getHomeAuction = restURL + "/home/get";

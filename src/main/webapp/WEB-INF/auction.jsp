@@ -1,7 +1,10 @@
 <%@ page import="com.belzowski.Model.UserModel" %>
-<%@ page import="com.belzowski.Support.Enum.Shopping" %>
+<%@ page import="com.belzowski.Model.BiddingModel" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <html>
@@ -304,9 +307,16 @@
 </div>
 
 <c:choose>
-    <c:when test="${ empty auction.biddingList}">
+    <c:when test="${not empty auction.biddingList}">
+
         <div class="py-5">
             <div class="container bg-primary">
+                <div class="row" style="padding-left:30px;padding-right:30px;">
+                    <div class="form-group w-100">
+                        <h3 style="padding-bottom:10px" class="text-secondary text-center">Licytacja:</h3>
+                    </div>
+                    <div class="form-group w-100"></div>
+                </div>
                 <div class="row">
                     <div class="col-md-12">
                         <table class="table">
@@ -314,29 +324,24 @@
                             <tr>
                                 <th>#</th>
                                 <th>Login</th>
+                                <th>Ilość</th>
                                 <th>Cena</th>
                                 <th>Data</th>
                             </tr>
                             </thead>
                             <tbody class="bg-primary text-secondary">
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>Otto</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>Otto</td>
-                            </tr>
+                            <%
+                                List<BiddingModel> biddingModelList = (ArrayList<BiddingModel>)session.getAttribute("biddingList");
+                                if(biddingModelList != null){
+                                    for( int i=0 ; i < biddingModelList.size(); i++){%>
+                                        <tr>
+                                            <td><% out.print(i+1); %></td>
+                                            <td><% out.print(biddingModelList.get(i).getUserLogin()); %></td>
+                                            <td><% out.print(biddingModelList.get(i).getItemNumber()); %></td>
+                                            <td><% out.print(biddingModelList.get(i).getPrice()); %></td>
+                                            <td><% out.print(biddingModelList.get(i).getTmpDate()); %></td>
+                                        </tr>
+                            <%}}%>
                             </tbody>
                         </table>
                     </div>
@@ -354,8 +359,11 @@
     $('#buyNowButton').on('click', function () {
 
         $.ajax({
-            url: "/auction/buyNow/${auction.id}/${auction.userId}/" + $('#itemNumberInput').val(),
-            type: "POST"
+            url: "/auction/buy/${auction.id}/${auction.userId}/" + $('#itemNumberInput').val() + "/" + 0.0,
+            type: "POST",
+            success: function () {
+                window.location = "/auction/${auction.id}";
+            }
             });
         window.location = "/auction/${auction.id}";
 
@@ -364,11 +372,13 @@
     $('#biddingButton').on('click', function () {
 
         $.ajax({
-            url: "/auction/bidding/${auction.id}/${auction.userId}/" + $('#itemNumberInputBidding').val() + "/" + $('#biddingPriceInput').val(),
-            type: "POST"
+            url: "/auction/buy/${auction.id}/${auction.userId}/" + $('#itemNumberInputBidding').val() + "/" + $('#biddingPriceInput').val(),
+            type: "POST",
+            success: function () {
+                window.location = "/auction/${auction.id}";
+            }
         });
-        location.reload(true);
-        window.location = "/";
+        window.location = "/auction/${auction.id}";
 
     });
 </script>

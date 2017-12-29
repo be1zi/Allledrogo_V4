@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="text-white bg-primary">
-    <div class="container">
+    <div class="container" style="padding-top: 50px">
         <div class="row">
             <div class="p-4 col-md-4">
                 <h2 class="mb-4 text-secondary">ALLLEDROGO</h2>

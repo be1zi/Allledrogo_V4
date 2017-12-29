@@ -1,5 +1,7 @@
 package com.belzowski.Model;
 
+import java.util.Calendar;
+
 public class TransactionModel {
 
     private Long id;
@@ -10,6 +12,7 @@ public class TransactionModel {
     private AuctionModel auctionModel;
     private int itemNumber;
     private double price;
+    private Calendar date;
 
     public Long getId() {
         return id;
@@ -73,5 +76,13 @@ public class TransactionModel {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Calendar getDate() {
+        return date;
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 }
