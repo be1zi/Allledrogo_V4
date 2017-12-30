@@ -1,5 +1,6 @@
 package com.belzowski.Network;
 
+import com.belzowski.Model.BiddingModel;
 import com.belzowski.Model.TransactionModel;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
@@ -47,6 +48,29 @@ public class ShoppingNetworkManager {
                     tM.setTmpDate(dateFormatter.calendarToString());
                     result.add(tM);
                 }
+                return result;
+            }
+        }
+
+        return new ArrayList<>();
+    }
+
+    public static List<BiddingModel> getAuctioned(String login){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<BiddingModel[]> responseEntity = restTemplate.postForEntity(Constant.getAuctionedURL, login, BiddingModel[].class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            if(responseEntity.getBody() != null){
+
+                List<BiddingModel> result = new ArrayList<>();
+
+                for (BiddingModel bM: responseEntity.getBody()) {
+                    DateFormatter dateFormatter = new DateFormatter(bM.getDate(),"yyyy-MM-dd HH:mm" );
+                    bM.setTmpDate(dateFormatter.calendarToString());
+                    result.add(bM);
+                }
+
                 return result;
             }
         }

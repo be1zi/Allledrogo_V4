@@ -1,5 +1,6 @@
 package com.belzowski.Funcjonaliities;
 
+import com.belzowski.Model.BiddingModel;
 import com.belzowski.Model.TransactionModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.ShoppingNetworkManager;
@@ -59,7 +60,9 @@ public class ShoppingController {
 
         session.setAttribute("content", Content.Auctioned);
         ModelAndView modelAndView = new ModelAndView("shopping");
-
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        List<BiddingModel> biddingModels = ShoppingNetworkManager.getAuctioned(userModel.getLogin());
+        modelAndView.addObject("list", biddingModels);
         return modelAndView;
     }
 

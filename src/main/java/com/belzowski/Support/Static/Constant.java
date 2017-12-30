@@ -20,6 +20,7 @@ public class Constant {
     //shopping
     public static String buyURL = restURL + "/shopping/buy";
     public static String getBoughtURL = restURL + "/shopping/bought";
+    public static String getAuctionedURL = restURL + "/shopping/auctioned";
 
     //sale
     public static String getSoldAuctionURL = restURL + "/sale/getSold";

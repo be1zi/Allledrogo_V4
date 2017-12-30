@@ -11,8 +11,11 @@ public class BiddingModel {
     private Calendar date;
     private UserModel userModel;
     private String userLogin;
-
+    private String ownerLogin;
+    private Long auctionId;
+    private String auctionTitle;
     private String tmpDate;
+
 
     public Long getId() {
         return id;
@@ -70,5 +73,29 @@ public class BiddingModel {
     @Transient
     public void setTmpDate(String tmpDate) {
         this.tmpDate = tmpDate;
+    }
+
+    public String getOwnerLogin() {
+        return ownerLogin;
+    }
+
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
+    }
+
+    public Long getAuctionId() {
+        return auctionId;
+    }
+
+    public void setAuctionId(Long auctionId) {
+        this.auctionId = auctionId;
+    }
+
+    public String getAuctionTitle() {
+        return auctionTitle;
+    }
+
+    public void setAuctionTitle(String auctionTitle) {
+        this.auctionTitle = auctionTitle;
     }
 }
