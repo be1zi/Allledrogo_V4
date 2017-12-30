@@ -135,6 +135,28 @@ public class AuctionNetworkManager {
         return new ArrayList<>();
     }
 
+    public static List<TransactionModel> getSold(String login){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<TransactionModel[]> responseEntity = restTemplate.postForEntity(Constant.getSoldAuctionURL, login, TransactionModel[].class);
+
+        TransactionModel[] array = responseEntity.getBody();
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            ArrayList<TransactionModel> result = new ArrayList<>();
+            for (TransactionModel tM: array) {
+                DateFormatter dateFormatter = new DateFormatter(tM.getDate(), "yyyy-MM-dd HH:mm");
+                tM.setTmpDate(dateFormatter.calendarToString());
+                result.add(tM);
+            }
+            return result;
+        }
+
+        return new ArrayList<>();
+    }
+
+
+
+
     private static AuctionModel responseStatus(ResponseEntity<AuctionModel> responseEntity, HttpSession session){
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {

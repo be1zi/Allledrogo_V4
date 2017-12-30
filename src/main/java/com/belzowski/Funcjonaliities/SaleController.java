@@ -2,6 +2,7 @@ package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.PhotoModel;
+import com.belzowski.Model.TransactionModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.AuctionNetworkManager;
 import com.belzowski.Support.Enum.Content;
@@ -143,9 +144,8 @@ public class SaleController {
         session.setAttribute("content", Content.Sold);
         ModelAndView modelAndView = new ModelAndView("sale");
         UserModel userModel = (UserModel) session.getAttribute("user");
-        List<AuctionModel> auctionModelList = AuctionNetworkManager.getMyAuction(userModel, true, true, session);
-        modelAndView.addObject("list", auctionModelList);
-
+        List<TransactionModel> transactionModels = AuctionNetworkManager.getSold(userModel.getLogin());
+        modelAndView.addObject("list", transactionModels);
         return modelAndView;
     }
 

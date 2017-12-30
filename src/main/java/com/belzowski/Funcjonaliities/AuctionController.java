@@ -121,8 +121,6 @@ public class AuctionController {
         UserModel userModel = (UserModel)session.getAttribute("user");
         int isBuy = ShoppingNetworkManager.buy(auctionId, userId, userModel.getId(), itemNumber, price);
 
-        out.println(isBuy);
-
         if(isBuy == 0)
             session.setAttribute("shopping", Shopping.FAILURE);
         else if (isBuy == 1)
