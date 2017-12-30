@@ -1,3 +1,4 @@
+<%@ page import="com.belzowski.Support.Enum.Content" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
@@ -23,13 +24,24 @@
             <div class="col-md-3">
                 <ul class="list-group">
                     <li class="list-group-item bg-warning text-white"><i class="fa fa-fw fa-shopping-basket"></i>&nbsp;&nbsp;Zakupy </li>
-                    <li class="list-group-item list-group-item-action text-secondary">Kupione</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Licytowane</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Obserwowane</li>
-                    <li class="list-group-item list-group-item-action text-secondary">Niekupione</li>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/shopping/bought">Kupione</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/shopping/auctioned">Licytowane</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/shopping/observed">Obserwowane</a>
+                    <a class="list-group-item list-group-item-action text-secondary" href="/shopping/notBought">Niekupione</a>
                 </ul>
             </div>
-            <div class="col-md-7"></div>
+            <div class="col-md-7 border border-success" style="padding-top: 25px; padding-bottom: 25px">
+                <% if(session.getAttribute("content") == Content.Bought) {%>
+                <jsp:include page="Shopping/bought.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.NotBought){ %>
+                <jsp:include page="Shopping/notBought.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Auctioned){ %>
+                <jsp:include page="Shopping/auctioned.jsp"></jsp:include>
+                <% }else if(session.getAttribute("content") == Content.Observed) {%>
+                <jsp:include page="Shopping/observed.jsp"></jsp:include>
+                <% } %>
+
+            </div>
             <div class="col-md-1"></div>
         </div>
     </div>

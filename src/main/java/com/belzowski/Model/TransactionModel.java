@@ -17,7 +17,7 @@ public class TransactionModel {
     private Calendar date;
 
     private String tmpDate;
-
+    private String ownerLogin;
 
     public Long getId() {
         return id;
@@ -107,5 +107,13 @@ public class TransactionModel {
 
     public void setUserLogin(String userLogin) {
         this.userLogin = userLogin;
+    }
+
+    public String getOwnerLogin() {
+        return ownerLogin;
+    }
+
+    public void setOwnerLogin(String ownerLogin) {
+        this.ownerLogin = ownerLogin;
     }
 }
