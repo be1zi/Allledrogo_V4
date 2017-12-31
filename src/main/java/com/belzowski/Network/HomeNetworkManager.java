@@ -3,6 +3,7 @@ package com.belzowski.Network;
 import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.PhotoModel;
 import com.belzowski.Support.Enum.Alert;
+import com.belzowski.Support.Formatter.DataTypeFormatter;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
@@ -30,37 +31,8 @@ public class HomeNetworkManager {
             AuctionModel[] result = responseEntity.getBody();
             List<AuctionModel> auctionModels = new ArrayList<>();
 
-            for(int i=0; i<result.length;i++){
-                AuctionModel auctionModel = result[i];
-                DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(),"yyyy-MM-dd HH:mm" );
-                auctionModel.setTmpDate(dateFormatter.calendarToString());
+            auctionModels = DataTypeFormatter.arrayToList(result);
 
-                PhotoModel mainImage = null;
-                if(auctionModel.getFiles().get(0).getImage() == null){
-                    auctionModel.setMainImage("photoPlaceholder");
-                    auctionModels.add(auctionModel);
-                    continue;
-                }
-
-                String imageEncoded = null;
-                try {
-                    mainImage = auctionModel.getFiles().get(0);
-                    byte[] image = Base64.getEncoder().encode(mainImage.getImage());
-                    try {
-                        imageEncoded = new String(image, "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        auctionModel.setMainImage("photoPlaceholder");
-                        auctionModels.add(auctionModel);
-                        continue;
-                    }
-                    auctionModel.setMainImage(imageEncoded);
-                }catch (IndexOutOfBoundsException ee){
-                    auctionModel.setMainImage("photoPlaceholder");
-                    auctionModels.add(auctionModel);
-                    continue;
-                }
-                auctionModels.add(auctionModel);
-            }
             return auctionModels;
         }
 

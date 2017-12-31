@@ -4,6 +4,7 @@ import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.PhotoModel;
 import com.belzowski.Model.TransactionModel;
 import com.belzowski.Model.UserModel;
+import com.belzowski.Support.Formatter.DataTypeFormatter;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
@@ -44,51 +45,14 @@ public class AuctionNetworkManager {
 
         if(responseEntity.getStatusCode().is2xxSuccessful()){
             session.setAttribute("alert", Alert.OK);
+
             AuctionModel[] result = responseEntity.getBody();
-            List<AuctionModel> myAuctionList = new ArrayList<>();
+            List<AuctionModel> auctionModels = DataTypeFormatter.arrayToList(result);
 
-            for(int i=0; i<result.length; i++){
-                AuctionModel auctionModel = result[i];
-
-                DateFormatter dateFormatter = new DateFormatter(auctionModel.getEndDate(),"yyyy-MM-dd HH:mm");
-                auctionModel.setTmpDate(dateFormatter.calendarToString());
-
-
-                PhotoModel mainImage = null;
-
-                if(auctionModel.getFiles() == null){
-                    auctionModel.setMainImage("photoPlaceholder");
-                    myAuctionList.add(auctionModel);
-                    continue;
-                }
-
-                try {
-                    mainImage = auctionModel.getFiles().get(0);
-                    byte[] image = Base64.getEncoder().encode(mainImage.getImage());
-                    String imageEncoded = null;
-                    try {
-                        imageEncoded = new String(image, "UTF-8");
-                    } catch (UnsupportedEncodingException e) {
-                        auctionModel.setMainImage("photoPlaceholder");
-                        myAuctionList.add(auctionModel);
-                        continue;
-                    }
-                    auctionModel.setMainImage(imageEncoded);
-
-                }catch (IndexOutOfBoundsException ee){
-                    auctionModel.setMainImage("photoPlaceholder");
-                    myAuctionList.add(auctionModel);
-
-                    continue;
-                }
-
-                myAuctionList.add(auctionModel);
-            }
-            return myAuctionList;
-        }else{
-            session.setAttribute("alert", Alert.FOUND);
+            return auctionModels;
         }
-        return null;
+
+        return new ArrayList<>();
     }
 
     public static AuctionModel getAuction(Long id, HttpSession session){
