@@ -27,6 +27,7 @@ public class Constant {
 
     //Home - Dashboard
     public static String getHomeAuction = restURL + "/home/get";
+    public static String getAuctionsByCategory = restURL + "/auction/searchByCategory";
 
     //test
     public static String testObjectURL = restURL + "/test/21";

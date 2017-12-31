@@ -154,6 +154,27 @@ public class AuctionNetworkManager {
         return new ArrayList<>();
     }
 
+    public static List<AuctionModel> getListByCategory(String category){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getAuctionsByCategory, category, AuctionModel[].class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            AuctionModel[] array = responseEntity.getBody();
+            List<AuctionModel> result = new ArrayList<>();
+
+            for(AuctionModel aM : array){
+                DateFormatter dateFormatter = new DateFormatter(aM.getEndDate(),"yyyy-MM-dd HH:mm");
+                aM.setTmpDate(dateFormatter.calendarToString());
+                result.add(aM);
+            }
+
+            return result;
+        }
+
+        return new ArrayList<>();
+    }
+
 
 
 

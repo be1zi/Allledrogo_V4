@@ -3,18 +3,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
 <nav class="navbar sticky-top navbar-expand-md bg-primary navbar-dark p-3">
     <div class="container-fluid">
         <a class="navbar-brand" href="/"><i class="fa fa-lg fa-cloud text-secondary d-inline"></i><b id="brand" class="text-secondary">&nbsp; ALLLEDROGO</b></a>
+
         <button class="navbar-toggler navbar-toggler-right" href="/" type="button" data-toggle="collapse" data-target="#navbar2SupportedContent"
                 aria-controls="navbar2SupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+
         <div class="collapse navbar-collapse justify-content-center text-center" id="navbar2SupportedContent">
             <div class="col-md-7 text-center">
                 <form class="form-inline m-0">
                     <div class="search navbar-collapse justify-content-end">
-                        <input class="form-control mr-4 text-left w-50" type="text" placeholder="Szukaj">
-                        <button class="btn btn-warning text-white text-center" type="submit" data-toggle=""><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Szukaj</button>
+                        <input class="form-control mr-4 text-left w-50" id="searchInput" type="text" placeholder="Szukaj">
+                        <%--<button class="btn btn-warning text-white text-center" id="searchButton" type="button" ><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Szukaj</button>--%>
+                        <a class="btn btn-warning text-white text-center" id="searchButton" type="button" href="/search/">Szukaj</a>
                     </div>
                 </form>
             </div>
@@ -44,7 +50,7 @@
         <div class="container-fluid">
             <div class="row border border-success">
                 <div class="col-md-1 border border-success">
-                        <a href="/auction/list">
+                        <a href="/auction/list/${"Elektronika"}">
                             <div class="row justify-content-center">
                                 <div class="icon p-3"> <i class="fa fa-desktop fa-3x"></i> </div>
                             </div>
@@ -57,7 +63,7 @@
                 </div>
 
                 <div class="col-md-1 border border-success">
-                    <a href="/auction/list/Motoryzacja">
+                    <a href="/auction/list/${"Motoryzacja"}">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-car fa-3x"></i> </div>
                     </div>
@@ -68,17 +74,25 @@
                     </div>
                     </a>
                 </div>
+
+
+
+
                 <div class="col-md-1 border border-success">
-                    <div class="row justify-content-center">
-                        <div class="icon p-3"> <i class="fa fa-tags fa-3x"></i> </div>
-                    </div>
-                    <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
-                        <div class="name">
-                            <h6>Moda</h6>
+                    <a id="category" href="/auction/list/${"Moda"}">
+                         <div class="row justify-content-center">
+                            <div class="icon p-3"> <i class="fa fa-tags fa-3x"></i> </div>
                         </div>
-                    </div>
+                        <div class="row justify-content-center text-secondary" style="padding-bottom: 10px">
+                            <div class="name">
+                                <h6>Moda</h6>
+                            </div>
+                        </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Kultura"}">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-book fa-3x"></i> </div>
                     </div>
@@ -87,8 +101,11 @@
                             <h6 class="text-center">Kultura</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Dom"}">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-home fa-3x"></i> </div>
                     </div>
@@ -97,8 +114,12 @@
                             <h6 class="text-center">Dom</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Ogród"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-envira fa-3x"></i> </div>
                     </div>
@@ -107,8 +128,11 @@
                             <h6 class="text-center">Ogród</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Dziecko"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-futbol-o fa-3x"></i> </div>
                     </div>
@@ -117,8 +141,12 @@
                             <h6 class="text-center">Dziecko</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Sport"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-bicycle fa-3x"></i> </div>
                     </div>
@@ -127,8 +155,11 @@
                             <h6 class="text-center">Sport</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Wypoczynek"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-plane fa-3x"></i> </div>
                     </div>
@@ -137,8 +168,12 @@
                             <h6 class="text-center">Wypoczynek</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Jedzenie"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-cutlery fa-3x"></i> </div>
                     </div>
@@ -147,8 +182,12 @@
                             <h6 class="text-center">Jedzenie</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
+
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Sztuke"}">
+
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-paint-brush fa-3x"></i> </div>
                     </div>
@@ -157,8 +196,10 @@
                             <h6 class="text-center">Sztuka</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
                 <div class="col-md-1 border border-success">
+                    <a href="/auction/list/${"Usługi"}">
                     <div class="row justify-content-center">
                         <div class="icon p-3"> <i class="fa fa-at fa-3x"></i> </div>
                     </div>
@@ -167,8 +208,65 @@
                             <h6 class="text-center">Usługi</h6>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
         </div>
 
 </div>
+
+<script type="text/javascript">
+
+    $('#category').on('click',function () {
+       console.log("click");
+
+    });
+
+</script>
+
+<%--<script>--%>
+    <%--$("#searchInput").on('change', function () {--%>
+        <%--console.log('Click');--%>
+        <%--sessionStorage.setItem('search', $('#searchInput').val());--%>
+
+<%--//        $.ajax({--%>
+<%--//            url: "/search/" + $('#searchInput').val(),--%>
+<%--//            type: "POST",--%>
+<%--//            success: function (response) {--%>
+<%--////               window.location = "/search/";--%>
+<%--//                window.location.replace(response.url);--%>
+<%--//            }--%>
+<%--//        }) ;--%>
+    <%--});--%>
+
+    <%--$('#searchInput').on("change paste keyup",function () {--%>
+       <%--console.log("123");--%>
+       <%--$.cookie('search', $("#searchInput").val());--%>
+    <%--});--%>
+
+
+
+    <%--&lt;%&ndash;$('#testButton').on('click', function () {&ndash;%&gt;--%>
+       <%--&lt;%&ndash;$.ajax({&ndash;%&gt;--%>
+           <%--&lt;%&ndash;url: "/search/" + $('#searchInput').val(),&ndash;%&gt;--%>
+           <%--&lt;%&ndash;type: "POST",&ndash;%&gt;--%>
+           <%--&lt;%&ndash;success: function (response) {&ndash;%&gt;--%>
+<%--&lt;%&ndash;//               window.location = "/search/";&ndash;%&gt;--%>
+               <%--&lt;%&ndash;window.location.replace(response.url);&ndash;%&gt;--%>
+           <%--&lt;%&ndash;}&ndash;%&gt;--%>
+       <%--&lt;%&ndash;}) ;&ndash;%&gt;--%>
+    <%--&lt;%&ndash;});&ndash;%&gt;--%>
+
+    <%--&lt;%&ndash;&lt;%&ndash;$('#biddingButton').on('click', function () {&ndash;%&gt;&ndash;%&gt;--%>
+
+        <%--&lt;%&ndash;&lt;%&ndash;$.ajax({&ndash;%&gt;&ndash;%&gt;--%>
+            <%--&lt;%&ndash;&lt;%&ndash;url: "/auction/buy/${auction.id}/${auction.userId}/" + $('#itemNumberInputBidding').val() + "/" + $('#biddingPriceInput').val(),&ndash;%&gt;&ndash;%&gt;--%>
+            <%--&lt;%&ndash;&lt;%&ndash;type: "POST",&ndash;%&gt;&ndash;%&gt;--%>
+            <%--&lt;%&ndash;&lt;%&ndash;success: function () {&ndash;%&gt;&ndash;%&gt;--%>
+                <%--&lt;%&ndash;&lt;%&ndash;window.location = "/auction/${auction.id}";&ndash;%&gt;&ndash;%&gt;--%>
+            <%--&lt;%&ndash;&lt;%&ndash;}&ndash;%&gt;&ndash;%&gt;--%>
+        <%--&lt;%&ndash;&lt;%&ndash;});&ndash;%&gt;&ndash;%&gt;--%>
+        <%--&lt;%&ndash;&lt;%&ndash;window.location = "/auction/${auction.id}";&ndash;%&gt;&ndash;%&gt;--%>
+
+    <%--&lt;%&ndash;&lt;%&ndash;});&ndash;%&gt;&ndash;%&gt;--%>
+<%--</script>--%>

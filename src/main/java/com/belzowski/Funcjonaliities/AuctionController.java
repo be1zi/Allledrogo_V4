@@ -99,19 +99,14 @@ public class AuctionController {
         return  modelAndView;
     }
 
-    @RequestMapping("/list")
-    public ModelAndView auctionList(){
-
-        ModelAndView modelAndView = new ModelAndView("auctionList");
-
-        return modelAndView;
-    }
-
     @RequestMapping("/list/{category}")
     public ModelAndView auctionsList(@PathVariable String category){
 
         ModelAndView modelAndView = new ModelAndView("auctionList");
+        List<AuctionModel> auctionModels = AuctionNetworkManager.getListByCategory(category);
+        modelAndView.addObject("list", auctionModels);
 
+        out.println(auctionModels.size());
         return modelAndView;
     }
 
