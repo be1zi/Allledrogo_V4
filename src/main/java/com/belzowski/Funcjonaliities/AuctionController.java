@@ -134,7 +134,18 @@ public class AuctionController {
 
         if(isDeleted)
             return "redirect:/sale/notsold";
-        else
-            return "redirect:/sale/mysale";
+
+        return "redirect:/sale/mysale";
+    }
+
+    @RequestMapping("/addagain/{id}/{userId}")
+    public String addAgain(@PathVariable("id") Long id, @PathVariable("userId") Long userId){
+
+        boolean isAdded = AuctionNetworkManager.addAgain(id, userId);
+
+        if(isAdded)
+            return "redirect:/sale/mysales";
+
+        return "redirect:/sale/notsale";
     }
 }

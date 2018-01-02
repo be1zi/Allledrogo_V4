@@ -12,11 +12,10 @@ public class Constant {
 
     //Auction
     public static String addAuction = restURL + "/sale/add";
-    public static String getMyAuction = restURL + "/sale/getMyAuction";
     public static String getAuction = restURL + "/auction/get";
     public static String editAuction = restURL + "/auction/edit";
-    public static String getTransactions = restURL + "/shopping/transactions";
     public static String deleteAuctionURL = restURL + "/auction/delete";
+    public static String addAuctionAgain = restURL + "/auction/addagain";
 
     //shopping
     public static String buyURL = restURL + "/shopping/buy";
@@ -24,7 +23,9 @@ public class Constant {
     public static String getAuctionedURL = restURL + "/shopping/auctioned";
 
     //sale
+    public static String getMyAuction = restURL + "/sale/getMyAuction";
     public static String getSoldAuctionURL = restURL + "/sale/getSold";
+    public static String getTransactions = restURL + "/shopping/transactions";
 
     //Home - Dashboard
     public static String getHomeAuction = restURL + "/home/get";

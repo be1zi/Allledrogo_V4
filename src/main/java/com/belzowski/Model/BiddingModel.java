@@ -9,13 +9,12 @@ public class BiddingModel {
     private Double price;
     private int itemNumber;
     private Calendar date;
-    private UserModel userModel;
+    private UserModel userId;
     private String userLogin;
     private String ownerLogin;
     private Long auctionId;
     private String auctionTitle;
     private String tmpDate;
-
 
     public Long getId() {
         return id;
@@ -49,12 +48,12 @@ public class BiddingModel {
         this.date = date;
     }
 
-    public UserModel getUserModel() {
-        return userModel;
+    public UserModel getUserId() {
+        return userId;
     }
 
-    public void setUserModel(UserModel userModel) {
-        this.userModel = userModel;
+    public void setUserId(UserModel userId) {
+        this.userId = userId;
     }
 
     public String getUserLogin() {

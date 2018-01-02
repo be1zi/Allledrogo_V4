@@ -133,6 +133,20 @@ public class AuctionNetworkManager {
         return false;
     }
 
+    public static boolean addAgain(Long id, Long userId){
+        Map<Object,Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("userId", userId);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> responseEntity = restTemplate.postForEntity(Constant.addAuctionAgain,map,Boolean.class );
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            return responseEntity.getBody().booleanValue();
+        }
+
+        return false;
+    }
+
     public static List<AuctionModel> getListByCategory(String category){
 
         RestTemplate restTemplate = new RestTemplate();

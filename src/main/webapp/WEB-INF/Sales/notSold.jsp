@@ -53,7 +53,8 @@
                                     <h5 class="auctionItem text-secondary text-left p-2">Wystaw ponownie (7 dni): </h5>
                                 </div>
                                 <dic class="col-md-4">
-                                    <button type="button" class="btn btn-warning btn-block p-2 text-white text-center">Wystaw</button>
+                                    <%--<button type="button" class="btn btn-warning btn-block p-2 text-white text-center">Wystaw</button>--%>
+                                    <a href="/auction/addagain/${item.id}/${item.userId}" class="btn btn-warning btn-block text-center p-2 text-white">Wystaw</a>
                                 </dic>
                             </div>
                         </div>
