@@ -74,7 +74,7 @@
                 <div class="buyNow">
                     <div class="row p-3">
                         <div class="col-md-4 text-left"> <label class="text-secondary">Sprzedający:</label> </div>
-                        <div class="col-md-8 text-left"> <label class="text-secondary">TestowySprzedający</label> </div>
+                        <div class="col-md-8 text-left"> <label class="text-secondary">${auction.userLogin}</label> </div>
                     </div>
                 </div>
             </div>

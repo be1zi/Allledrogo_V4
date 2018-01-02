@@ -96,6 +96,7 @@ public class AuctionController {
             AuctionNetworkManager.editAuction(auctionModel.getId(), auctionModel.getUserId(), auctionModel.getViewNumber(),session);
         }
 
+        out.println(auctionModel);
         return  modelAndView;
     }
 
@@ -124,5 +125,16 @@ public class AuctionController {
             session.setAttribute("shopping", Shopping.OWNAUCTION);
 
         return "redirect:/";
+    }
+
+    @RequestMapping("/delete/{id}/{userId}")
+    public String deleteAuction(@PathVariable("id") Long id, @PathVariable("userId") Long userId){
+
+        boolean isDeleted = AuctionNetworkManager.deleteAuction(id,userId );
+
+        if(isDeleted)
+            return "redirect:/sale/notsold";
+        else
+            return "redirect:/sale/mysale";
     }
 }

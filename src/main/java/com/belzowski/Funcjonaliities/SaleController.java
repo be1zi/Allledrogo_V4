@@ -94,6 +94,7 @@ public class SaleController {
             auctionModel.setSold(false);
             auctionModel.setEnded(false);
             auctionModel.setEndPrice(0.0);
+            auctionModel.setUserLogin(userModel.getLogin());
         }
 
         AuctionModel aM = AuctionNetworkManager.addAuction(auctionModel, session);

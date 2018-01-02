@@ -16,6 +16,7 @@ public class Constant {
     public static String getAuction = restURL + "/auction/get";
     public static String editAuction = restURL + "/auction/edit";
     public static String getTransactions = restURL + "/shopping/transactions";
+    public static String deleteAuctionURL = restURL + "/auction/delete";
 
     //shopping
     public static String buyURL = restURL + "/shopping/buy";

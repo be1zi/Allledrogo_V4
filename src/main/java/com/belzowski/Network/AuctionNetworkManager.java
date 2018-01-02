@@ -118,6 +118,21 @@ public class AuctionNetworkManager {
         return new ArrayList<>();
     }
 
+    public static boolean deleteAuction(Long id, Long userId){
+
+        Map<Object,Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("userId", userId);
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> responseEntity = restTemplate.postForEntity(Constant.deleteAuctionURL,map,Boolean.class );
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            return responseEntity.getBody().booleanValue();
+        }
+
+        return false;
+    }
+
     public static List<AuctionModel> getListByCategory(String category){
 
         RestTemplate restTemplate = new RestTemplate();

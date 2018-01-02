@@ -8,6 +8,7 @@ public class AuctionModel {
 
     private Long id;
     private Long userId;
+    private String userLogin;
     private Double buyNowPrice;
     private Double biddingPrice;
     private int itemNumber;
@@ -252,11 +253,20 @@ public class AuctionModel {
         this.mainImage = mainImage;
     }
 
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        this.userLogin = userLogin;
+    }
+
     @Override
     public String toString() {
         return "AuctionModel{" +
                 "id=" + id +
                 ", userId=" + userId +
+                ", userLogin='" + userLogin + '\'' +
                 ", buyNowPrice=" + buyNowPrice +
                 ", biddingPrice=" + biddingPrice +
                 ", itemNumber=" + itemNumber +
@@ -280,7 +290,7 @@ public class AuctionModel {
                 ", biddingList=" + biddingList +
                 ", usersList=" + usersList +
                 ", tmpDate='" + tmpDate + '\'' +
+                ", mainImage='" + mainImage + '\'' +
                 '}';
     }
-
 }
