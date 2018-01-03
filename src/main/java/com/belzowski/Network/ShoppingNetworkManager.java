@@ -1,7 +1,9 @@
 package com.belzowski.Network;
 
+import com.belzowski.Model.AuctionModel;
 import com.belzowski.Model.BiddingModel;
 import com.belzowski.Model.TransactionModel;
+import com.belzowski.Support.Formatter.DataTypeFormatter;
 import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
@@ -73,6 +75,19 @@ public class ShoppingNetworkManager {
 
                 return result;
             }
+        }
+
+        return new ArrayList<>();
+    }
+
+    public static List<AuctionModel> getObserved(String login){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getObservedURL, login, AuctionModel[].class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+
+            return DataTypeFormatter.arrayToList(responseEntity.getBody());
         }
 
         return new ArrayList<>();

@@ -1,21 +1,16 @@
 package com.belzowski.Network;
 
 import com.belzowski.Model.AuctionModel;
-import com.belzowski.Model.PhotoModel;
 import com.belzowski.Support.Enum.Alert;
 import com.belzowski.Support.Formatter.DataTypeFormatter;
-import com.belzowski.Support.Formatter.DateFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpSession;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
-import static java.lang.System.out;
 
 public class HomeNetworkManager {
 

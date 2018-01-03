@@ -149,4 +149,17 @@ public class AuctionController {
 
         return "redirect:/sale/notsale";
     }
+
+    @RequestMapping("/observed/{id}/{ownerId}")
+    public String addToObserved(@PathVariable("id") Long id, @PathVariable("ownerId") Long ownerId, HttpSession session) {
+
+        UserModel userModel = (UserModel)session.getAttribute("user");
+
+        boolean isAdded = AuctionNetworkManager.addToObserved(id, ownerId, userModel.getId());
+
+        if(isAdded)
+            return "redirect:/shopping/observed";
+
+        return "redirect:/auction/{id}";
+    }
 }

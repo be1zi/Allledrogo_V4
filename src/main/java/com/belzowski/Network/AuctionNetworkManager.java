@@ -165,6 +165,23 @@ public class AuctionNetworkManager {
         return new ArrayList<>();
     }
 
+    public static boolean addToObserved(Long id, Long ownerId, Long userId){
+
+        Map<String, Long> map = new HashMap<>();
+        map.put("id", id);
+        map.put("userId", userId);
+        map.put("ownerId", ownerId);
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<Boolean> responseEntity = restTemplate.postForEntity(Constant.addToObservedURL, map, Boolean.class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            return responseEntity.getBody().booleanValue();
+        }
+
+        return false;
+    }
+
 
 
 

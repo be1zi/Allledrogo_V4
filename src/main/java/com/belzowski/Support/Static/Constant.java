@@ -16,11 +16,13 @@ public class Constant {
     public static String editAuction = restURL + "/auction/edit";
     public static String deleteAuctionURL = restURL + "/auction/delete";
     public static String addAuctionAgain = restURL + "/auction/addagain";
+    public static String addToObservedURL = restURL + "/auction/addToObserved";
 
     //shopping
     public static String buyURL = restURL + "/shopping/buy";
     public static String getBoughtURL = restURL + "/shopping/bought";
     public static String getAuctionedURL = restURL + "/shopping/auctioned";
+    public static String getObservedURL = restURL + "/shopping/observed";
 
     //sale
     public static String getMyAuction = restURL + "/sale/getMyAuction";

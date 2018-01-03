@@ -79,11 +79,49 @@
                 </div>
             </div>
             <div class="col-md-6">
+
+                <div class="info">
+                    <div class="row p-3">
+
+                        <div class="col-md-8 text-left">
+                            <label class="text-secondary">Dodaj do obserwowanych: </label>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <% UserModel user = (UserModel)session.getAttribute("user");
+                                if(user!= null){
+                            %>
+                                     <a href="/auction/observed/${auction.id}/${auction.userId}" class="btn btn-warning p-2 text-white text-center btn-block" >Obserwuj</a>
+                                <%}else{ %>
+                                    <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
+                                <%}%>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="row p-3">
+
+                        <div class="col-md-8 text-left">
+                            <label class="text-secondary">Wiadomość do sprzedającego: </label>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Wyślij</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
                 <c:choose>
                     <c:when test="${not empty auction.buyNowPrice}">
                         <div class="buyNow">
                             <div class="row p-3">
-                                <div class="col-md-4 text-center"> <label class="text-secondary">${auction.buyNowPrice} zł </label> </div>
+                                <div class="col-md-4 text-center">
+                                    <label class="text-secondary">${auction.buyNowPrice} zł </label>
+                                </div>
                                 <div class="col-md-4 text-center">
                                     <c:choose>
                                         <c:when test="${auction.itemNumber == 1}">
