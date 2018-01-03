@@ -107,7 +107,8 @@ public class AuctionController {
         List<AuctionModel> auctionModels = AuctionNetworkManager.getListByCategory(category);
         modelAndView.addObject("list", auctionModels);
 
-        out.println(auctionModels.size());
+        if(auctionModels != null)
+            out.println(auctionModels.size());
         return modelAndView;
     }
 

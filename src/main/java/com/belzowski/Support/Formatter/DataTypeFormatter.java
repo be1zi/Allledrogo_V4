@@ -19,7 +19,7 @@ public class DataTypeFormatter {
             auctionModel.setTmpDate(dateFormatter.calendarToString());
 
             PhotoModel mainImage = null;
-            if(auctionModel.getFiles().get(0).getImage() == null){
+            if(auctionModel.getFiles() == null || auctionModel.getFiles().get(0) == null || auctionModel.getFiles().get(0).getImage() == null){
                 auctionModel.setMainImage("photoPlaceholder");
                 list.add(auctionModel);
                 continue;

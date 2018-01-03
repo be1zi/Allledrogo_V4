@@ -156,11 +156,8 @@ public class AuctionNetworkManager {
             AuctionModel[] array = responseEntity.getBody();
             List<AuctionModel> result = new ArrayList<>();
 
-            for(AuctionModel aM : array){
-                DateFormatter dateFormatter = new DateFormatter(aM.getEndDate(),"yyyy-MM-dd HH:mm");
-                aM.setTmpDate(dateFormatter.calendarToString());
-                result.add(aM);
-            }
+            result = DataTypeFormatter.arrayToList(array);
+
 
             return result;
         }

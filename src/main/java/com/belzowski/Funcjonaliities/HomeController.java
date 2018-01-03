@@ -30,13 +30,7 @@ public class HomeController {
 
         session.setAttribute("shopping", Shopping.DEFAULT);
 
-        List<String> categoryList = new ArrayList<>();
-        categoryList.add("Motoryzacja");
-        categoryList.add("Elektronika");
-
         ModelAndView modelAndView = new ModelAndView("home");
-        session.setAttribute("categoryList", categoryList);
-        modelAndView.addObject("categoryList",categoryList);
 
         List<AuctionModel> auctionModels = HomeNetworkManager.getHomeAuctions(session);
         modelAndView.addObject("list", auctionModels);
