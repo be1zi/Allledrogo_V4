@@ -18,7 +18,7 @@ public class HomeNetworkManager {
 
         RestTemplate restTemplate = new RestTemplate();
 
-        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getHomeAuction,false,AuctionModel[].class);
+        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.getHomeAuction,false, AuctionModel[].class);
 
         if(responseEntity.getStatusCode().is2xxSuccessful()){
             session.setAttribute("alert", Alert.OK);

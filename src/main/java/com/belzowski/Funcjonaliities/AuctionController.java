@@ -96,7 +96,6 @@ public class AuctionController {
             AuctionNetworkManager.editAuction(auctionModel.getId(), auctionModel.getUserId(), auctionModel.getViewNumber(),session);
         }
 
-        out.println(auctionModel);
         return  modelAndView;
     }
 

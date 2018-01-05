@@ -33,6 +33,10 @@ public class Constant {
     public static String getHomeAuction = restURL + "/home/get";
     public static String getAuctionsByCategory = restURL + "/auction/searchByCategory";
 
+    //Message
+    public static String addFirstMessageURL = restURL + "/message/addFirst";
+    public static String addMessageURL = restURL + "/message/add";
+
     //test
     public static String testObjectURL = restURL + "/test/21";
     public static String addTestURL = restURL + "/test/addtest";

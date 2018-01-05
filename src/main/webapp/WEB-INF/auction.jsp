@@ -106,7 +106,14 @@
                             <label class="text-secondary">Wiadomość do sprzedającego: </label>
                         </div>
                         <div class="col-md-4 text-center">
-                            <button type="button" class="btn btn-warning p-2 text-white text-center btn-block">Wyślij</button>
+
+                            <% if(user != null){ %>
+                                <%--session.setAttribute("ownerId", auction.userId); %>--%>
+
+                                    <a href="/message/${auction.userLogin}?title=${auction.title}" class="btn btn-warning p-2 text-white text-center btn-block" >Wyślij</a>
+                            <% }else{ %>
+                                 <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
+                            <%}%>
                         </div>
 
                     </div>

@@ -11,7 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static java.lang.System.out;
 
 @Controller
 @RequestMapping("/shopping")
@@ -52,6 +57,33 @@ public class ShoppingController {
 
         session.setAttribute("content", Content.NotBought);
         ModelAndView modelAndView = new ModelAndView("shopping");
+
+//        UserModel userModel = (UserModel)session.getAttribute("user");
+//        List<AuctionModel> tmp = userModel.getAccountModel().getWatchUserList();
+//        List<AuctionModel> list = new ArrayList<>();
+//
+//        for(AuctionModel aM: tmp){
+//            if(aM.isEnded() && aM.isSold() == false)
+//                list.add(aM);
+//            else if(aM.isEnded()){
+//                List<BiddingModel> biddingModelList = aM.getBiddingList();
+//                if(biddingModelList == null)
+//                    continue;
+//
+//                Collections.sort(biddingModelList, new Comparator<BiddingModel>() {
+//                    @Override
+//                    public int compare(BiddingModel o1, BiddingModel o2) {
+//                        return o1.getPrice().compareTo(o2.getPrice());
+//                    }
+//                });
+//
+//                if(biddingModelList.get(0).getUserId().getId() != userModel.getId())
+//                    list.add(aM);
+//            }
+//        }
+//        modelAndView.addObject("list", list);
+
+//        out.println(list.toString());
 
         return modelAndView;
     }

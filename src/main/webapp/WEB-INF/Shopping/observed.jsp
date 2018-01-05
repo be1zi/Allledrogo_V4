@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="align-self-center p-5 col-md-6">
                     <h4 class="auctionItem text-left text-secondary p-2">Sprzedajacy: ${item.userLogin} </h4>
-                    <h5 class="auctionItem text-left text-secondary p-2">Data zakupu: ${item.tmpDate}}</h5>
+                    <h5 class="auctionItem text-left text-secondary p-2">Data zakupu: ${item.tmpDate}</h5>
                     <h5 class="auctionItem text-left text-secondary p-2">Ilosc sztuk: ${item.itemNumber}</h5>
                     <c:choose>
                         <c:when test="${ not empty item.biddingPrice}">
