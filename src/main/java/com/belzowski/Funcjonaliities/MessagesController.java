@@ -4,15 +4,12 @@ import com.belzowski.Model.MessageModel;
 import com.belzowski.Model.SingleMessageModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.MessageNetworkManager;
+import com.belzowski.Support.Formatter.DateFormatter;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-
-import static java.lang.System.out;
+import java.util.*;
 
 
 @Controller
@@ -40,7 +37,7 @@ public class MessagesController {
     }
 
     @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String sendMessage(@ModelAttribute("message") MessageModel messageModel,@ModelAttribute("singleMessage") SingleMessageModel singleMessageModel, HttpSession session){
+    public String sendMessage(@ModelAttribute("message") MessageModel messageModel, @ModelAttribute("singleMessage") SingleMessageModel singleMessageModel, HttpSession session){
 
         UserModel userModel = (UserModel)session.getAttribute("user");
         messageModel.setId(Long.valueOf(1));
@@ -48,6 +45,11 @@ public class MessagesController {
         messageModel.setDate(Calendar.getInstance());
         messageModel.setItemNumber(0);
         messageModel.setViewed(false);
+
+        if(messageModel.getTopic() == null) {
+            String tmp = (String)session.getAttribute("title");
+            messageModel.setTopic(tmp);
+        }
 
         String title = (String)session.getAttribute("messageTitle");
         String ownerLogin = (String)session.getAttribute("ownerLogin");
@@ -91,10 +93,45 @@ public class MessagesController {
 
         UserModel userModel = (UserModel)session.getAttribute("user");
         List<SingleMessageModel> result = message.getSingleMessageModels();
+
+        Collections.sort(result, new Comparator<SingleMessageModel>() {
+            @Override
+            public int compare(SingleMessageModel o1, SingleMessageModel o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+
+        for(SingleMessageModel smm: result){
+            DateFormatter dateFormatter = new DateFormatter(smm.getDate(), "yyyy-MM-dd HH:mm:ss");
+            smm.setTmpDate(dateFormatter.calendarToString());
+        }
+
         modelAndView.addObject("title", message.getTopic());
         modelAndView.addObject("userLogin",userModel.getLogin());
         modelAndView.addObject("list", result);
 
+        modelAndView.addObject("message", message);
+        modelAndView.addObject("singleMessage", new SingleMessageModel());
+        session.setAttribute("id", id);
+
         return modelAndView;
+    }
+
+    @RequestMapping("/sendReply")
+    public String sendReplace(@ModelAttribute("message") MessageModel messageModel, @ModelAttribute("singleMessage") SingleMessageModel singleMessageModel, HttpSession session){
+
+        Long id = (Long)session.getAttribute("id");
+        UserModel userModel = (UserModel)session.getAttribute("user");
+
+        singleMessageModel.setAuthorLogin(userModel.getLogin());
+        singleMessageModel.setMessageModelId(id);
+        singleMessageModel.setDate(Calendar.getInstance());
+
+        MessageNetworkManager.addMessage(singleMessageModel);
+
+//        return "redirect:/message/messageDetails?id=" + id;
+//
+        return  "redirect:/myaccount/messageslist";
+//        return "redirect:/myaccount/messages?id=" + id;
     }
 }

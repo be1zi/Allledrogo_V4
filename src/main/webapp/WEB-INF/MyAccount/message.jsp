@@ -3,6 +3,7 @@
 <jsp:useBean id="list" scope="request" type="java.util.List"/>
 <jsp:useBean id="title" scope="request" type="java.lang.String"/>
 <jsp:useBean id="userLogin" scope="request" type="java.lang.String"/>
+<%@taglib prefix="singleMessageForm" uri="http://www.springframework.org/tags/form" %>
 
 <div class="photos">
     <div class="row" style="padding-left:30px;padding-right:30px; padding-bottom:20px">
@@ -22,12 +23,12 @@
                 <div class="col-md-8 ">
                     <div class="row justify-content-end">
                         <div class="singleMessageDate">
-                            <h5 class=""> 12.12.2012 13:11 </h5>
+                            <h5 class=""> ${item.tmpDate} </h5>
                         </div>
                     </div>
                     <div class="row text-white justify-content-end">
                         <div class="singleMessage">
-                            <h2 class="p-1 border border-success bg-success"> ${item.content} </h2>
+                            <h4 class="p-1 border border-success bg-success"> ${item.content} </h4>
                         </div>
                     </div>
                 </div>
@@ -38,12 +39,12 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="singleMessageDate">
-                            <h5> 12.12.2012 13:10 </h5>
+                            <h5> ${item.tmpDate} </h5>
                         </div>
                     </div>
                     <div class="row text-white">
                         <div class="singleMessage">
-                            <h2 class="border border-success p-1 bg-success"> ${item.content} </h2>
+                            <h4 class="border border-success p-1 bg-success"> ${item.content} </h4>
                         </div>
                     </div>
                 </div>
@@ -54,53 +55,22 @@
 
 </c:forEach>
 
+<singleMessageForm:form modelAttribute="singleMessage" action="sendReply" method="post">
 
-<%--<div class="row p-3 text-secondary">--%>
-    <%--<div class="col-md-8">--%>
-        <%--<div class="row">--%>
-            <%--<div class="singleMessageDate">--%>
-                <%--<h5> 12.12.2012 13:10 </h5>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row text-white">--%>
-            <%--<div class="singleMessage">--%>
-                <%--<h2 class="border border-success p-1 bg-success"> Wiadomosc testowa </h2>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-    <%--<div class="col-md-4"></div>--%>
-<%--</div>--%>
+<div class="row" style="padding-bottom: 50px">
+    <div class="col-md-12">
+        <div class="form-group">
+            <singleMessageForm:textarea path="content" type="text" rows="10"  class="form-control" placeholder="Wiadomość..." required="" ></singleMessageForm:textarea>
+        </div>
+    </div>
+</div>
 
+<div class="row" style="padding-bottom: 50px">
+    <div class="col-md-12">
+        <div class="editButton px-4">
+            <button id="reply" type="submit" class="btn btn-warning btn-block text-center p-2 text-white">Odpowiedz</button>
+        </div>
+    </div>
+</div>
 
-<%--<div class="row p-3 text-secondary">--%>
-    <%--<div class="col-md-4"></div>--%>
-    <%--<div class="col-md-8 ">--%>
-        <%--<div class="row justify-content-end">--%>
-            <%--<div class="singleMessageDate">--%>
-                <%--<h5 class=""> 12.12.2012 13:11 </h5>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row text-white justify-content-end">--%>
-            <%--<div class="singleMessage">--%>
-                <%--<h2 class="p-1 border border-success bg-success"> Testowa Wiadomosc </h2>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-
-
-<%--<div class="row p-3 text-secondary">--%>
-    <%--<div class="col-md-4"></div>--%>
-    <%--<div class="col-md-8 ">--%>
-        <%--<div class="row justify-content-end">--%>
-            <%--<div class="singleMessageDate">--%>
-                <%--<h5 class=""> 12.12.2012 13:12 </h5>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-        <%--<div class="row text-white justify-content-end">--%>
-            <%--<div class="singleMessage">--%>
-                <%--<h2 class="border border-success p-1 bg-success"> Tekst </h2>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
+</singleMessageForm:form>
