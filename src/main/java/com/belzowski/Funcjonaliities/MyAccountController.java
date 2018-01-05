@@ -1,6 +1,7 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AccountModel;
+import com.belzowski.Model.MessageModel;
 import com.belzowski.Model.UserModel;
 import com.belzowski.Network.UserNetworkManager;
 import com.belzowski.Support.Enum.Alert;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -186,9 +188,15 @@ public class MyAccountController {
     }
 
     @RequestMapping("/messageslist")
-    public  String messageList(HttpSession session){
+    public  String messageList( HttpSession session){
         session.setAttribute("content", Content.Message);
+        return "redirect:/message/getMessageList";
+    }
 
-        return "redirect:/myaccount/";
+    @RequestMapping("/messages")
+    public String messageDetails(@RequestParam("id") Long id, HttpSession session){
+        session.setAttribute("content", Content.SinggleMessage);
+
+        return "redirect:/message/messageDetails?id=" + id;
     }
 }

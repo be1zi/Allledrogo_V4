@@ -3,9 +3,15 @@ package com.belzowski.Network;
 
 import com.belzowski.Model.MessageModel;
 import com.belzowski.Model.SingleMessageModel;
+import com.belzowski.Support.Formatter.DataTypeFormatter;
 import com.belzowski.Support.Static.Constant;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static java.lang.System.out;
 
 public class MessageNetworkManager {
 
@@ -30,5 +36,21 @@ public class MessageNetworkManager {
             return responseEntity.getBody().booleanValue();
 
         return false;
+    }
+
+    public static List<MessageModel> getMessageList(String userLogin){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<MessageModel[]> responseEntity = restTemplate.postForEntity(Constant.getMessageListURL, userLogin, MessageModel[].class);
+
+        for(MessageModel mm: responseEntity.getBody())
+            out.println(mm.toString());
+
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()){
+            return DataTypeFormatter.messsageArrayToList(responseEntity.getBody());
+        }
+
+        return new ArrayList<>();
     }
 }

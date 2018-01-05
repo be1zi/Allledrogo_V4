@@ -1,11 +1,12 @@
 package com.belzowski.Support.Formatter;
 
 import com.belzowski.Model.AuctionModel;
+import com.belzowski.Model.MessageModel;
 import com.belzowski.Model.PhotoModel;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+import java.util.*;
+
+import static java.lang.System.out;
 
 public class DataTypeFormatter {
 
@@ -44,6 +45,29 @@ public class DataTypeFormatter {
             }
             list.add(auctionModel);
         }
+
+        return list;
+    }
+
+    public static List<MessageModel> messsageArrayToList(MessageModel[] array){
+
+        List<MessageModel> list = new ArrayList<>();
+
+        if(array == null || array.length ==0)
+            return new ArrayList<>();
+
+        for(MessageModel mm: array){
+            DateFormatter dateFormatter = new DateFormatter(mm.getDate(), "yyyy-MM-dd HH:mm");
+            mm.setTmpDate(dateFormatter.calendarToString());
+            list.add(mm);
+        }
+
+        Collections.sort(list, new Comparator<MessageModel>() {
+            @Override
+            public int compare(MessageModel o1, MessageModel o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
 
         return list;
     }

@@ -1,6 +1,7 @@
 package com.belzowski.Model;
 
 
+import java.beans.Transient;
 import java.util.Calendar;
 
 public class SingleMessageModel {
@@ -10,6 +11,7 @@ public class SingleMessageModel {
     private String content;
     private Long messageModelId;
     private Calendar date;
+    private String tmpDate;
 
     public Long getId() {
         return id;
@@ -49,5 +51,15 @@ public class SingleMessageModel {
 
     public void setDate(Calendar date) {
         this.date = date;
+    }
+
+    @Transient
+    public String getTmpDate() {
+        return tmpDate;
+    }
+
+    @Transient
+    public void setTmpDate(String tmpDate) {
+        this.tmpDate = tmpDate;
     }
 }

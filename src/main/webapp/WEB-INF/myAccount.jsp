@@ -47,7 +47,9 @@
                     <jsp:include page="MyAccount/addressDetails.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Message){ %>
                     <jsp:include page="MyAccount/messageList.jsp"></jsp:include>
-                <% } %>
+                <% }else if(session.getAttribute("content") == Content.SinggleMessage){%>
+                    <jsp:include page="MyAccount/message.jsp"></jsp:include>
+                <%}%>
             </div>
             <div class="col-md-1"></div>
         </div>

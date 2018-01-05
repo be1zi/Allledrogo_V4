@@ -8,7 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import static java.lang.System.out;
 
 
 @Controller
@@ -52,7 +56,6 @@ public class MessagesController {
 
         Long isAdded = MessageNetworkManager.addFirstMessage(messageModel);
 
-        singleMessageModel.setId(Long.valueOf(1));
         singleMessageModel.setAuthorLogin(userModel.getLogin());
         singleMessageModel.setMessageModelId(isAdded);
         singleMessageModel.setDate(Calendar.getInstance());
@@ -62,4 +65,36 @@ public class MessagesController {
         return "redirect:/myaccount/messageslist";
     }
 
+    @RequestMapping("/getMessageList")
+    public ModelAndView getMessageList(HttpSession session){
+
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+        UserModel user = (UserModel)session.getAttribute("user");
+        List<MessageModel> list = MessageNetworkManager.getMessageList(user.getLogin());
+        modelAndView.addObject("list", list);
+        session.setAttribute("messagesList", list);
+        return modelAndView;
+    }
+
+    @RequestMapping("/messageDetails")
+    public ModelAndView messageDetails(@RequestParam("id") Long id, HttpSession session){
+
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+        List<MessageModel> list = (List<MessageModel>)session.getAttribute("messagesList");
+        MessageModel message = null;
+        for(MessageModel mm: list) {
+            if (mm.getId().equals(id)) {
+                message = mm;
+                break;
+            }
+        }
+
+        UserModel userModel = (UserModel)session.getAttribute("user");
+        List<SingleMessageModel> result = message.getSingleMessageModels();
+        modelAndView.addObject("title", message.getTopic());
+        modelAndView.addObject("userLogin",userModel.getLogin());
+        modelAndView.addObject("list", result);
+
+        return modelAndView;
+    }
 }

@@ -90,4 +90,19 @@ public class MessageModel {
     public void setTmpDate(String tmpDate) {
         this.tmpDate = tmpDate;
     }
+
+    @Override
+    public String toString() {
+        return "MessageModel{" +
+                "id=" + id +
+                ", topic='" + topic + '\'' +
+                ", ownerLogin='" + ownerLogin + '\'' +
+                ", senderLogin='" + senderLogin + '\'' +
+                ", viewed=" + viewed +
+                ", itemNumber=" + itemNumber +
+                ", date=" + date +
+                ", tmpDate='" + tmpDate + '\'' +
+                ", singleMessageModels=" + singleMessageModels +
+                '}';
+    }
 }

@@ -36,6 +36,7 @@ public class Constant {
     //Message
     public static String addFirstMessageURL = restURL + "/message/addFirst";
     public static String addMessageURL = restURL + "/message/add";
+    public static String getMessageListURL = restURL + "/message/getMessageList";
 
     //test
     public static String testObjectURL = restURL + "/test/21";
