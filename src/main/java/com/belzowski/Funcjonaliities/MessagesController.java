@@ -129,9 +129,6 @@ public class MessagesController {
 
         MessageNetworkManager.addMessage(singleMessageModel);
 
-//        return "redirect:/message/messageDetails?id=" + id;
-//
         return  "redirect:/myaccount/messageslist";
-//        return "redirect:/myaccount/messages?id=" + id;
     }
 }

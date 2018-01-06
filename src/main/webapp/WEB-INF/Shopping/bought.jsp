@@ -50,9 +50,9 @@
                             <div class="col-md-8">
                                 <h5 class="auctionItem text-secondary text-left p-2">Szczegóły</h5>
                             </div>
-                            <dic class="col-md-4">
+                            <div class="col-md-4">
                                 <a href="/auction/${item.getAuctionModel().getId()}" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl </a>
-                            </dic>
+                            </div>
                         </div>
                     </div>
                     <div class="auctionDetails">
@@ -62,9 +62,10 @@
                                     <div class="col-md-8">
                                         <h5 class="auctionItem text-secondary text-left p-2">Ocena i komentarz: brak</h5>
                                     </div>
-                                    <dic class="col-md-4">
-                                        <button type="button" class="btn btn-warning btn-block p-2 text-white text-center">Wystaw</button>
-                                    </dic>
+                                    <div class="col-md-4">
+                                            <a href="/comment/make?title=${item.getAuctionModel().title}&id=${item.id}" class="btn btn-warning btn-block text-center p-2 text-white">Wystaw </a>
+
+                                    </div>
                                 </c:when>
                                 <c:otherwise>
                                     <div class="col-md-8">

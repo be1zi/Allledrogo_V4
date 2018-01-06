@@ -2,6 +2,7 @@ package com.belzowski.Model;
 
 import com.belzowski.Support.Enum.Comment;
 
+import java.beans.Transient;
 import java.util.Calendar;
 
 public class CommentModel {
@@ -13,6 +14,8 @@ public class CommentModel {
     private Calendar date;
     private Comment type;
     private String auctionTitle;
+    private Long transactionId;
+    private String tmpDate;
 
     public Long getId() {
         return id;
@@ -70,6 +73,24 @@ public class CommentModel {
         this.auctionTitle = auctionTitle;
     }
 
+    @Transient
+    public String getTmpDate() {
+        return tmpDate;
+    }
+
+    @Transient
+    public void setTmpDate(String tmpDate) {
+        this.tmpDate = tmpDate;
+    }
+
+    public Long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(Long transactionId) {
+        this.transactionId = transactionId;
+    }
+
     @Override
     public String toString() {
         return "CommentModel{" +
@@ -80,6 +101,8 @@ public class CommentModel {
                 ", date=" + date +
                 ", type=" + type +
                 ", auctionTitle='" + auctionTitle + '\'' +
+                ", transactionId=" + transactionId +
+                ", tmpDate='" + tmpDate + '\'' +
                 '}';
     }
 }

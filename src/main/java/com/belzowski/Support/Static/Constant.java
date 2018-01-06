@@ -40,6 +40,7 @@ public class Constant {
 
     //Account
     public static String getAuctionNumberURL = restURL + "/account/auctionNumber";
+    public static String addCommentULR = restURL + "/comment/add";
 
 
     //test
