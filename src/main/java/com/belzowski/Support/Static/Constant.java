@@ -38,6 +38,10 @@ public class Constant {
     public static String addMessageURL = restURL + "/message/add";
     public static String getMessageListURL = restURL + "/message/getMessageList";
 
+    //Account
+    public static String getAuctionNumberURL = restURL + "/account/auctionNumber";
+
+
     //test
     public static String testObjectURL = restURL + "/test/21";
     public static String addTestURL = restURL + "/test/addtest";

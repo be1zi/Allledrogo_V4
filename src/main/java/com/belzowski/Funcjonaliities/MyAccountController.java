@@ -1,10 +1,13 @@
 package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AccountModel;
+import com.belzowski.Model.CommentModel;
 import com.belzowski.Model.MessageModel;
 import com.belzowski.Model.UserModel;
+import com.belzowski.Network.AccountNetworkManager;
 import com.belzowski.Network.UserNetworkManager;
 import com.belzowski.Support.Enum.Alert;
+import com.belzowski.Support.Enum.Comment;
 import com.belzowski.Support.Enum.Content;
 import com.belzowski.Support.Enum.MenuStatus;
 import com.sun.org.apache.regexp.internal.RE;
@@ -19,6 +22,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static java.lang.System.out;
 
@@ -168,11 +175,51 @@ public class MyAccountController {
     }
 
     @RequestMapping("/accountdetails")
-    public String accountDetails(HttpSession session){
+    public ModelAndView accountDetails(HttpSession session){
+
         session.setAttribute("content", Content.Account);
+        UserModel user = (UserModel)session.getAttribute("user");
+        AccountModel account = user.getAccountModel();
+        List<CommentModel> list = account.getCommentList();
+        int auctionNumber = AccountNetworkManager.getAuctionNumber(user.getId());
+
+        int positive = 0, negative = 0, neutral = 0;
+        int star1 = 0, star2 = 0, star3 = 0, star4 = 0, star5 = 0;
+
+        for(CommentModel cM: list){
+            if(cM.getType() == Comment.Positiv)
+                positive++;
+            else if (cM.getType() == Comment.Negativ)
+                negative ++;
+            else
+                neutral++;
+
+            if(cM.getRate() == 1)
+                star1++;
+            else if (cM.getRate() == 2)
+                star2++;
+            else if (cM.getRate() == 3)
+                star3++;
+            else if (cM.getRate() == 4)
+                star4++;
+            else
+                star5++;
+        }
 
 
-        return "redirect:/myaccount/";
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+        modelAndView.addObject("user", user);
+        modelAndView.addObject("account", account);
+        modelAndView.addObject("auctionNumber", auctionNumber);
+        modelAndView.addObject("positive", positive);
+        modelAndView.addObject("negative", negative);
+        modelAndView.addObject("neutral", neutral);
+        modelAndView.addObject("star1", star1);
+        modelAndView.addObject("star2", star2);
+        modelAndView.addObject("star3", star3);
+        modelAndView.addObject("star4", star4);
+        modelAndView.addObject("star5", star5);
+        return modelAndView;
     }
 
     @RequestMapping("/addressdetails")

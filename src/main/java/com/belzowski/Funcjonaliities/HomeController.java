@@ -2,6 +2,7 @@ package com.belzowski.Funcjonaliities;
 
 import com.belzowski.Model.AuctionModel;
 import com.belzowski.Network.HomeNetworkManager;
+import com.belzowski.Support.Enum.Content;
 import com.belzowski.Support.Enum.MenuStatus;
 import com.belzowski.Support.Enum.Shopping;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,7 @@ public class HomeController {
         }
 
         session.setAttribute("shopping", Shopping.DEFAULT);
-
+        session.setAttribute("content", Content.Default);
         ModelAndView modelAndView = new ModelAndView("home");
 
         List<AuctionModel> auctionModels = HomeNetworkManager.getHomeAuctions(session);
