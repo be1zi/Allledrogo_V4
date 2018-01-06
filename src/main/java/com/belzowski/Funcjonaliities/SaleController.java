@@ -29,19 +29,17 @@ public class SaleController {
     @RequestMapping("/")
     public String saleHome(HttpSession session){
 
-        if(session.getAttribute("list") == null){
-            return "redirect:/sale/mysales";
-        }
+        Content tmp = (Content) session.getAttribute("content");
 
-        if(session.getAttribute("content") == null){
+        if(tmp != null && tmp != Content.MySales && tmp != Content.Sold && tmp != Content.NotSold && tmp != Content.MakeAuction )
             return "redirect:/sale/mysales";
-        }
 
-        if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.MakeAuction)){
-            return "redirect:/sale/makeauction";
+        if(tmp == null){
+            return "redirect:/sale/mysales";
         }
 
         return "sale";
+
     }
 
     @RequestMapping("/makeauction")

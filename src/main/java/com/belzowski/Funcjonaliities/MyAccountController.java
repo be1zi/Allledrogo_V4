@@ -29,11 +29,13 @@ public class MyAccountController {
     @RequestMapping("/")
     public String myAccountHome(HttpSession session){
 
-        //session.setAttribute("alert",Alert.OK);
-        if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.Login)){
-            return "redirect:/myaccount/logindetails";
-        }else if(session.getAttribute("content") != null && session.getAttribute("content").equals(Content.Adress)){
-            return "redirect:/myaccount/addressdetails";
+        Content tmp = (Content) session.getAttribute("content");
+
+        if(tmp != null && tmp != Content.Login && tmp != Content.Adress && tmp != Content.Account && tmp != Content.History && tmp != Content.Comments && tmp != Content.Message )
+            return "redirect:/myaccount/accountdetails";
+
+        if(tmp == null){
+            return "redirect:/myaccount/accountdetails";
         }
 
         return "myAccount";
