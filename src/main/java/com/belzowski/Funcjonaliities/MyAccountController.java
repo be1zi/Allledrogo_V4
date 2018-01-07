@@ -23,9 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.System.out;
 
@@ -161,10 +159,62 @@ public class MyAccountController {
 
 
     @RequestMapping("/commentlist")
-    public String commentList(HttpSession session){
+    public ModelAndView commentList(HttpSession session){
         session.setAttribute("content", Content.Comments);
 
-        return "redirect:/myaccount/";
+        UserModel user = (UserModel)session.getAttribute("user");
+        AccountModel account = user.getAccountModel();
+        List<CommentModel> comments = account.getCommentList();
+
+        Collections.sort(comments, new Comparator<CommentModel>() {
+            @Override
+            public int compare(CommentModel o1, CommentModel o2) {
+                return o2.getDate().compareTo(o1.getDate());
+            }
+        });
+
+        for(CommentModel cM: comments){
+            if(cM.getType() == Comment.Positiv){
+                cM.setTmpDate("Pozytywny");
+            }else if (cM.getType() == Comment.Negativ){
+                cM.setTmpDate("Negatywny");
+            }else
+                cM.setTmpDate("Neutralny");
+        }
+
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+        modelAndView.addObject("list", comments);
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/commentsByType")
+    public ModelAndView commentsByList(@RequestParam("type") String type,  HttpSession session){
+        session.setAttribute("content", Content.Comments);
+        ModelAndView modelAndView = new ModelAndView("myAccount");
+
+        UserModel user = (UserModel)session.getAttribute("user");
+        AccountModel account = user.getAccountModel();
+        List<CommentModel> comments = account.getCommentList();
+
+        List<CommentModel> list = new ArrayList<>();
+
+        for(CommentModel cM: comments) {
+            if (cM.getType().toString().equals(type)) {
+                if (cM.getType() == Comment.Positiv)
+                    cM.setTmpDate("Pozytywny");
+                else if (cM.getType() == Comment.Negativ)
+                    cM.setTmpDate("Negatywny");
+                else
+                    cM.setTmpDate("Neutralny");
+                list.add(cM);
+            }
+        }
+
+        modelAndView.addObject("list", list);
+
+        return modelAndView;
+
     }
 
     @RequestMapping("/accountdetails")

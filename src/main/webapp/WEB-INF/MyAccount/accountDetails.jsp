@@ -57,7 +57,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-2">
         <div class="input">
-            <a href="#" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+            <a href="/sale/mysales" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
         </div>
     </div>
 </div>
@@ -76,7 +76,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-2">
         <div class="input">
-            <a href="#" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+            <c:choose>
+                <c:when test="${positive == 0}">
+                    <a href="/myaccount/commentsByType?type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/myaccount/commentsByType?type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>
@@ -95,7 +102,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-2">
         <div class="input">
-            <a href="#" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+            <c:choose>
+                <c:when test="${negative == 0}">
+                    <a href="/myaccount/commentsByType?type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white" disabled ="disabled">Wyświetl</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/myaccount/commentsByType?type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>
@@ -114,7 +128,14 @@
     <div class="col-md-1"></div>
     <div class="col-md-2">
         <div class="input">
-            <a href="#" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+            <c:choose>
+                <c:when test="${neutral == 0}">
+                    <a href="/myaccount/commentsByType?type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="/myaccount/commentsByType?type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </div>
@@ -129,8 +150,8 @@
     <div class="col-md-4 text-left" style="padding-top: 3px">
         <%
             AccountModel accountModel = (AccountModel)account;
-            for(int i=0;i<5; i++){
-             if(i < accountModel.getMark()){
+            for(int i=1;i<=5; i++){
+             if(i <= accountModel.getMark()){
         %>
              <span class="fa fa-star checked" style="font-size: 25px"></span>
         <%}else{%>
