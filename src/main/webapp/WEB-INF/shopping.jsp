@@ -27,14 +27,11 @@
                     <a class="list-group-item list-group-item-action text-secondary" href="/shopping/bought">Kupione</a>
                     <a class="list-group-item list-group-item-action text-secondary" href="/shopping/auctioned">Licytowane</a>
                     <a class="list-group-item list-group-item-action text-secondary" href="/shopping/observed">Obserwowane</a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/shopping/notBought">Niekupione</a>
                 </ul>
             </div>
             <div class="col-md-7 border border-success" style="padding-top: 25px; padding-bottom: 25px">
                 <% if(session.getAttribute("content") == Content.Bought) {%>
                 <jsp:include page="Shopping/bought.jsp"></jsp:include>
-                <% }else if(session.getAttribute("content") == Content.NotBought){ %>
-                <jsp:include page="Shopping/notBought.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Auctioned){ %>
                 <jsp:include page="Shopping/auctioned.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Observed) {%>

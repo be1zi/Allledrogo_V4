@@ -31,7 +31,7 @@ public class ShoppingController {
             return "redirect:/shopping/bought";
         }
 
-        if(tmp != null && tmp != Content.Bought && tmp != Content.NotBought && tmp != Content.Auctioned && tmp != Content.Observed )
+        if(tmp != null && tmp != Content.Bought  && tmp != Content.Auctioned && tmp != Content.Observed )
             return "redirect:/shopping/bought";
 
         if(session.getAttribute("content") == null){
@@ -49,15 +49,6 @@ public class ShoppingController {
         UserModel userModel = (UserModel)session.getAttribute("user");
         List<TransactionModel> transactionModels = ShoppingNetworkManager.getBought(userModel.getLogin());
         modelAndView.addObject("list", transactionModels);
-        return modelAndView;
-    }
-
-    @RequestMapping("/notBought")
-    public ModelAndView notBought(HttpSession session){
-
-        session.setAttribute("content", Content.NotBought);
-        ModelAndView modelAndView = new ModelAndView("shopping");
-
         return modelAndView;
     }
 

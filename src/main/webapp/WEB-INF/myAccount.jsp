@@ -30,7 +30,6 @@
                     <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/addressdetails">Dane Adresowe</a>
                     <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/commentlist">Ocena i Komentarze</a>
                     <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/messageslist">Wiadomosci</a>
-                    <a class="list-group-item list-group-item-action text-secondary" href="/myaccount/history">Historia Konta</a>
                 </ul>
             </div>
             <div class="col-md-7 border border-success bg-primary " style="padding-top: 25px">
@@ -39,8 +38,6 @@
                     <jsp:include page="MyAccount/loginDetails.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Comments){ %>
                     <jsp:include page="MyAccount/commentList.jsp"></jsp:include>
-                <% }else if(session.getAttribute("content") == Content.History){ %>
-                    <jsp:include page="MyAccount/historyList.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Account) {%>
                     <jsp:include page="MyAccount/accountDetails.jsp"></jsp:include>
                 <% }else if(session.getAttribute("content") == Content.Adress) {%>

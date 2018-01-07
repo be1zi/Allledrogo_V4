@@ -38,7 +38,7 @@ public class MyAccountController {
 
         Content tmp = (Content) session.getAttribute("content");
 
-        if(tmp != null && tmp != Content.Login && tmp != Content.Adress && tmp != Content.Account && tmp != Content.History && tmp != Content.Comments && tmp != Content.Message )
+        if(tmp != null && tmp != Content.Login && tmp != Content.Adress && tmp != Content.Account && tmp != Content.Comments && tmp != Content.Message )
             return "redirect:/myaccount/accountdetails";
 
         if(tmp == null){
@@ -163,13 +163,6 @@ public class MyAccountController {
     @RequestMapping("/commentlist")
     public String commentList(HttpSession session){
         session.setAttribute("content", Content.Comments);
-
-        return "redirect:/myaccount/";
-    }
-
-    @RequestMapping("/history")
-    public String historyList(HttpSession session){
-        session.setAttribute("content", Content.History);
 
         return "redirect:/myaccount/";
     }
