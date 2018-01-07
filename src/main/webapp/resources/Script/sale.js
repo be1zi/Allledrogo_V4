@@ -1,11 +1,3 @@
-// $(function () {
-//     $('[name=datetimepicker]').datetimepicker({
-//         locale: 'pl',
-//         format: 'YYYY-MM-DD HH:mm'
-//     });
-//
-// });
-
 $('#auctionTypeCheckbox').click(function () {
 
     if($('#auctionTypeCheckbox').is(':checked')){

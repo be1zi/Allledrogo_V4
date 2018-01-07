@@ -77,32 +77,8 @@
                                 </c:choose>
                             </div>
                         </div>
-
-
-
                     </div>
-                    <%--<div class="col-md-6 p-0">--%>
-                        <%--<div id="carousel1" class="carousel slide" data-ride="carousel">--%>
-                            <%--<div class="carousel-inner" role="listbox">--%>
-                                <%--<div class="carousel-item active">--%>
-                                    <%--&lt;%&ndash;<c:choose>&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;<c:when test="${item.getAuctionModel().mainImage eq 'photoPlaceholder'}">&ndash;%&gt;--%>
-                                            <%--&lt;%&ndash;<img class="d-block img-fluid w-100" src="../resources/images/photoPlaceholder.jpg" atl="first slide">&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;</c:when>&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;<c:otherwise>&ndash;%&gt;--%>
-                                            <%--&lt;%&ndash;<img class="d-block img-fluid w-100" src="data:image/jpeg;base64,${item.getAuctionModel().mainImage}" atl="first slide">&ndash;%&gt;--%>
-                                        <%--&lt;%&ndash;</c:otherwise>&ndash;%&gt;--%>
-                                    <%--&lt;%&ndash;</c:choose>&ndash;%&gt;--%>
-                                    <%--<div class="carousel-caption">--%>
-                                        <%--<h3 class="text-secondary bg-primary p-2"><c:out value="${item.getAuctionModel().title}"/></h3>--%>
-                                    <%--</div>--%>
-                                <%--</div>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
                 </div>
-
-
             </div>
         </div>
     </div>

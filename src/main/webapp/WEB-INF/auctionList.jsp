@@ -20,8 +20,18 @@
 <body>
 <jsp:include page="header.jsp"></jsp:include>
 
+
 <div class="py-5 bg-primary">
     <div class="container-fluid bg-primary p-4">
+
+        <c:choose>
+            <c:when test="${empty list}">
+                <div class="container">
+                    <img class="d-block img-fluid w-100" src="/resources/images/emptyListPlaceholder.jpg" atl="first slide">
+                </div>
+            </c:when>
+        </c:choose>
+
 
         <c:forEach items="${list}" var="item">
 

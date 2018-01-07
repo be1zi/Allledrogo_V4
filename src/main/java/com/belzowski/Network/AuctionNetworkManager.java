@@ -182,8 +182,20 @@ public class AuctionNetworkManager {
         return false;
     }
 
+    public static List<AuctionModel> searchAuctions(String title){
 
+        RestTemplate restTemplate = new RestTemplate();
 
+        ResponseEntity<AuctionModel[]> responseEntity = restTemplate.postForEntity(Constant.searchAuctionsURL, title, AuctionModel[].class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful()) {
+            List<AuctionModel> list = DataTypeFormatter.arrayToList(responseEntity.getBody());
+            return list;
+        }
+
+        return new ArrayList<>();
+
+    }
 
     private static AuctionModel responseStatus(ResponseEntity<AuctionModel> responseEntity, HttpSession session){
 

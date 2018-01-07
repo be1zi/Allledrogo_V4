@@ -1,5 +1,7 @@
 package com.belzowski.Funcjonaliities;
 
+import com.belzowski.Model.AuctionModel;
+import com.belzowski.Network.AuctionNetworkManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.System.out;
 
 
@@ -17,23 +22,17 @@ import static java.lang.System.out;
 @RequestMapping("/search")
 public class SearchController {
 
-
-
-    @RequestMapping(value="/search")
-    public ModelAndView Search(@RequestParam(value = "searchTerm", required = false) String pSearchTerm, HttpServletRequest request, HttpServletResponse response) {
-        ModelAndView mav = new ModelAndView("search");
-
-        mav.addObject("searchTerm", pSearchTerm);
-
-        return mav;
-    }
-
     @RequestMapping("/")
-    public ModelAndView search(@CookieValue(value = "search", defaultValue = "default") String search,  HttpSession session){
+    public ModelAndView search(@CookieValue("searchValue") String searchValue){
 
         ModelAndView modelAndView = new ModelAndView("auctionList");
-        String title = (String)session.getAttribute("search");
-        out.println(title + " " + search);
-        return  modelAndView;
+        List<AuctionModel> list = AuctionNetworkManager.searchAuctions(searchValue);
+
+        if(list == null)
+            modelAndView.addObject("list", new ArrayList());
+        else
+            modelAndView.addObject("list", list);
+
+        return modelAndView;
     }
 }

@@ -16,13 +16,13 @@
 
         <div class="collapse navbar-collapse justify-content-center text-center" id="navbar2SupportedContent">
             <div class="col-md-7 text-center">
-                <form class="form-inline m-0">
+                <div class="form-inline m-0">
                     <div class="search navbar-collapse justify-content-end">
                         <input class="form-control mr-4 text-left w-50" id="searchInput" type="text" placeholder="Szukaj">
-                        <%--<button class="btn btn-warning text-white text-center" id="searchButton" type="button" ><i class="fa d-inline fa-lg fa-search"></i>&nbsp; Szukaj</button>--%>
-                        <a class="btn btn-warning text-white text-center" id="searchButton" type="button" href="/search/">Szukaj</a>
+                        <a class="btn btn-warning text-white text-center" id="searchButton"  href="/search/">Szukaj</a>
+
                     </div>
-                </form>
+                </div>
             </div>
             <div class="col-md-5">
             <div class="collapse navbar-collapse justify-content-end text-center">
@@ -217,56 +217,16 @@
 
 <script type="text/javascript">
 
-    $('#category').on('click',function () {
-       console.log("click");
+    $("#searchInput").bind("input",function () {
+        console.log("click");
+        document.cookie = "searchValue=" + $("#searchInput").val();
 
     });
 
+    $("#searchInput").click(function(event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+
 </script>
-
-<%--<script>--%>
-    <%--$("#searchInput").on('change', function () {--%>
-        <%--console.log('Click');--%>
-        <%--sessionStorage.setItem('search', $('#searchInput').val());--%>
-
-<%--//        $.ajax({--%>
-<%--//            url: "/search/" + $('#searchInput').val(),--%>
-<%--//            type: "POST",--%>
-<%--//            success: function (response) {--%>
-<%--////               window.location = "/search/";--%>
-<%--//                window.location.replace(response.url);--%>
-<%--//            }--%>
-<%--//        }) ;--%>
-    <%--});--%>
-
-    <%--$('#searchInput').on("change paste keyup",function () {--%>
-       <%--console.log("123");--%>
-       <%--$.cookie('search', $("#searchInput").val());--%>
-    <%--});--%>
-
-
-
-    <%--&lt;%&ndash;$('#testButton').on('click', function () {&ndash;%&gt;--%>
-       <%--&lt;%&ndash;$.ajax({&ndash;%&gt;--%>
-           <%--&lt;%&ndash;url: "/search/" + $('#searchInput').val(),&ndash;%&gt;--%>
-           <%--&lt;%&ndash;type: "POST",&ndash;%&gt;--%>
-           <%--&lt;%&ndash;success: function (response) {&ndash;%&gt;--%>
-<%--&lt;%&ndash;//               window.location = "/search/";&ndash;%&gt;--%>
-               <%--&lt;%&ndash;window.location.replace(response.url);&ndash;%&gt;--%>
-           <%--&lt;%&ndash;}&ndash;%&gt;--%>
-       <%--&lt;%&ndash;}) ;&ndash;%&gt;--%>
-    <%--&lt;%&ndash;});&ndash;%&gt;--%>
-
-    <%--&lt;%&ndash;&lt;%&ndash;$('#biddingButton').on('click', function () {&ndash;%&gt;&ndash;%&gt;--%>
-
-        <%--&lt;%&ndash;&lt;%&ndash;$.ajax({&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;url: "/auction/buy/${auction.id}/${auction.userId}/" + $('#itemNumberInputBidding').val() + "/" + $('#biddingPriceInput').val(),&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;type: "POST",&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;success: function () {&ndash;%&gt;&ndash;%&gt;--%>
-                <%--&lt;%&ndash;&lt;%&ndash;window.location = "/auction/${auction.id}";&ndash;%&gt;&ndash;%&gt;--%>
-            <%--&lt;%&ndash;&lt;%&ndash;}&ndash;%&gt;&ndash;%&gt;--%>
-        <%--&lt;%&ndash;&lt;%&ndash;});&ndash;%&gt;&ndash;%&gt;--%>
-        <%--&lt;%&ndash;&lt;%&ndash;window.location = "/auction/${auction.id}";&ndash;%&gt;&ndash;%&gt;--%>
-
-    <%--&lt;%&ndash;&lt;%&ndash;});&ndash;%&gt;&ndash;%&gt;--%>
-<%--</script>--%>
