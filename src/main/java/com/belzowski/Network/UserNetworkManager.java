@@ -67,6 +67,19 @@ public class UserNetworkManager {
 
         return responseStatus(responseEntity,session);
     }
+
+    public static UserModel getUserByLogin(String login){
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<UserModel> responseEntity = restTemplate.postForEntity(Constant.getUserByLoginURL, login , UserModel.class);
+
+        if(responseEntity.getStatusCode().is2xxSuccessful())
+            return responseEntity.getBody();
+
+        return new UserModel();
+    }
+
+
     private static UserModel responseStatus(ResponseEntity<UserModel> responseEntity, HttpSession session){
 
         if (responseEntity.getStatusCode().is2xxSuccessful()) {
@@ -81,4 +94,5 @@ public class UserNetworkManager {
 
         return null;
     }
+
 }

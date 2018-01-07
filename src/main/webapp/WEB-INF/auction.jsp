@@ -74,7 +74,9 @@
                 <div class="buyNow">
                     <div class="row p-3">
                         <div class="col-md-4 text-left"> <label class="text-secondary">Sprzedający:</label> </div>
-                        <div class="col-md-8 text-left"> <label class="text-secondary">${auction.userLogin}</label> </div>
+                            <div class="col-md-4 text-left">
+                                <a href="/userAccount/show?login=${auction.userLogin}" class="btn btn-warning p-2 text-white text-center btn-block" > ${auction.userLogin}</a>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -108,8 +110,6 @@
                         <div class="col-md-4 text-center">
 
                             <% if(user != null){ %>
-                                <%--session.setAttribute("ownerId", auction.userId); %>--%>
-
                                     <a href="/message/${auction.userLogin}?title=${auction.title}" class="btn btn-warning p-2 text-white text-center btn-block" >Wyślij</a>
                             <% }else{ %>
                                  <a class="btn navbar-btn ml-2 text-white btn-warning" href="/login" data-toggle=""><i class="fa d-inline fa-lg fa-unlock"></i>&nbsp; Zaloguj</a>
@@ -118,8 +118,6 @@
 
                     </div>
                 </div>
-
-
 
 
                 <c:choose>

@@ -1,8 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.belzowski.Model.AccountModel" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<link rel="stylesheet" href="/resources/CSS/rating.css">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <jsp:useBean id="user" scope="request" type="java.lang.Object"/>
 <jsp:useBean id="account" scope="request" type="java.lang.Object"/>
@@ -17,6 +16,30 @@
 <jsp:useBean id="star4" scope="request" type="java.lang.Integer"/>
 <jsp:useBean id="star5" scope="request" type="java.lang.Integer"/>
 
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="../resources/CSS/main.css">
+    <link rel="stylesheet" href="../resources/CSS/home.css">
+    <link rel="stylesheet" href="../resources/CSS/footer.css">
+    <link rel="stylesheet" href="/resources/CSS/rating.css">
+
+    <title>ALLLEDROGO</title>
+</head>
+<body>
+
+<jsp:include page="header.jsp"></jsp:include>
+
+<div class="container" style="padding-top: 55px; padding-bottom: 55px">
+    <div class="col-md-2"></div>
+    <div class="col-md-12 border border-success bg-primary " style="padding-top: 25px">
 
 <div class="row px-4" style="padding-bottom: 25px">
     <div class="col-md-4">
@@ -58,7 +81,7 @@
     <div class="col-md-1"></div>
     <div class="col-md-2">
         <div class="input">
-            <a href="/sale/mysales" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+            <a href="/userAccount/auctionList" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
         </div>
     </div>
 </div>
@@ -79,10 +102,10 @@
         <div class="input">
             <c:choose>
                 <c:when test="${positive == 0}">
-                    <a href="/myaccount/commentsByType?userType=owner&type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="/myaccount/commentsByType?userType=owner&type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Positiv" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -105,10 +128,10 @@
         <div class="input">
             <c:choose>
                 <c:when test="${negative == 0}">
-                    <a href="/myaccount/commentsByType?userType=owner&type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white" disabled ="disabled">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white" disabled ="disabled">Wyświetl</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="/myaccount/commentsByType?userType=owner&type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Negativ" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -131,10 +154,10 @@
         <div class="input">
             <c:choose>
                 <c:when test="${neutral == 0}">
-                    <a href="/myaccount/commentsByType?userType=owner&type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white" disabled = "true">Wyświetl</a>
                 </c:when>
                 <c:otherwise>
-                    <a href="/myaccount/commentsByType?userType=owner&type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
+                    <a href="/myaccount/commentsByType?userType=watcher&type=Neutral" class="btn btn-warning btn-block text-center p-2 text-white">Wyświetl</a>
                 </c:otherwise>
             </c:choose>
         </div>
@@ -152,11 +175,11 @@
         <%
             AccountModel accountModel = (AccountModel)account;
             for(int i=1;i<=5; i++){
-             if(i <= accountModel.getMark()){
+                if(i <= accountModel.getMark()){
         %>
-             <span class="fa fa-star checked" style="font-size: 25px"></span>
+        <span class="fa fa-star checked" style="font-size: 25px"></span>
         <%}else{%>
-             <span class="fa fa-star" style="font-size: 25px"></span>
+        <span class="fa fa-star" style="font-size: 25px"></span>
         <%}}%>
     </div>
 </div>
@@ -284,3 +307,11 @@
         </div>
     </div>
 </div>
+    </div>
+</div>
+
+
+<jsp:include page="footer.jsp"></jsp:include>
+
+</body>
+</html>

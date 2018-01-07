@@ -189,11 +189,19 @@ public class MyAccountController {
     }
 
     @RequestMapping("/commentsByType")
-    public ModelAndView commentsByList(@RequestParam("type") String type,  HttpSession session){
-        session.setAttribute("content", Content.Comments);
-        ModelAndView modelAndView = new ModelAndView("myAccount");
+    public ModelAndView commentsByList(@RequestParam("userType") String userType, @RequestParam("type") String type,  HttpSession session){
 
-        UserModel user = (UserModel)session.getAttribute("user");
+        UserModel user = null;
+        ModelAndView modelAndView = null;
+        if(userType.equals("owner")) {
+            session.setAttribute("content", Content.Comments);
+            modelAndView = new ModelAndView("myAccount");
+            user = (UserModel) session.getAttribute("user");
+        }else{
+            user = (UserModel)session.getAttribute("userToWatch");
+            modelAndView = new ModelAndView("userCommentList");
+        }
+
         AccountModel account = user.getAccountModel();
         List<CommentModel> comments = account.getCommentList();
 

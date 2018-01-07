@@ -9,6 +9,7 @@ public class Constant {
     public static String editUserURL = restURL + "/account/edit";
     public static String editEmailURL = restURL + "/account/editemail";
     public static String editAccountURL = restURL + "/account/editaccount";
+    public static String getUserByLoginURL = restURL + "/user/getByLogin";
 
     //Auction
     public static String addAuction = restURL + "/sale/add";
